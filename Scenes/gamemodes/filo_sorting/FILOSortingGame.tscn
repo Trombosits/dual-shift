@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://btgv84opxv5wg"]
+
+[ext_resource type="Script" uid="uid://bfjgu2c05ksfw" path="res://Scripts/gamemodes/filo_sorting/FILOGameManager.gd" id="1_swagj"]
+[ext_resource type="Script" uid="uid://bbny280up2g18" path="res://Scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="2_rfg6a"]
+[ext_resource type="Script" uid="uid://bb3kxpm1qatfw" path="res://Scripts/gamemodes/filo_sorting/DragManager.gd" id="3_2mstl"]
+
+[node name="FiloSortingGame" type="Node2D" unique_id=1426430115]
+script = ExtResource("1_swagj")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1443937074]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.050980393, 0.07058824, 0.15686275, 1)
+
+[node name="DragLayer" type="CanvasLayer" parent="." unique_id=805189327]
+
+[node name="DragPotion" type="Node2D" parent="DragLayer" unique_id=421253336]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=801322442]
+script = ExtResource("2_rfg6a")
+
+[node name="MovesLabel" type="Label" parent="HUD" unique_id=1634063985]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 88.0
+offset_bottom = 43.0
+text = "Moves: 0"
+
+[node name="TimerLabel" type="Label" parent="HUD" unique_id=1005045089]
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 108.0
+offset_bottom = 73.0
+text = "Time: 00:00"
+
+[node name="WinPanel" type="Panel" parent="HUD" unique_id=149490064]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 700.0
+offset_bottom = 400.0
+
+[node name="WinLabel" type="Label" parent="HUD/WinPanel" unique_id=433312759]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "YOU WIN!"
+
+[node name="NextButton" type="Button" parent="HUD/WinPanel" unique_id=822234716]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Next"
+
+[node name="DragManager" type="Node" parent="HUD" unique_id=1942982732]
+script = ExtResource("3_2mstl")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=169221272]
+
+[node name="RackContainer" type="Node2D" parent="." unique_id=541514109]
