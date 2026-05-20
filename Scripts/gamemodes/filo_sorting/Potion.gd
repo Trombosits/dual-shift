@@ -51,7 +51,7 @@ func _build_placeholder_visual() -> void:
 	# Body potion (kotak berwarna sebagai placeholder)
 	_body = ColorRect.new()
 	_body.size = potion_size
-	_body.position = Vector2.ZERO   # Center pivot
+	_body.position = -potion_size / 2   # Center pivot
 	_body.color = POTION_COLORS[potion_type]
 	add_child(_body)
 

@@ -49,10 +49,13 @@ func _process(delta: float) -> void:
 # ─── SETUP GAME ──────────────────────────────────────────────────────────────
 
 func _setup_game() -> void:
+	print("SETUP GAME MULAI")
 	_clear_existing_racks()
 	_create_racks()
 	_fill_racks_randomly()
+	print("JUMLAH RACK:", racks.size())
 	drag_manager.register_racks(racks)
+	print("REGISTER RACKS SELESAI")
 	drag_manager.set_drag_layer(drag_layer)
 	print("[FILOGameManager] Setup selesai: %d racks, %d tipe potion" % [num_racks, num_potion_types])
 

@@ -6,6 +6,9 @@
 #   3. Klik rack sama     → batalkan pilihan
 extends Node
 class_name DragManager
+func _ready():
+
+	add_to_group("drag_manager")
 
 # ─── SINYAL ──────────────────────────────────────────────────────────────────
 signal move_made(from_rack: PotionRack, to_rack: PotionRack, potion: Potion)
@@ -15,7 +18,7 @@ signal selection_changed(selected_rack: PotionRack)  # null = deselect
 # ─── STATE ───────────────────────────────────────────────────────────────────
 var selected_rack: PotionRack = null        # Rack yang sedang "dipegang"
 var held_potion: Potion = null              # Potion yang sedang "dipegang"
-var all_racks: Array[PotionRack] = []       # Referensi ke semua rack
+var all_racks = []       # Referensi ke semua rack
 
 # Node untuk potion yang "melayang" mengikuti cursor
 var _floating_potion_display: ColorRect     # Placeholder visual saat drag
@@ -24,12 +27,14 @@ var _drag_layer: CanvasLayer
 # ─── SETUP ───────────────────────────────────────────────────────────────────
 
 ## Dipanggil oleh GameManager untuk mendaftarkan semua rack
-func register_racks(racks: Array[PotionRack]) -> void:
+func register_racks(racks) -> void:
 	all_racks = racks
+	print("REGISTERING RACKS...")
 	for rack in all_racks:
-		# Sambungkan sinyal klik setiap rack ke handler kita
-		rack.rack_clicked.connect(_on_rack_clicked)
-	print("[DragManager] Registered %d racks" % all_racks.size())
+		print("CONNECT RACK:", rack.rack_id)
+		if not rack.rack_clicked.is_connected(_on_rack_clicked):
+			rack.rack_clicked.connect(_on_rack_clicked)
+	print("TOTAL RACK:", all_racks.size())
 
 func set_drag_layer(layer: CanvasLayer) -> void:
 	_drag_layer = layer
@@ -46,7 +51,8 @@ func _build_floating_display() -> void:
 
 # ─── CORE LOGIC ──────────────────────────────────────────────────────────────
 
-func _on_rack_clicked(clicked_rack: PotionRack) -> void:
+func _on_rack_clicked(clicked_rack) -> void:
+	print("DRAGMANAGER TERIMA KLIK:", clicked_rack.rack_id)
 	# ── KASUS 1: Belum ada yang dipilih → pilih rack ini ──────────────────
 	if selected_rack == null:
 		_try_select_rack(clicked_rack)

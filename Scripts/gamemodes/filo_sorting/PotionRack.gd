@@ -8,8 +8,8 @@ extends Area2D
 class_name PotionRack
 
 # ─── SINYAL ──────────────────────────────────────────────────────────────────
-signal rack_clicked(rack: PotionRack)           # Saat rack diklik player
-signal stack_changed(rack: PotionRack)          # Saat isi stack berubah
+signal rack_clicked(rack)           # Saat rack diklik player
+signal stack_changed(rack)          # Saat isi stack berubah
 
 # ─── EXPORT (bisa di-set dari Editor) ────────────────────────────────────────
 @export var rack_id: int = 0
@@ -42,7 +42,7 @@ func _ready() -> void:
 		)
 	add_child(collision)
 	input_pickable = true
-	input_event.connect(_on_area_input_event)
+	input_event.connect(_input_event)
 
 # ─── SETUP VISUAL ────────────────────────────────────────────────────────────
 func _build_rack_visual() -> void:
@@ -179,12 +179,15 @@ func initialize_with_potions(types: Array) -> void:
 		potion.potion_type = type
 		push(potion)
 		
-func _on_area_input_event(viewport, event, shape_idx):
+func _input_event(viewport, event, shape_idx):
 
 	if event is InputEventMouseButton:
 
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 
-			print("RACK KLIK:", rack_id)
+			print("RACK DIKLIK:", rack_id)
 
-			rack_clicked.emit(self)
+			var drag_manager = get_tree().get_first_node_in_group("drag_manager")
+
+			if drag_manager:
+				drag_manager._on_rack_clicked(self)
