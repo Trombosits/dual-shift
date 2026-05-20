@@ -6,9 +6,10 @@
 #   3. Klik rack sama     → batalkan pilihan
 extends Node
 class_name DragManager
-func _ready():
 
+func _ready():
 	add_to_group("drag_manager")
+	print("DRAG MANAGER READY")
 
 # ─── SINYAL ──────────────────────────────────────────────────────────────────
 signal move_made(from_rack: PotionRack, to_rack: PotionRack, potion: Potion)

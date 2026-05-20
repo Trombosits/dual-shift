@@ -28,6 +28,7 @@ var _click_area: Area2D                 # Area deteksi klik
 
 # ─── LIFECYCLE ───────────────────────────────────────────────────────────────
 func _ready() -> void:
+	print("RACK READY:", rack_id)
 	_build_rack_visual()
 	var collision = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
@@ -42,7 +43,7 @@ func _ready() -> void:
 		)
 	add_child(collision)
 	input_pickable = true
-	input_event.connect(_input_event)
+	input_event.connect(_on_input_event)
 
 # ─── SETUP VISUAL ────────────────────────────────────────────────────────────
 func _build_rack_visual() -> void:
@@ -156,11 +157,14 @@ func _reposition_potions() -> void:
 ## Set visual "terpilih" saat rack diklik player
 func set_selected(value: bool) -> void:
 	_is_selected = value
+
+	print("SET SELECTED:", rack_id, value)
+
 	if _rack_body:
 		if value:
-			_rack_body.color = Color(0.5, 0.45, 0.2)   # Lebih terang = terpilih
+			_rack_body.color = Color.YELLOW
 		else:
-			_rack_body.color = Color(0.3, 0.25, 0.15)  # Normal
+			_rack_body.color = Color(0.3, 0.25, 0.15)
 
 ## Highlight sebagai target saat player menahan potion
 func set_highlighted_as_target(value: bool) -> void:
@@ -179,10 +183,8 @@ func initialize_with_potions(types: Array) -> void:
 		potion.potion_type = type
 		push(potion)
 		
-func _input_event(viewport, event, shape_idx):
-
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 
 			print("RACK DIKLIK:", rack_id)
