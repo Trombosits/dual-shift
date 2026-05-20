@@ -42,6 +42,7 @@ func _ready() -> void:
 		)
 	add_child(collision)
 	input_pickable = true
+	input_event.connect(_on_area_input_event)
 
 # ─── SETUP VISUAL ────────────────────────────────────────────────────────────
 func _build_rack_visual() -> void:
@@ -178,7 +179,12 @@ func initialize_with_potions(types: Array) -> void:
 		potion.potion_type = type
 		push(potion)
 		
-func _input_event(viewport, event, shape_idx):
+func _on_area_input_event(viewport, event, shape_idx):
+
 	if event is InputEventMouseButton:
+
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+
+			print("RACK KLIK:", rack_id)
+
 			rack_clicked.emit(self)
