@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://drlfok1f3xyb"
+path="res://.godot/imported/bow_release-85040-[AudioTrimmer.com] (1).wav-482da0fa06b6a8a694ba9e02d120803b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/bow_release-85040-[AudioTrimmer.com] (1).wav"
+dest_files=["res://.godot/imported/bow_release-85040-[AudioTrimmer.com] (1).wav-482da0fa06b6a8a694ba9e02d120803b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
