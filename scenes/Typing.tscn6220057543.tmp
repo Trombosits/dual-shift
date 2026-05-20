@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c50x6y5hp7peo"]
+
+[ext_resource type="PackedScene" uid="uid://b6x0k0rramnym" path="res://scenes/player.tscn" id="1_2slbb"]
+[ext_resource type="Script" uid="uid://bvconandbv0hd" path="res://scripts/typing.gd" id="1_g5ggy"]
+[ext_resource type="PackedScene" uid="uid://dnleyajlbkiv7" path="res://scenes/damageline.tscn" id="2_et0va"]
+[ext_resource type="FontFile" uid="uid://cfs4waeqh62qc" path="res://assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="4_e21yv"]
+[ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="5_imej4"]
+[ext_resource type="Script" uid="uid://0rwuijrepak7" path="res://scripts/enemy_spawner.gd" id="6_imej4"]
+
+[node name="Typing" type="Node2D" unique_id=959756684]
+script = ExtResource("1_g5ggy")
+
+[node name="damageLine" parent="." unique_id=145025045 instance=ExtResource("2_et0va")]
+
+[node name="player" parent="." unique_id=600530776 instance=ExtResource("1_2slbb")]
+position = Vector2(98, 322)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=426277333]
+
+[node name="Life" type="Label" parent="CanvasLayer" unique_id=517320608]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_e21yv")
+text = "Hearts : 0"
+
+[node name="Score" type="Label" parent="CanvasLayer" unique_id=1575792391]
+offset_left = 1072.0
+offset_top = 8.0
+offset_right = 1137.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("5_imej4")
+text = "Score : 0"
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1788643970]
+script = ExtResource("6_imej4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1840216353]
+position = Vector2(574, 324)
