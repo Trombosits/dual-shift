@@ -36,7 +36,7 @@ offset_left = 548.0
 offset_top = -1.0
 offset_right = 613.0
 offset_bottom = 22.0
-text = "Wave : 1"
+text = "Wave : 3"
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1788643970]
 position = Vector2(1101, 331)

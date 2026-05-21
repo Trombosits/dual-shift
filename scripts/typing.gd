@@ -31,21 +31,6 @@ func _ready():
 	_spawner.wave_started.connect(func(wave_num): _wave_label.text = "Wave: " + str(wave_num))
 	_spawner.wave_break_started.connect(func(duration): _wave_label.text = "Get Ready!")
 
-# ==========================================
-# FUNGSI FILTER PRIORITY ORDER (PENTING)
-# ==========================================
-func _get_current_target_index() -> int:
-	# 1. Cari apakah ada musuh yang bertipe BOSS di dalam daftar screen saat ini
-	for i in range(_spawner.enemies.size()):
-		var enemy = _spawner.enemies[i]
-		if is_instance_valid(enemy) and enemy.get("is_boss") == true:
-			return i # Jika ada Boss, paksa pemain mengincar indeks Boss ini!
-			
-	# 2. Jika tidak ada boss, gunakan penargetan normal bawaan game kamu
-	if _spawner.enemy_index >= _spawner.enemies.size():
-		_spawner.enemy_index = 0
-	return _spawner.enemy_index
-
 
 func _input(event):
 	if game_over_displayed: return
@@ -53,10 +38,56 @@ func _input(event):
 	if event is InputEventKey and event.pressed and len(_spawner.enemies) > 0:
 		var key_input = event.as_text()
 		
-		# Gunakan fungsi filter untuk mengambil index target terkuat (Boss dahulu)
-		var active_index = _get_current_target_index()
-		var current_enemy = _spawner.enemies[active_index]
+		var current_enemy = null
+		var active_index = -1
 		
+		# =========================================================================
+		# 1. MODE PRIORITY ORDER: Jika ada BOSS, paksa pemain mengincar Boss dahulu
+		# =========================================================================
+		for i in range(_spawner.enemies.size()):
+			var enemy = _spawner.enemies[i]
+			if is_instance_valid(enemy) and enemy.get("is_boss") == true:
+				active_index = i
+				current_enemy = enemy
+				break # Keluar dari loop, Boss berhasil dikunci!
+		
+		# =========================================================================
+		# 2. MODE SEARCH IN RANDOM OUTPUT: Jika tidak ada Boss, cari musuh biasa
+		# =========================================================================
+		if current_enemy == null:
+			# A. Cek apakah ada musuh biasa yang SEDANG diketik sebelumnya (agar fokus tidak lepas di tengah kata)
+			for i in range(_spawner.enemies.size()):
+				var enemy = _spawner.enemies[i]
+				if is_instance_valid(enemy) and enemy.get("char_index") != null and enemy.char_index > 0:
+					if len(enemy.GENERATED_CHARS) > 0 and enemy.GENERATED_CHARS[0].length() > 0:
+						active_index = i
+						current_enemy = enemy
+						break
+			
+			# B. Jika tidak ada yang sedang diketik, cari musuh yang huruf pertamanya COCOK dengan input
+			if current_enemy == null:
+				var matching_indices = []
+				for i in range(_spawner.enemies.size()):
+					var enemy = _spawner.enemies[i]
+					if is_instance_valid(enemy) and len(enemy.GENERATED_CHARS) > 0:
+						var current_word = enemy.GENERATED_CHARS[0]
+						if current_word.length() > 0 and current_word[0] == key_input:
+							matching_indices.append(i)
+				
+				# Jika ditemukan musuh yang cocok, pilih salah satu secara acak (Random Output)
+				if matching_indices.size() > 0:
+					active_index = matching_indices[randi() % matching_indices.size()]
+					current_enemy = _spawner.enemies[active_index]
+				else:
+					# Jika sama sekali tidak ada musuh di layar yang berawalan huruf tersebut
+					life -= 1
+					_player.play_hurt() 
+					print("Wrong input! No matching enemy found. Life decreased.")
+					return
+
+		# =========================================================================
+		# 3. PROSES KETIKAN PADA TARGET YANG SUDAH DITENTUKAN
+		# =========================================================================
 		if not is_instance_valid(current_enemy): return
 		
 		if len(current_enemy.GENERATED_CHARS) > 0:
@@ -77,18 +108,20 @@ func _input(event):
 				
 				if current_word == "":
 					current_enemy.GENERATED_CHARS.pop_front()
+					current_enemy.char_index = 0 # Reset indeks ketik karena kata sudah habis
 			else:
+				# Salah ketik pada musuh yang sedang dikunci / salah ketik saat Boss ada
 				life -= 1
 				_player.play_hurt() 
-				print("Wrong input! Life decreased.")
+				print("Wrong input! Character mismatch. Life decreased.")
+
 
 func _physics_process(_delta):
 	if game_over_displayed: return
 	
-	if len(_spawner.enemies) > 0:
-		# Gunakan fungsi filter untuk pengecekan kematian musuh
-		var active_index = _get_current_target_index()
-		var current_enemy = _spawner.enemies[active_index]
+	# Perulangan mundur untuk memeriksa kematian musuh secara adil
+	for i in range(_spawner.enemies.size() - 1, -1, -1):
+		var current_enemy = _spawner.enemies[i]
 		
 		if is_instance_valid(current_enemy) and len(current_enemy.GENERATED_CHARS) == 0:
 			
@@ -97,9 +130,8 @@ func _physics_process(_delta):
 			else:
 				current_enemy.queue_free()
 				
-			_spawner.enemies.pop_at(active_index)
+			_spawner.enemies.pop_at(i)
 			
-			# Berikan skor lebih tinggi jika berhasil membunuh Boss
 			if current_enemy.get("is_boss") == true:
 				score += 1000
 			else:
@@ -107,6 +139,7 @@ func _physics_process(_delta):
 				
 			if _spawner.enemy_index >= len(_spawner.enemies):
 				_spawner.enemy_index = 0
+
 
 func _on_damage_line_breached():
 	life -= 1
@@ -120,6 +153,7 @@ func _on_damage_line_breached():
 			else:
 				enemy.queue_free()
 		_spawner.enemies.pop_front()
+
 
 func trigger_game_over():
 	game_over_displayed = true

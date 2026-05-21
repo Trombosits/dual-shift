@@ -95,27 +95,16 @@ func play_hit():
 		play_run()
 
 func play_die():
-	if is_dead:
-		return
-	
+	if is_dead: return
 	is_dead = true
 	_label.visible = false
 	
-	# Pastikan animasi jalan dari frame 0
-	enemy_2d.stop()
-	enemy_2d.play("die")
-	
-	# Hitung durasi animasi secara manual
-	var sprite_frames = enemy_2d.sprite_frames
-	if sprite_frames and sprite_frames.has_animation("die"):
-		var frame_count = sprite_frames.get_frame_count("die")
-		var fps = sprite_frames.get_animation_speed("die")
-		var duration = frame_count / fps if fps > 0 else 1.0
+	if enemy_2d and enemy_2d.has_method("play"):
+		enemy_2d.stop()
+		enemy_2d.play("die")
 		
-		# Tunggu berdasarkan durasi, bukan signal
-		await get_tree().create_timer(duration).timeout
-	else:
-		# Fallback kalau animasi tidak ditemukan
-		await get_tree().create_timer(0.5).timeout
+	# SOLUSI AMAN: Jangan pakai 'await animation_finished' karena rawan macet jika di-set Loop.
+	# Gunakan timer manual bawaan code selama 1 detik (atau sesuaikan durasi animasi mati Anda)
+	await get_tree().create_timer(1.0).timeout
 	
-	queue_free()
+	queue_free() # Menghapus total dari game
