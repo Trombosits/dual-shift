@@ -204,6 +204,7 @@ animations = [{
 font_size = 13
 
 [node name="enemy_mushroom" type="Node2D" unique_id=294424763]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ecnku")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=308710889]

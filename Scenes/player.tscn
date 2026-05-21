@@ -199,6 +199,7 @@ script = ExtResource("1_g2els")
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1615036400]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1089992627]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_d2wvv")
 animation = &"death"
 autoplay = "idle"

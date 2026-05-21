@@ -80,7 +80,7 @@ func _spawn_enemy():
 		add_child(boss_instance)
 		boss_spawned_this_wave = true
 		enemies_spawned_this_wave += 1
-		print("!!! BOSS MUNCUL PERTAMA !!!")
+		print("!!! BOSS MUNCUL !!!")
 		return 
 		
 	# Spawn musuh biasa (Kroco) setelah boss muncul

@@ -61,5 +61,8 @@ func play_die():
 		enemy_2d.stop()
 		enemy_2d.play("die")
 		
-	await enemy_2d.animation_finished
-	queue_free()
+	# SOLUSI AMAN: Jangan pakai 'await animation_finished' karena rawan macet jika di-set Loop.
+	# Gunakan timer manual bawaan code selama 1 detik (atau sesuaikan durasi animasi mati Anda)
+	await get_tree().create_timer(1.0).timeout
+	
+	queue_free() # Menghapus total dari game
