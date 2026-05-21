@@ -8,6 +8,7 @@
 script = ExtResource("1_swagj")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1443937074]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,16 +48,19 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "YOU WIN!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NextButton" type="Button" parent="HUD/WinPanel" unique_id=822234716]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Next"
+alignment = 2
 
 [node name="DragManager" type="Node" parent="HUD" unique_id=1942982732]
 script = ExtResource("3_2mstl")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=169221272]
 
-[node name="RackContainer" type="Node2D" parent="." unique_id=541514109]
+[node name="RackContainer" type="Area2D" parent="." unique_id=963968918]

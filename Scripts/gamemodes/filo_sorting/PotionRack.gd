@@ -107,7 +107,7 @@ func peek() -> Potion:
 
 ## Cek apakah boleh menerima potion tertentu
 ## Boleh taruh JIKA: rack kosong, atau warna paling atas sama dengan potion yang datang
-func can_accept(potion: Potion) -> bool:
+func can_accept(_potion: Potion) -> bool:
 	if is_full():
 		return false
 	if is_empty():

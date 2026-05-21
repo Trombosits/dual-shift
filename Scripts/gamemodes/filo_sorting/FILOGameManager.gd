@@ -162,7 +162,7 @@ func _update_moves_display() -> void:
 
 func _update_timer_display() -> void:
 	if timer_label:
-		var minutes = int(elapsed_time) / 60
+		var minutes = float(elapsed_time) / 60
 		var seconds = int(elapsed_time) % 60
 		timer_label.text = "Time: %02d:%02d" % [minutes, seconds]
 

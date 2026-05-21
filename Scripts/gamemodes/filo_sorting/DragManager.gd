@@ -46,6 +46,9 @@ func _build_floating_display() -> void:
 		return
 	_floating_potion_display = ColorRect.new()
 	_floating_potion_display.size = Vector2(50, 70)
+	
+	_floating_potion_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	_floating_potion_display.visible = false
 	_floating_potion_display.z_index = 100
 	_drag_layer.add_child(_floating_potion_display)
@@ -53,7 +56,8 @@ func _build_floating_display() -> void:
 # ─── CORE LOGIC ──────────────────────────────────────────────────────────────
 
 func _on_rack_clicked(clicked_rack) -> void:
-	print("DRAGMANAGER TERIMA KLIK:", clicked_rack.rack_id)
+	print("KLIK MASUK:", clicked_rack.rack_id)
+	print("SELECTED RACK:", selected_rack)
 	# ── KASUS 1: Belum ada yang dipilih → pilih rack ini ──────────────────
 	if selected_rack == null:
 		_try_select_rack(clicked_rack)
@@ -90,6 +94,8 @@ func _try_select_rack(rack: PotionRack) -> void:
 	print("[DragManager] Pilih rack %d, potion teratas: %s" % [rack.rack_id, Potion.POTION_NAMES[held_potion.potion_type]])
 
 func _try_move_to(target_rack: PotionRack) -> void:
+	print("COBA PINDAH KE:", target_rack.rack_id)
+	print("CAN ACCEPT:", target_rack.can_accept(held_potion))
 	# Validasi: apakah target bisa menerima potion?
 	if not target_rack.can_accept(held_potion):
 		print("[DragManager] INVALID: Rack %d tidak bisa menerima potion ini" % target_rack.rack_id)
