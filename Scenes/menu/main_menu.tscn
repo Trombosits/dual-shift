@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://c6y6q52oug0ij"]
+
+[ext_resource type="Script" uid="uid://bljd8d3g0s7mx" path="res://Scripts/menu/main_menu.gd" id="1_655o3"]
+[ext_resource type="Texture2D" uid="uid://bgjpoiouxl7vw" path="res://assets/Sprites/tilesets/water1.png" id="1_uffod"]
+[ext_resource type="PackedScene" uid="uid://c76hu5ayfcgvo" path="res://Scenes/fade_transition.tscn" id="2_evx1p"]
+[ext_resource type="AudioStream" uid="uid://m0vc58usrtft" path="res://assets/sfx/Medieval Music  Cobblestone Village-[AudioTrimmer.com].mp3" id="2_kwgaw"]
+[ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="2_ygw4n"]
+[ext_resource type="FontFile" uid="uid://cdl714xx6oidd" path="res://assets/Fonts/static/PixelifySans-Medium.ttf" id="3_655o3"]
+[ext_resource type="Script" uid="uid://6eh27qod0wi1" path="res://Scripts/menu/music_control.gd" id="6_u7oun"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byejo"]
+texture = ExtResource("1_uffod")
+modulate_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcc7k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbak8"]
+bg_color = Color(0.58775055, 0.5877506, 0.5877504, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt54a"]
+bg_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gcc7k"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kwgaw"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_u7oun"]
+color = Color(0, 0, 1, 1)
+thickness = 6
+
+[node name="Main_Menu" type="Control" unique_id=1781332632]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_655o3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=962645580]
+stream = ExtResource("2_kwgaw")
+autoplay = true
+bus = &"Music"
+
+[node name="Background" type="Panel" parent="." unique_id=202348787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_byejo")
+
+[node name="Main_Button" type="VBoxContainer" parent="." unique_id=1148214952]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -132.0
+offset_right = 211.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="New_Game" type="Button" parent="Main_Button" unique_id=531701261]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "NEW GAME"
+
+[node name="Continue" type="Button" parent="Main_Button" unique_id=458167133]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "CONTINUE"
+
+[node name="Setting" type="Button" parent="Main_Button" unique_id=1252558548]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "SETTING"
+
+[node name="Exit" type="Button" parent="Main_Button" unique_id=595699695]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "EXIT"
+
+[node name="Label" type="Label" parent="." unique_id=1822313755]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = -265.0
+offset_right = 420.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_655o3")
+theme_override_font_sizes/font_size = 60
+text = "DUAL SHIFT: BEHIND THE QUIL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fade_Transition" parent="." unique_id=122986557 instance=ExtResource("2_evx1p")]
+visible = false
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="Fade_Transition" unique_id=1141662080]
+
+[node name="Setting" type="Panel" parent="." unique_id=1010933293]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -158.0
+offset_right = 275.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Setting" unique_id=1654831056]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 50
+text = "SETTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Setting" unique_id=835181790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -56.5
+offset_right = 63.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 32
+text = "MUSIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="Setting" unique_id=1441250311]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -50.0
+offset_right = 211.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ygw4n")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "BACK"
+
+[node name="Music_Control" type="HSlider" parent="Setting" unique_id=167361416]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -28.5
+offset_right = 118.5
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_kwgaw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_u7oun")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_u7oun")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("6_u7oun")
+audio_bus_name = "Music"
+
+[connection signal="pressed" from="Main_Button/New_Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main_Button/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Main_Button/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Main_Button/Exit" to="." method="_on_exit_pressed"]
+[connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Setting/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Setting/Music_Control" to="Setting/Music_Control" method="_on_value_changed"]
