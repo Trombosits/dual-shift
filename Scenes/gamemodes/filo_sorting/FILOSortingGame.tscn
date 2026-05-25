@@ -41,26 +41,29 @@ theme_override_fonts/font = ExtResource("3_6pegp")
 text = "Time: 00:00"
 
 [node name="WinPanel" type="Panel" parent="HUD" unique_id=149490064]
-offset_left = 400.0
-offset_top = 200.0
-offset_right = 700.0
-offset_bottom = 400.0
+offset_left = 435.0
+offset_top = 256.0
+offset_right = 735.0
+offset_bottom = 456.0
 
 [node name="WinLabel" type="Label" parent="HUD/WinPanel" unique_id=433312759]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 92.0
+offset_top = 14.0
+offset_right = 155.0
+offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("3_6pegp")
 text = "YOU WIN!"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="NextButton" type="Button" parent="HUD/WinPanel" unique_id=822234716]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 143.0
-offset_right = 175.0
-offset_bottom = 171.0
+offset_left = 210.0
+offset_top = 160.0
+offset_right = 257.0
+offset_bottom = 188.0
 theme_override_fonts/font = ExtResource("3_6pegp")
 text = "Next"
 alignment = 2
@@ -68,8 +71,49 @@ alignment = 2
 [node name="DragManager" type="Node" parent="HUD" unique_id=1942982732]
 script = ExtResource("3_2mstl")
 
+[node name="DifficultyPanel" type="Panel" parent="HUD" unique_id=1074574381]
+offset_left = 311.0
+offset_top = 23.0
+offset_right = 864.0
+offset_bottom = 132.0
+
+[node name="EasyButton" type="Button" parent="HUD/DifficultyPanel" unique_id=1650705527]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 41.0
+offset_right = 118.0
+offset_bottom = 72.0
+text = "EASY"
+
+[node name="MediumButton" type="Button" parent="HUD/DifficultyPanel" unique_id=461413732]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 41.0
+offset_right = 306.0
+offset_bottom = 72.0
+text = "MEDIUM"
+
+[node name="HardButton" type="Button" parent="HUD/DifficultyPanel" unique_id=1401189943]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 42.0
+offset_right = 504.0
+offset_bottom = 73.0
+text = "HARD"
+
+[node name="Label" type="Label" parent="HUD/DifficultyPanel" unique_id=37737264]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 10.0
+offset_right = 342.0
+offset_bottom = 33.0
+text = "CHOOSE DIFFICULTY"
+
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=169221272]
 
 [node name="RackContainer" type="Area2D" parent="." unique_id=963968918]
 
 [connection signal="pressed" from="HUD/WinPanel/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="HUD/DifficultyPanel/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="HUD/DifficultyPanel/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="HUD/DifficultyPanel/HardButton" to="." method="_on_hard_button_pressed"]
