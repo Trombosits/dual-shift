@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://ls84o161cghp"]
+
+[ext_resource type="Texture2D" uid="uid://bgjpoiouxl7vw" path="res://assets/Sprites/tilesets/water1.png" id="1_1casq"]
+[ext_resource type="Script" uid="uid://cqxk5r576iyv8" path="res://Scripts/menu/game_menu.gd" id="1_3lbad"]
+[ext_resource type="PackedScene" uid="uid://c76hu5ayfcgvo" path="res://Scenes/fade_transition.tscn" id="2_fowyo"]
+[ext_resource type="AudioStream" uid="uid://m0vc58usrtft" path="res://assets/sfx/Medieval Music  Cobblestone Village-[AudioTrimmer.com].mp3" id="2_i2wdd"]
+[ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="2_sokd1"]
+[ext_resource type="FontFile" uid="uid://cdl714xx6oidd" path="res://assets/Fonts/static/PixelifySans-Medium.ttf" id="3_3lbad"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byejo"]
+texture = ExtResource("1_1casq")
+modulate_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcc7k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbak8"]
+bg_color = Color(0.58775055, 0.5877506, 0.5877504, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt54a"]
+bg_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gcc7k"]
+
+[node name="Game_Menu" type="Control" unique_id=1781332632]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3lbad")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=27160536]
+stream = ExtResource("2_i2wdd")
+autoplay = true
+bus = &"Music"
+
+[node name="Panel" type="Panel" parent="." unique_id=202348787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_byejo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1148214952]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = -132.0
+offset_right = 211.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Game1" type="Button" parent="VBoxContainer" unique_id=531701261]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sokd1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "FIFO"
+
+[node name="Game2" type="Button" parent="VBoxContainer" unique_id=458167133]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sokd1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "FILO"
+
+[node name="Game3" type="Button" parent="VBoxContainer" unique_id=1252558548]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sokd1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "TYPING"
+
+[node name="Label" type="Label" parent="." unique_id=1822313755]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = -265.0
+offset_right = 420.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_3lbad")
+theme_override_font_sizes/font_size = 60
+text = "GAME MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skill_Tree" type="Button" parent="." unique_id=595699695]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -71.0
+offset_right = 212.0
+offset_bottom = -20.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sokd1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "SKILL TREE"
+
+[node name="Main_Menu" type="Button" parent="." unique_id=155900510]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -78.0
+offset_right = -20.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sokd1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
+text = "MAIN MENU"
+
+[node name="Fade_Transition" parent="." unique_id=122986557 instance=ExtResource("2_fowyo")]
+visible = false
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="Fade_Transition" unique_id=82742380]
+
+[connection signal="pressed" from="VBoxContainer/Game1" to="." method="_on_game_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Game2" to="." method="_on_game_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Game3" to="." method="_on_game_3_pressed"]
+[connection signal="pressed" from="Skill_Tree" to="." method="_on_skill_tree_pressed"]
+[connection signal="pressed" from="Main_Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="timeout" from="Fade_Transition/Timer" to="." method="_on_timer_timeout"]

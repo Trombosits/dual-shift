@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bh4sxa6qxmjun"]
+
+[ext_resource type="Script" uid="uid://bskmvmduw4vy5" path="res://Scripts/gamemodes/filo_sorting/potion_rack.gd" id="1_3ortn"]
+
+[node name="PotionRack" type="Area2D" unique_id=1646879788]
+script = ExtResource("1_3ortn")
