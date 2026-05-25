@@ -20,7 +20,7 @@ func _ready():
 	randomize()
 	
 	# Boss diberikan 3 kata acak sekaligus (sebagai pengganti HP tebal)
-	for i in range(3):
+	for i in range(2):
 		var random_index = randi() % boss_words.size()
 		GENERATED_CHARS.append(boss_words[random_index].to_upper())
 

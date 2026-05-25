@@ -46,7 +46,7 @@ func _on_timer_timeout() -> void:
 		get_tree().change_scene_to_file("res://Scenes/gamemodes/filo_sorting/FILOSortingGame.tscn")
 
 	elif button_type == "game3":
-		get_tree().change_scene_to_file("res://Scenes/Typing.tscn")
+		get_tree().change_scene_to_file("res://Scenes/gamemodes/fifopo_typing/Typing.tscn")
 
 	elif button_type == "skillTree":
 		get_tree().change_scene_to_file("res://Scenes/SkillTree.tscn")
