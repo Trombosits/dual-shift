@@ -46,6 +46,7 @@ func _build_rack_visual() -> void:
 	id_label.text = "Rack %d" % rack_id
 	id_label.position = Vector2(-30, 10)
 	id_label.add_theme_font_override('font', font)
+	
 	id_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	add_child(id_label)
@@ -89,11 +90,7 @@ func peek() -> Potion:
 	return _stack.back()
 
 func can_accept(_potion: Potion) -> bool:
-	if is_full():
-		return false
-	if is_empty():
-		return true
-	return true
+	return not is_full()
 
 func is_full() -> bool:
 	return _stack.size() >= max_capacity
