@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var enemy_scene = preload("res://scenes/enemy_mushroom.tscn") 
-@onready var boss_scene = preload("res://scenes/enemy_boss.tscn") 
+@onready var enemy_scene = preload("res://Scenes/gamemodes/fifopo_typing/enemy_mushroom.tscn") 
+@onready var boss_scene = preload("res://Scenes/gamemodes/fifopo_typing/enemy_boss.tscn") 
 
 var enemies = []
 var enemy_index = 0
@@ -91,9 +91,9 @@ func _spawn_enemy():
 	if current_wave <= 2:
 		enemy_instance.difficulty = 1 
 	elif current_wave <= 4:
-		enemy_instance.difficulty = 2 
+		enemy_instance.difficulty = 1 
 	else:
-		enemy_instance.difficulty = 3 
+		enemy_instance.difficulty = 1 
 		
 	enemies.append(enemy_instance)
 	add_child(enemy_instance)

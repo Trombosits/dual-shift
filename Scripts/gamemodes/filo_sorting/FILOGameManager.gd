@@ -129,6 +129,9 @@ func _on_invalid_move(_from: PotionRack, _to: PotionRack) -> void:
 	# Bisa tambahkan SFX atau visual feedback di sini
 	pass
 
+func _on_next_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/gamemodes/fifopo_typing/Typing.tscn")
+
 # ─── WIN CONDITION ───────────────────────────────────────────────────────────
 
 ## Kondisi menang: semua rack yang TIDAK kosong sudah tersortir sempurna

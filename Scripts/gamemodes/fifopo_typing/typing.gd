@@ -161,4 +161,5 @@ func trigger_game_over():
 	
 	await get_tree().create_timer(1.75).timeout
 	_player.play_death()
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(1.75).timeout
+	get_tree().change_scene_to_file("res://Scenes/menu/game_menu.tscn")

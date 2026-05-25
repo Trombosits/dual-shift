@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c50x6y5hp7peo"]
 
-[ext_resource type="PackedScene" uid="uid://b6x0k0rramnym" path="res://scenes/player.tscn" id="1_2slbb"]
-[ext_resource type="Script" uid="uid://bvconandbv0hd" path="res://scripts/typing.gd" id="1_g5ggy"]
-[ext_resource type="PackedScene" uid="uid://dnleyajlbkiv7" path="res://scenes/damageline.tscn" id="2_et0va"]
+[ext_resource type="PackedScene" uid="uid://b6x0k0rramnym" path="res://Scenes/gamemodes/fifopo_typing/player.tscn" id="1_2slbb"]
+[ext_resource type="Script" uid="uid://bvconandbv0hd" path="res://Scripts/gamemodes/fifopo_typing/typing.gd" id="1_g5ggy"]
+[ext_resource type="PackedScene" uid="uid://dnleyajlbkiv7" path="res://Scenes/gamemodes/fifopo_typing/damageline.tscn" id="2_et0va"]
 [ext_resource type="FontFile" uid="uid://cfs4waeqh62qc" path="res://assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="4_e21yv"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="5_imej4"]
-[ext_resource type="Script" uid="uid://0rwuijrepak7" path="res://scripts/enemy_spawner.gd" id="6_imej4"]
+[ext_resource type="Script" uid="uid://0rwuijrepak7" path="res://Scripts/gamemodes/fifopo_typing/enemy_spawner.gd" id="6_imej4"]
 
 [node name="Typing" type="Node2D" unique_id=959756684]
 script = ExtResource("1_g5ggy")
