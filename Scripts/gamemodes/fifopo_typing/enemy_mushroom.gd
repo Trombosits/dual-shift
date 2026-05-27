@@ -8,20 +8,22 @@ var GENERATED_CHARS: Array = []
 var char_index: int = 0
 var is_dead: bool = false # Menandai apakah musuh sudah mati atau belum
 
-const chars: Array = ["Act", "Add", "Age", "Aid", "Aim", "Air", "All", "And", "Ant", "Any", "Are", "Arm", "Art", "Ask", "Ate", "Bad", "Bag", "Ban", "Bar", "Bat", "Bay", "Bed", "Bee", "Beg", "Bet", "Bid", "Big", "Bit", "Box", "Boy", "Bus", "But", "Buy",
-"Can", "Cap", "Car", "Cat", "Cow", "Cup", "Cut", "Day", "Die", "Dig", "Dog", "Dot", "Dry", "Due","Eat", "Egg", "End", "Eye", "Far", "Fat", "Few", "Fit", "Fix", "Fly", "For", "Fun", "Gas", "Get", "God", "Got", "Gut", "Hat", "Her",
-"Him", "His", "Hit", "Hot", "How", "Ice", "Its", "Job", "Joy", "Key", "Kid", "Law", "Lay", "Leg", "Let", "Lie", "Lip", "Lot", "Low", "Man", "Map", "May", "Men", "Met", "Mix", "New", "Not", "Now","Nut", "Off", "Old", "One","Out",
-"Own", "Pay", "Pen", "Pet", "Pig", "Pot", "Put", "Rat", "Red", "Run", "Sad", "Say", "See", "Set", "Sew", "She", "Sit", "Six", "Sky", "Son", "Sun", "Ten", "The", "Tie", "Too", "Top", "Try", "Two", "Use", "War", "Was", "Way", "Who",
-"Why", "Win", "Yesb", "Yet", "You", "Zoo",
+const chars: Array = [
+
+	"Act", "Add", "Age", "Bit", "Bus", "Dim", "Key", "Map", "New", "Not", "Out", "Pop", "Ram", "Row", "Set", "Top", "Two", "Use",
+	"Data", "Node", "Edge", "Tree", "Heap", "Hash", "List", "Root", "Leaf", "Path", "Push", "Peek", "Fifo", "Lifo", "Size", "Null", 
+	"Byte", "Code", "Item", "Link", "Loop", "Main", "Next", "Prev", "Sort", "Void", "Type", "File", "Grid", "Rand", "Tree", "Graph",
 	
-"Amber", "Angel", "Baker","Beach", "Bloom", "Candy", "Chair", "Clove", "Crisp","Dance", "Dizzy", "Dwarf", "Eagle", "Earth", "Fairy", "Flame", "Frost", "Ghost", "Globe", "Grape", "Grind",
-"Haste", "Honey", "Ivory", "Jelly", "Joust", "Juice", "Karma", "Koala", "Latch", "Lemon", "Light", "Lunar", "Mango", "Mirth", "Mossy", "Music", "Noble", "Nurse", "Nymph", "Ocean","Olive", "Opera", "Otter", "Pearl", "Piano",
-"Plume", "Pouch", "Query", "Quilt","Rider", "River", "Robin", "Rusty", "Scent", "Smile", "Sugar", "Swoop", "Table", "Thump", "Tiger", "Toast", "Tread", "Umbra", "Udder", "Usher", "Vapor", "Vivid", "Vixen", "Watch", "Wheat",
-"Whisk", "Wacky", "Youth", "Yodel", "Zesty", "Zoned",
+
+	"Array", "Stack", "Queue", "Graph", "Index", "Child", "Value", "Table", "Match", "Merge", "Count", "Block", "Class", "Logic", 
+	"State", "Range", "Order", "Check", "Print", "Break", "Input", "Clear", "Trace", "Write", "Alloc", "Depth", "Width", "Reset", 
+	"Query", "Pivot", "Shell", "Build", "First", "Front", "Parse", "Field", "Space", "Local", "Cache", "Tuple", "Valid", "Empty",
 	
-"Believe", "Journey","Lantern", "Library", "Mystery", "Octopus", "Passion", "Silence", "Whisper", "Wonders", "Balance", "Capture","Curtain", "Fortune", "Harvest", "Inspire",
-"Justice", "Kingdom", "Miracle", "Mission", "Nature", "Outside", "Pattern", "Picture", "Promise", "Rainbow", "Station", "Teacher", "Treasure", "Village", "Visitor", "Waiting", "Wishing", "Fashion", "Fiction", "Garment", "Glimmer",
-"Journey", "Perfect", "Sandman", "Serpent", "Thunder", "Trouble", "Twinkle", "Venture", "Whistle"
+
+	"Linked", "Binary", "Matrix", "Vector", "String", "Record", "Linear", "Search", "Memory", "Object", "Parent", "Height", "Weight", 
+	"Degree", "Vertex", "Bucket", "Pointer", "HashMap", "Sorting", "Dryrun", "Balance", "Capture", "Traverse", "Dynamic", "Boolean", 
+	"Element", "Storage", "Address", "Precede", "Success", "Cluster", "Compare", "Execute", "Compile", "Console", "Library", "Runtime",
+	"Pointer", "Overflow", "Iterator", "Function", "Argument", "Constant", "Instance", "Ancestor", "Adjacency", "Recursion", "Algorithm"
 ]
 
 @onready var _body: CharacterBody2D = $CharacterBody2D
