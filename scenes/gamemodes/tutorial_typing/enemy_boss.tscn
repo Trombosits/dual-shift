@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b202mqfcfpdi5"]
 
-[ext_resource type="Script" uid="uid://cenjdsuktnrpl" path="res://scripts/gamemodes/fifopo_typing/enemy_boss.gd" id="1_l57mu"]
+[ext_resource type="Script" uid="uid://cenjdsuktnrpl" path="res://Scripts/gamemodes/fifopo_typing/enemy_boss.gd" id="1_l57mu"]
 [ext_resource type="Texture2D" uid="uid://dp5fgg8v1u2uh" path="res://assets/Sprites/Enemy/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Die.png" id="2_vsr15"]
 [ext_resource type="Texture2D" uid="uid://dufaybvvfmb3e" path="res://assets/Sprites/Enemy/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Hurt.png" id="3_iypbw"]
 [ext_resource type="Texture2D" uid="uid://cv88075wws74u" path="res://assets/Sprites/Enemy/DarkFantasyEnemies_FREE/Bat/Bat without VFX/Bat-Run.png" id="4_5mrgr"]
