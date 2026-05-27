@@ -22,7 +22,7 @@ var held_potion: Potion = null              # Potion yang sedang "dipegang"
 var all_racks = []       # Referensi ke semua rack
 
 # Node untuk potion yang "melayang" mengikuti cursor
-var _floating_potion_display: ColorRect     # Placeholder visual saat drag
+var _floating_potion_display: Sprite2D     # Placeholder visual saat drag
 var _drag_layer: CanvasLayer
 
 # ─── SETUP ───────────────────────────────────────────────────────────────────
@@ -44,12 +44,9 @@ func set_drag_layer(layer: CanvasLayer) -> void:
 func _build_floating_display() -> void:
 	if not _drag_layer:
 		return
-	_floating_potion_display = ColorRect.new()
-	_floating_potion_display.size = Vector2(50, 70)
-	
-	_floating_potion_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
+	_floating_potion_display = Sprite2D.new()
 	_floating_potion_display.visible = false
+	_floating_potion_display.scale = Vector2(0.12, 0.12)
 	_floating_potion_display.z_index = 100
 	_drag_layer.add_child(_floating_potion_display)
 
@@ -150,7 +147,7 @@ func _process(_delta: float) -> void:
 func _show_floating_potion(potion: Potion) -> void:
 	if not _floating_potion_display:
 		return
-	_floating_potion_display.color = Potion.POTION_COLORS[potion.potion_type]
+	_floating_potion_display.texture = Potion.POTION_TEXTURES[potion.potion_type]
 	_floating_potion_display.visible = true
 
 func _hide_floating_potion() -> void:
