@@ -12,8 +12,8 @@ var is_boss: bool = true # VARIABEL UTAMA: Dibaca oleh typing.gd untuk priority 
 
 # List Kata Khusus Boss (Kata-kata Panjang/Keren)
 const boss_words: Array = [
-	"CHAMPION", "GUARDIAN", "OVERLORD", "DOMINATOR", "BLIZZARD", 
-	"VANGUARD", "APOCALYPSE", "TYRANT", "BEHEMOTH", "IMMORTAL"
+	"ARRAY", "STACK", "QUEUE", "GRAPH", "MATRIX", "VECTOR", "STRING", 
+	"RECORD", "LINEAR", "SEARCH", "INDEX", "MEMORY", "OBJECT", "KEYVALUE"
 ]
 
 func _ready():

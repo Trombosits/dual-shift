@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c8g0t6btntcdr"]
+
+[ext_resource type="Script" uid="uid://d3eu4c22yaku4" path="res://scripts/gamemodes/fifopo_typing/damageline.gd" id="1_8sbul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhkww"]
+size = Vector2(150, 654)
+
+[node name="damageLine" type="Area2D" unique_id=1856012171]
+script = ExtResource("1_8sbul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2091105503]
+position = Vector2(65, 317)
+shape = SubResource("RectangleShape2D_vhkww")

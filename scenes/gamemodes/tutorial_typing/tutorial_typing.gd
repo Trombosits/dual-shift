@@ -9,15 +9,15 @@ extends Node2D
 @onready var _life_label = $HUD/Life
 @onready var _score_label = $HUD/Score
 @onready var _wave_label = $HUD/Wave
-@onready var _lose_panel = $HUD/LosePanel
-@onready var _highscore_label = $HUD/LosePanel/Highscore
-@onready var _next_button = $"HUD/LosePanel/Next-Button" 
+@onready var _win_panel = $HUD/WinPanel
+#@onready var _highscore_label = $HUD/WinPanel/Highscore
+@onready var _next_button = $"HUD/WinPanel/Next-Button" 
 # ------------------
 
 @export var max_life: int = 3
 
 # File path untuk menyimpan highscore secara lokal
-const SAVE_PATH = "user://highscore.save"
+#const SAVE_PATH = "user://highscore.save"
 
 var score: int = 0:
 	set(value):
@@ -28,14 +28,19 @@ var life: int = 3:
 	set(value):
 		life = value
 		_life_label.text = "Life : " + str(life)
-		if life <= 0 and not game_over_displayed:
+		if life <= 0 and not game_over_displayed and not win_displayed:
 			trigger_game_over()
 
+# --- STATE TRACKING BARU ---
 var game_over_displayed: bool = false
+var win_displayed: bool = false
+var current_wave: int = 0
+var wave_3_enemy_spawned: bool = false
+# ----------------------------
 
 func _ready():
-	# Pastikan panel Game Over disembunyikan saat game dimulai
-	_lose_panel.hide()
+	# Pastikan panel Win/Lose disembunyikan saat game dimulai
+	_win_panel.hide()
 	
 	# Hubungkan sinyal tombol Next ke fungsi
 	_next_button.pressed.connect(_on_next_button_pressed)
@@ -43,12 +48,17 @@ func _ready():
 	life = max_life
 	score = 0
 	_damage_line.line_breached.connect(_on_damage_line_breached)
-	_spawner.wave_started.connect(func(wave_num): _wave_label.text = "Wave: " + str(wave_num))
+	
+	# Hubungkan sinyal wave untuk mencatat wave yang sedang aktif saat ini
+	_spawner.wave_started.connect(func(wave_num): 
+		current_wave = wave_num
+		_wave_label.text = "Wave: " + str(wave_num)
+	)
 	_spawner.wave_break_started.connect(func(duration): _wave_label.text = "Get Ready!")
 
 
 func _input(event):
-	if game_over_displayed: return
+	if game_over_displayed or win_displayed: return
 	
 	if event is InputEventKey and event.pressed and len(_spawner.enemies) > 0:
 		var key_input = event.as_text()
@@ -123,7 +133,7 @@ func _input(event):
 
 
 func _physics_process(_delta):
-	if game_over_displayed: return
+	if game_over_displayed or win_displayed: return
 	
 	for i in range(_spawner.enemies.size() - 1, -1, -1):
 		var current_enemy = _spawner.enemies[i]
@@ -145,9 +155,18 @@ func _physics_process(_delta):
 			if _spawner.enemy_index >= len(_spawner.enemies):
 				_spawner.enemy_index = 0
 
+	# === LOGIKA DETEKSI MENANG (SELESAI WAVE 3) ===
+	if current_wave == 3:
+		if _spawner.enemies.size() > 0:
+			# Sinyalkan bahwa musuh wave 3 sudah mulai bermunculan di layar
+			wave_3_enemy_spawned = true
+		elif wave_3_enemy_spawned and _spawner.enemies.size() == 0:
+			# Jika musuh sudah pernah muncul DAN sekarang jumlahnya kembali 0, artinya KAMU MENANG!
+			trigger_win()
+
 
 func _on_damage_line_breached():
-	if game_over_displayed: return # Safety check tambahan
+	if game_over_displayed or win_displayed: return 
 	
 	life -= 1
 	_player.play_hurt()
@@ -162,61 +181,78 @@ func _on_damage_line_breached():
 		_spawner.enemies.pop_front()
 
 
-# --- PERBAIKAN LOGIKA DI SINI ---
+# --- PATH KONDISI KALAH (LOSE) ---
 func trigger_game_over():
 	game_over_displayed = true
 	AudioManager.play_gameOver()
 	
-	# 1. BEKUKAN MUSUH INSTAN: Hentikan fungsi spawner dan seluruh musuh yang ada di layar
+	# Bekukan musuh instan
+	freeze_all_entities()
+
+	await get_tree().create_timer(1.75).timeout
+	if is_instance_valid(_player):
+		_player.play_death()
+		
+	await get_tree().create_timer(1.75).timeout
+	if is_instance_valid(_player):
+		_player.process_mode = PROCESS_MODE_DISABLED
+	
+	# Tampilkan panel dengan text Game Over
+	show_end_panel(false)
+
+
+# --- PATH KONDISI MENANG (WIN) ---
+func trigger_win():
+	win_displayed = true
+	# Opsional: AudioManager.play_victory() jika ada sound efek menang
+	
+	# Bekukan musuh dan player instan (Pemain tidak mati karena menang)
+	freeze_all_entities()
+	if is_instance_valid(_player):
+		_player.process_mode = PROCESS_MODE_DISABLED
+		
+	# Tampilkan panel dengan text Victory
+	show_end_panel(true)
+
+
+# --- FUNGSI BANTUAN OPTIMASI (HELPERS) ---
+func freeze_all_entities():
 	if is_instance_valid(_spawner):
 		_spawner.process_mode = PROCESS_MODE_DISABLED
 		for enemy in _spawner.enemies:
 			if is_instance_valid(enemy):
 				enemy.process_mode = PROCESS_MODE_DISABLED
 
-	# Tunggu jeda dramatis sebelum animasi mati pemain dimulai
-	await get_tree().create_timer(1.75).timeout
+func show_end_panel(is_victory: bool):
+	#var highscore = load_highscore()
+	#
+	#if score > highscore:
+		#highscore = score
+		#save_highscore(highscore)
 	
-	# Mainkan animasi kematian player (Player sengaja belum di-freeze agar animasinya bisa jalan)
-	if is_instance_valid(_player):
-		_player.play_death()
+	# Mengubah isi text komponen utama berdasarkan status akhir game
+	if is_victory:
+		$HUD/WinPanel/Win.text = "VICTORY!\nScore: " + str(score)
+	else:
+		$HUD/WinPanel/Win.text = "GAME OVER\n"
 		
-	# Tunggu animasi kematian selesai
-	await get_tree().create_timer(1.75).timeout
-	
-	# 2. BEKUKAN PLAYER: Setelah animasi death selesai, kunci status player total
-	if is_instance_valid(_player):
-		_player.process_mode = PROCESS_MODE_DISABLED
-	
-	# Munculkan UI Skor Akhir dan Highscore
-	show_game_over_panel()
-
-
-func show_game_over_panel():
-	var highscore = load_highscore()
-	
-	if score > highscore:
-		highscore = score
-		save_highscore(highscore)
-	
-	_highscore_label.text = "Highscore: " + str(highscore)
-	
-	_lose_panel.show()
+	#_highscore_label.text = "Highscore: " + str(highscore)
+	_win_panel.show()
 
 
 func _on_next_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu/game_menu.tscn")
 
 
-func load_highscore() -> int:
-	if FileAccess.file_exists(SAVE_PATH):
-		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-		var saved_score = file.get_32()
-		file.close()
-		return saved_score
-	return 0
+#func load_highscore() -> int:
+	#if FileAccess.file_exists(SAVE_PATH):
+		#var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		#var saved_score = file.get_32()
+		#file.close()
+		#return saved_score
+	#return 0
 
-func save_highscore(new_highscore: int):
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	file.store_32(new_highscore)
-	file.close()
+#func save_highscore(new_highscore: int):
+	#var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	#file.store_32(new_highscore)
+	#file.close()

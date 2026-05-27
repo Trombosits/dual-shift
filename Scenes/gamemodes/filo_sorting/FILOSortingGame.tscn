@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://btgv84opxv5wg"]
 
-[ext_resource type="Script" uid="uid://bfjgu2c05ksfw" path="res://Scripts/gamemodes/filo_sorting/FILOGameManager.gd" id="1_swagj"]
-[ext_resource type="Script" uid="uid://bbny280up2g18" path="res://Scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="2_rfg6a"]
-[ext_resource type="Script" uid="uid://bb3kxpm1qatfw" path="res://Scripts/gamemodes/filo_sorting/DragManager.gd" id="3_2mstl"]
+[ext_resource type="Script" uid="uid://bfjgu2c05ksfw" path="res://scripts/gamemodes/filo_sorting/FILOGameManager.gd" id="1_swagj"]
+[ext_resource type="Script" uid="uid://bbny280up2g18" path="res://scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="2_rfg6a"]
+[ext_resource type="Script" uid="uid://bb3kxpm1qatfw" path="res://scripts/gamemodes/filo_sorting/DragManager.gd" id="3_2mstl"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="3_6pegp"]
 
 [node name="FiloSortingGame" type="Node2D" unique_id=1426430115]
