@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8g0t6btntcdr"]
 
-[ext_resource type="Script" uid="uid://d3eu4c22yaku4" path="res://scripts/gamemodes/fifopo_typing/damageline.gd" id="1_8sbul"]
+[ext_resource type="Script" uid="uid://d3eu4c22yaku4" path="res://Scripts/gamemodes/fifopo_typing/damageline.gd" id="1_8sbul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhkww"]
 size = Vector2(150, 654)

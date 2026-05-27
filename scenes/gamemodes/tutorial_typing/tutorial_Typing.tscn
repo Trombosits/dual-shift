@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dxj46p4wxtpqj"]
 
-[ext_resource type="Script" uid="uid://swbskdncw4ws" path="res://scripts/gamemodes/tutorial_typing/tutorial_typing.gd" id="1_80k1s"]
-[ext_resource type="PackedScene" uid="uid://dnleyajlbkiv7" path="res://scenes/gamemodes/fifopo_typing/damageline.tscn" id="2_2i7rj"]
-[ext_resource type="PackedScene" uid="uid://b6x0k0rramnym" path="res://scenes/gamemodes/fifopo_typing/player.tscn" id="3_djey1"]
-[ext_resource type="Script" uid="uid://0rwuijrepak7" path="res://scripts/gamemodes/fifopo_typing/enemy_spawner.gd" id="4_08uai"]
+[ext_resource type="Script" uid="uid://swbskdncw4ws" path="res://Scripts/gamemodes/tutorial_typing/tutorial_typing.gd" id="1_80k1s"]
+[ext_resource type="PackedScene" uid="uid://dnleyajlbkiv7" path="res://Scenes/gamemodes/fifopo_typing/damageline.tscn" id="2_2i7rj"]
+[ext_resource type="PackedScene" uid="uid://b6x0k0rramnym" path="res://Scenes/gamemodes/fifopo_typing/player.tscn" id="3_djey1"]
+[ext_resource type="Script" uid="uid://0rwuijrepak7" path="res://Scripts/gamemodes/fifopo_typing/enemy_spawner.gd" id="4_08uai"]
 [ext_resource type="FontFile" uid="uid://cfs4waeqh62qc" path="res://assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="5_a0bsw"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="6_lnmax"]
 

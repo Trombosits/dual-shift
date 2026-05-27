@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brtd03igwjfbe"]
 
-[ext_resource type="Script" uid="uid://baxs3ionanydx" path="res://scripts/gamemodes/fifopo_typing/enemy_mushroom.gd" id="1_x2okh"]
+[ext_resource type="Script" uid="uid://baxs3ionanydx" path="res://Scripts/gamemodes/fifopo_typing/enemy_mushroom.gd" id="1_x2okh"]
 [ext_resource type="Texture2D" uid="uid://cy2sk1m4i88ha" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Die.png" id="2_f4yvh"]
 [ext_resource type="Texture2D" uid="uid://dhyb4flhiw2gr" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Hit.png" id="3_85ip3"]
 [ext_resource type="Texture2D" uid="uid://bkt7s33mfhns8" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_lbejq"]
