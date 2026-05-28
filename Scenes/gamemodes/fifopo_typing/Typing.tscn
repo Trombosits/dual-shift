@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://c50x6y5hp7peo"]
+
+[ext_resource type="PackedScene" uid="uid://b6x0k0rramnym" path="res://Scenes/gamemodes/fifopo_typing/player.tscn" id="1_2slbb"]
+[ext_resource type="Script" uid="uid://bvconandbv0hd" path="res://Scripts/gamemodes/fifopo_typing/typing.gd" id="1_g5ggy"]
+[ext_resource type="PackedScene" uid="uid://dnleyajlbkiv7" path="res://Scenes/gamemodes/fifopo_typing/damageline.tscn" id="2_et0va"]
+[ext_resource type="FontFile" uid="uid://cfs4waeqh62qc" path="res://assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="4_e21yv"]
+[ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="5_imej4"]
+[ext_resource type="Script" uid="uid://0rwuijrepak7" path="res://Scripts/gamemodes/fifopo_typing/enemy_spawner.gd" id="6_imej4"]
+
+[node name="Typing" type="Node2D" unique_id=959756684]
+script = ExtResource("1_g5ggy")
+
+[node name="damageLine" parent="." unique_id=145025045 instance=ExtResource("2_et0va")]
+
+[node name="player" parent="." unique_id=600530776 instance=ExtResource("1_2slbb")]
+position = Vector2(120, 326)
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1788643970]
+position = Vector2(1101, 331)
+script = ExtResource("6_imej4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1840216353]
+position = Vector2(574, 324)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1237593621]
+
+[node name="Life" type="Label" parent="HUD" unique_id=517320608]
+offset_right = 78.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_e21yv")
+text = "Hearts : 0"
+
+[node name="Score" type="Label" parent="HUD" unique_id=1575792391]
+offset_left = 1006.0
+offset_top = 8.0
+offset_right = 1071.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("5_imej4")
+text = "Score : 0"
+
+[node name="Wave" type="Label" parent="HUD" unique_id=566372331]
+offset_left = 548.0
+offset_top = -1.0
+offset_right = 613.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("5_imej4")
+text = "Wave : 3"
+
+[node name="LosePanel" type="Panel" parent="HUD" unique_id=2038537814]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -106.0
+offset_right = 120.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Lose" type="Label" parent="HUD/LosePanel" unique_id=1122767001]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_imej4")
+text = "Game Over"
+
+[node name="Highscore" type="Label" parent="HUD/LosePanel" unique_id=408656318]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.5
+offset_right = 50.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_imej4")
+text = "Highscore : 0"
+
+[node name="Next-Button" type="Button" parent="HUD/LosePanel" unique_id=475680591]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -44.0
+offset_right = 25.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_imej4")
+text = "BACK"
+
+[node name="WinPanel" type="Panel" parent="." unique_id=569482525]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -106.0
+offset_right = 122.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Win" type="Label" parent="WinPanel" unique_id=851873952]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "You Win"
+
+[node name="Next-Button" type="Button" parent="WinPanel" unique_id=2136677418]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -44.0
+offset_right = 25.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "NEXT"
+
+[node name="Highscore" type="Label" parent="WinPanel" unique_id=1063484761]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.5
+offset_right = 50.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Highscore : 0"

@@ -1,108 +1,108 @@
-[gd_scene format=3 uid="uid://cepj8fp6ppawx"]
+[gd_scene format=3 uid="uid://brtd03igwjfbe"]
 
-[ext_resource type="Script" uid="uid://baxs3ionanydx" path="res://scripts/enemy_mushroom.gd" id="1_ecnku"]
-[ext_resource type="Texture2D" uid="uid://cy2sk1m4i88ha" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Die.png" id="2_h4n88"]
-[ext_resource type="Texture2D" uid="uid://dhyb4flhiw2gr" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Hit.png" id="3_gm35n"]
-[ext_resource type="Texture2D" uid="uid://bkt7s33mfhns8" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_mvgu8"]
+[ext_resource type="Script" uid="uid://baxs3ionanydx" path="res://Scripts/gamemodes/fifopo_typing/enemy_mushroom.gd" id="1_x2okh"]
+[ext_resource type="Texture2D" uid="uid://cy2sk1m4i88ha" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Die.png" id="2_f4yvh"]
+[ext_resource type="Texture2D" uid="uid://dhyb4flhiw2gr" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Hit.png" id="3_85ip3"]
+[ext_resource type="Texture2D" uid="uid://bkt7s33mfhns8" path="res://assets/Sprites/Enemy/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_lbejq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4iju3"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(0, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8qbc"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(80, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qulm5"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(160, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mq8f8"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(240, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4suen"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(320, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aug3u"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(400, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjy4d"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(480, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqmqu"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(560, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxowu"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(640, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xy1u"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(720, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_si0i2"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(800, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mavso"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(880, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qtju"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(960, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mhho"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(1040, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hisu4"]
-atlas = ExtResource("2_h4n88")
+atlas = ExtResource("2_f4yvh")
 region = Rect2(1120, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eixsa"]
-atlas = ExtResource("3_gm35n")
+atlas = ExtResource("3_85ip3")
 region = Rect2(160, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2yveg"]
-atlas = ExtResource("3_gm35n")
+atlas = ExtResource("3_85ip3")
 region = Rect2(320, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wd5i"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(0, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7akqr"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(80, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amajg"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(160, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67xe5"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(240, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nixg6"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(320, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hibk"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(400, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kktbk"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(480, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8q3p3"]
-atlas = ExtResource("4_mvgu8")
+atlas = ExtResource("4_lbejq")
 region = Rect2(560, 0, 80, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_34jpo"]
@@ -205,7 +205,7 @@ font_size = 13
 
 [node name="enemy_mushroom" type="Node2D" unique_id=294424763]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_ecnku")
+script = ExtResource("1_x2okh")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=308710889]
 

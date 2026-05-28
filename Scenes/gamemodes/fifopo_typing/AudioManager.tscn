@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dvg7rjsj6bomw"]
+[gd_scene format=3 uid="uid://c3fpbdejwtfql"]
 
-[ext_resource type="Script" uid="uid://0hcjbnwxluvm" path="res://scripts/audio_manager.gd" id="1_3dgps"]
+[ext_resource type="Script" uid="uid://0hcjbnwxluvm" path="res://Scripts/gamemodes/fifopo_typing/audio_manager.gd" id="1_3dgps"]
 [ext_resource type="AudioStream" uid="uid://drlfok1f3xyb" path="res://assets/sfx/bow_release-85040-[AudioTrimmer.com] (1).wav" id="1_4tesi"]
 [ext_resource type="AudioStream" uid="uid://bun1t1xl0djab" path="res://assets/sfx/retro-hurt-2-236675.mp3" id="2_3dgps"]
 [ext_resource type="AudioStream" uid="uid://obsn1c8g8i2x" path="res://assets/sfx/game-over-284367.mp3" id="3_151wy"]

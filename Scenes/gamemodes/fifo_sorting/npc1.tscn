@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://c6ujbbfiyhlkb"]
+
+[ext_resource type="Script" uid="uid://bvirrxc0mvt2e" path="res://Scenes/gamemodes/fifo_sorting/npc_1.gd" id="1_rn85n"]
+[ext_resource type="Texture2D" uid="uid://bcl1ksi6m0u5k" path="res://assets/Sprites/characters/player.png" id="1_ujl37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn85n"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj8xq"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnpk4"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fw2l"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ae5l"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(192, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06m7a"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(240, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pact5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn85n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj8xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnpk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fw2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ae5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06m7a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujl37"]
+size = Vector2(12, 11)
+
+[node name="npc1" type="CharacterBody2D" unique_id=1527637340]
+script = ExtResource("1_rn85n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1229045058]
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_pact5")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=789588397]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_ujl37")
