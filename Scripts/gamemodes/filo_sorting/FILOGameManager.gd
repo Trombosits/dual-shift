@@ -7,17 +7,13 @@
 extends Node2D
 class_name FILOGameManager
 
-# =========================================================
 # SIGNAL
-# =========================================================
 
 signal game_won(total_moves: int, time_taken: float)
 signal game_reset()
 signal move_count_changed(new_count: int)
 
-# =========================================================
 # DIFFICULTY
-# =========================================================
 
 enum Difficulty {
 	EASY,
@@ -27,9 +23,7 @@ enum Difficulty {
 
 @export var current_difficulty : Difficulty = Difficulty.EASY
 
-# =========================================================
 # DIFFICULTY SETTINGS
-# =========================================================
 
 var difficulty_settings = {
 	Difficulty.EASY: {
@@ -54,27 +48,27 @@ var difficulty_settings = {
 	}
 }
 
-# =========================================================
 # NODE REFERENCES
-# =========================================================
 @onready var difficulty_panel = $HUD/DifficultyPanel
 @onready var easy_button = $HUD/DifficultyPanel/EasyButton
 @onready var medium_button = $HUD/DifficultyPanel/MediumButton
 @onready var hard_button = $HUD/DifficultyPanel/HardButton
-
 @onready var drag_manager: DragManager = $HUD/DragManager
 @onready var drag_layer: CanvasLayer = $DragLayer
-
+@onready var audio_player: AudioStreamPlayer = $AudioPlayer
+@onready var sfx_pick: AudioStreamPlayer = $SFX_Pick
+@onready var sfx_drop: AudioStreamPlayer = $SFX_Drop
 @onready var moves_label: Label = $HUD/MovesLabel
 @onready var timer_label: Label = $HUD/TimerLabel
 @onready var win_panel: Panel = $HUD/WinPanel
+@onready var hud_layer: CanvasLayer = $HUD
 
 # =========================================================
 # GAME STATE
 # =========================================================
 
 var racks: Array[PotionRack] = []
-var rack_y = 300 - ((rack_capacity - 4) * 70)
+var rack_y: float = 300.0
 var total_moves: int = 0
 var elapsed_time: float = 0.0
 var game_active: bool = false
@@ -91,12 +85,13 @@ var empty_racks: int
 
 func _ready() -> void:
 	win_panel.visible = false
+	difficulty_panel.visible = true
 
 	_load_difficulty_settings()
 
 	_connect_signals()
 
-	game_active = true
+	game_active = false
 
 	print("=== FILO SORTING START ===")
 	print("Difficulty:", Difficulty.keys()[current_difficulty])
@@ -121,6 +116,10 @@ func _load_difficulty_settings() -> void:
 	color_count = settings["color_count"]
 	rack_capacity = settings["capacity"]
 	empty_racks = settings["empty_racks"]
+	match current_difficulty:
+		Difficulty.EASY:   rack_y = 550.0
+		Difficulty.MEDIUM: rack_y = 550.0
+		Difficulty.HARD:   rack_y = 550.0
 
 # =========================================================
 # GAME SETUP
@@ -135,6 +134,7 @@ func _setup_game() -> void:
 
 	drag_manager.register_racks(racks)
 	drag_manager.set_drag_layer(drag_layer)
+	drag_manager.set_sfx(sfx_pick, sfx_drop)
 
 	_update_moves_display()
 	_update_timer_display()
@@ -308,32 +308,15 @@ func _check_win_condition() -> bool:
 # =========================================================
 
 func _trigger_win() -> void:
-
 	game_active = false
-
+	var tween = create_tween()
+	tween.tween_property(audio_player, "volume_db", -80.0, 1.0)
+	tween.tween_callback(audio_player.stop)
 	game_won.emit(total_moves, elapsed_time)
-
-	print("GAME WIN!")
-
 	_show_win_screen()
 
 func _show_win_screen() -> void:
-
-	win_panel.visible = true
-
-	var win_label = win_panel.get_node_or_null("WinLabel")
-
-	if win_label:
-
-		win_label.text = (
-			"🎉 SELESAI!\n"
-			+ "Difficulty: "
-			+ Difficulty.keys()[current_difficulty]
-			+ "\nMoves: "
-			+ str(total_moves)
-			+ "\nTime: "
-			+ str(snapped(elapsed_time, 0.1))
-		)
+	hud_layer.show_win_screen(total_moves, elapsed_time)
 
 # =========================================================
 # UI
@@ -345,7 +328,7 @@ func _update_moves_display() -> void:
 
 func _update_timer_display() -> void:
 
-	var minutes = int(elapsed_time) / 60
+	var minutes = float(elapsed_time) / 60
 	var seconds = int(elapsed_time) % 60
 
 	timer_label.text = "Time: %02d:%02d" % [minutes, seconds]
@@ -361,7 +344,7 @@ func reset_game() -> void:
 
 	game_active = false
 
-	win_panel.visible = false
+	hud_layer.hide_win_screen()
 
 	_load_difficulty_settings()
 
@@ -370,6 +353,7 @@ func reset_game() -> void:
 	game_active = true
 
 	game_reset.emit()
+	audio_player.play()
 
 # =========================================================
 # CHANGE DIFFICULTY

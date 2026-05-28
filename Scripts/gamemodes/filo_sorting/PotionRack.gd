@@ -1,11 +1,9 @@
 
-# PotionRack.gd — FIXED
-# Bug #3 fix: signal selection_changed tidak lagi typed PotionRack (hindari emit null error)
-# Bug #5 fix: source rack panggil _reposition_potions() setelah pop
+# PotionRack.gd
 extends Area2D
 class_name PotionRack
 
-#-- FONT ------------------------------------------
+#FONT
 var font = load("res://assets/Fonts/static/PixelifySans-Regular.ttf")
 
 signal rack_clicked(rack)
@@ -41,8 +39,7 @@ func _build_rack_visual() -> void:
 	_rack_body.scale = Vector2(0.45, 0.50)
 	add_child(_rack_body)
 
-# ─── STACK OPERATIONS ────────────────────────────────────────────────────────
-
+# TACK OPERATIONS
 func push(potion: Potion) -> bool:
 	if is_full():
 		print("[Rack %d] PUSH gagal: penuh" % rack_id)
@@ -60,7 +57,6 @@ func push(potion: Potion) -> bool:
 	print("[Rack %d] PUSH: %s → size=%d" % [rack_id, Potion.POTION_NAMES[potion.potion_type], _stack.size()])
 	return true
 
-# BUG #5 FIX: kembalikan potion dan juga update visual source rack
 func pop() -> Potion:
 	if is_empty():
 		print("[Rack %d] POP gagal: kosong" % rack_id)
@@ -68,8 +64,6 @@ func pop() -> Potion:
 
 	var top_potion = _stack.pop_back()
 	top_potion.rack_owner = null
-	# Tidak perlu _reposition_potions() di sini karena sisa potion
-	# posisinya sudah benar (yang diambil adalah TOP, yang lain tidak bergerak)
 	stack_changed.emit(self)
 	print("[Rack %d] POP: %s → size=%d" % [rack_id, Potion.POTION_NAMES[top_potion.potion_type], _stack.size()])
 	return top_potion
@@ -134,7 +128,6 @@ func _reposition_potions() -> void:
 				spacing = 52
 
 		var target_y = start_y - (i * spacing)
-
 		var tween = create_tween()
 
 		tween.tween_property(

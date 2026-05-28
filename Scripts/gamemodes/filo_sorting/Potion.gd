@@ -4,7 +4,7 @@
 extends Node2D
 class_name Potion
 
-# ─── TIPE POTION ─────────────────────────────────────────────────────────────
+# TIPE POTION
 enum PotionType {
 	RED,
 	BLUE,
@@ -21,7 +21,7 @@ const POTION_NAMES := {
 	PotionType.PURPLE: "Ungu"
 }
 
-# ─── PATH ASSET ──────────────────────────────────────────────────────────────
+# PATH ASSET
 const POTION_TEXTURES := {
 	PotionType.RED: preload("res://assets/potions/red_potion.png"),
 	PotionType.BLUE: preload("res://assets/potions/blue_potion.png"),
@@ -30,7 +30,7 @@ const POTION_TEXTURES := {
 	PotionType.PURPLE: preload("res://assets/potions/purple_potion.png")
 }
 
-# ─── PROPERTY ────────────────────────────────────────────────────────────────
+# PROPERTY
 @export var potion_type: PotionType = PotionType.RED
 
 var rack_owner = null
@@ -38,11 +38,11 @@ var rack_owner = null
 # Sprite utama
 var _sprite: Sprite2D
 
-# ─── READY ───────────────────────────────────────────────────────────────────
+# READY
 func _ready() -> void:
 	_build_visual()
 
-# ─── BUILD VISUAL ────────────────────────────────────────────────────────────
+# BUILD VISUAL
 func _build_visual() -> void:
 
 	_sprite = Sprite2D.new()
@@ -55,14 +55,14 @@ func _build_visual() -> void:
 
 	add_child(_sprite)
 
-# ─── GANTI TIPE POTION ───────────────────────────────────────────────────────
+# GANTI TIPE POTION
 func set_potion_type(new_type: PotionType) -> void:
 	potion_type = new_type
 
 	if _sprite:
 		_sprite.texture = POTION_TEXTURES[potion_type]
 
-# ─── ANIMASI PLACE ───────────────────────────────────────────────────────────
+# NIMASI PLACE
 func play_place_animation() -> void:
 	var tween = create_tween()
 
@@ -80,7 +80,7 @@ func play_place_animation() -> void:
 		0.08
 	)
 
-# ─── ANIMASI INVALID ─────────────────────────────────────────────────────────
+# ANIMASI INVALID
 func play_invalid_animation() -> void:
 	var original_x = position.x
 
@@ -91,7 +91,7 @@ func play_invalid_animation() -> void:
 	tween.tween_property(self, "position:x", original_x + 4, 0.05)
 	tween.tween_property(self, "position:x", original_x, 0.05)
 
-# ─── HIGHLIGHT ───────────────────────────────────────────────────────────────
+# HIGHLIGHT
 func set_highlighted(value: bool) -> void:
 	if not _sprite:
 		return
