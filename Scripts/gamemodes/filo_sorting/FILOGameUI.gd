@@ -1,24 +1,57 @@
 # FILOGameUI.gd
-# Mengelola interaksi UI: tombol reset, tombol next, dll.
+# Mengelola interaksi UI; tombol"an
 extends CanvasLayer
 
 @onready var game_manager: FILOGameManager = get_parent()
 
-func _ready() -> void:
-	# Sambungkan tombol Next (di WinPanel) jika ada
-	var next_btn = get_node_or_null("WinPanel/NextButton")
-	if next_btn:
-		next_btn.pressed.connect(_on_next_pressed)
+# Win Panel nodes
+@onready var win_panel: Panel = $WinPanel
+@onready var moves_value: Label = $WinPanel/VBoxContainer/StatsContainer/MovesBox/MovesValue
+@onready var time_value: Label = $WinPanel/VBoxContainer/StatsContainer/TimeBox/TimeValue
+@onready var next_btn: Button = $WinPanel/VBoxContainer/ButtonContainer/NextButton
+@onready var replay_btn: Button = $WinPanel/VBoxContainer/ButtonContainer/ReplayButton
+@onready var menu_btn: Button = $WinPanel/VBoxContainer/ButtonContainer/MainMenuButton
 
-	var reset_btn = get_node_or_null("ResetButton")
-	if reset_btn:
-		reset_btn.pressed.connect(_on_reset_pressed)
+func _ready() -> void:
+	next_btn.pressed.connect(_on_next_pressed)
+	replay_btn.pressed.connect(_on_replay_pressed)
+	menu_btn.pressed.connect(_on_menu_pressed)
+
+# Dipanggil oleh GameManager saat menang
+func show_win_screen(total_moves: int, elapsed_time: float) -> void:
+	# Isi stats
+	moves_value.text = str(total_moves)
+	var minutes = int(elapsed_time) / 60
+	var seconds = int(elapsed_time) % 60
+	time_value.text = "%02d:%02d" % [minutes, seconds]
+
+	# Tampilkan panel dengan animasi scale-in
+	win_panel.visible = true
+	win_panel.scale = Vector2(0.5, 0.5)
+	win_panel.modulate.a = 0.0
+
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(win_panel, "scale", Vector2(1.0, 1.0), 0.4)
+	tween.parallel().tween_property(win_panel, "modulate:a", 1.0, 0.3)
+
+func hide_win_screen() -> void:
+	var tween = create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_property(win_panel, "scale", Vector2(0.8, 0.8), 0.2)
+	tween.parallel().tween_property(win_panel, "modulate:a", 0.0, 0.2)
+	tween.tween_callback(func(): win_panel.visible = false)
 
 func _on_next_pressed() -> void:
-	# TODO: Pindah ke Gamemode 3 (Typing SIFO/FIFO)
-	# get_tree().change_scene_to_file("res://scenes/gamemodes/typing/TypingGame.tscn")
+	# TODO: ganti path sesuai scene gamemode berikutnya
+	# get_tree().change_scene_to_file("res://Scenes/gamemodes/typing/TypingGame.tscn")
 	print("[UI] Lanjut ke gamemode berikutnya")
 
-func _on_reset_pressed() -> void:
+func _on_replay_pressed() -> void:
+	hide_win_screen()
+	await get_tree().create_timer(0.25).timeout
 	if game_manager:
 		game_manager.reset_game()
+
+func _on_menu_pressed() -> void:
+	# TODO: ganti path sesuai scene main menu
+	# get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	print("[UI] Kembali ke main menu")

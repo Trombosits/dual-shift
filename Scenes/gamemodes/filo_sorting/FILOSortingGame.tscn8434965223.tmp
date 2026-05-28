@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bbny280up2g18" path="res://Scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="2_rfg6a"]
 [ext_resource type="Script" uid="uid://bb3kxpm1qatfw" path="res://Scripts/gamemodes/filo_sorting/DragManager.gd" id="3_2mstl"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="3_6pegp"]
-[ext_resource type="Script" uid="uid://d4d3rvs2sh7au" path="res://Scenes/gamemodes/filo_sorting/win_panel.gd" id="4_q67yb"]
 [ext_resource type="Script" uid="uid://buhlvdu3wrgcr" path="res://Scenes/gamemodes/filo_sorting/difficulty_panel.gd" id="5_wgkep"]
 [ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="6_g83et"]
 [ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="7_csd0h"]
@@ -15,52 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://d26ien7ws4fhi" path="res://assets/sfx/backsound_filo.mp3" id="11_jc5e0"]
 [ext_resource type="AudioStream" uid="uid://c762x2hp83jn" path="res://assets/sfx/pick_potion.mp3" id="13_hjfks"]
 [ext_resource type="AudioStream" uid="uid://di4sk5wscyfsi" path="res://assets/sfx/drop_potion.mp3" id="14_q67yb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rneqf"]
-bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o025"]
-bg_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8uih"]
-bg_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaajq"]
-bg_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shfql"]
 bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
@@ -130,7 +83,7 @@ offset_top = 20.0
 offset_right = 88.0
 offset_bottom = 43.0
 theme_override_fonts/font = ExtResource("3_6pegp")
-text = "Gerakan: 0"
+text = "Moves: 0"
 
 [node name="TimerLabel" type="Label" parent="HUD" unique_id=1005045089]
 offset_left = 20.0
@@ -138,22 +91,13 @@ offset_top = 50.0
 offset_right = 108.0
 offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("3_6pegp")
-text = "Waktu: 00:00"
+text = "Time: 00:00"
 
 [node name="WinPanel" type="Panel" parent="HUD" unique_id=149490064]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -294.50003
-offset_top = -136.5
-offset_right = 294.50003
-offset_bottom = 136.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rneqf")
-script = ExtResource("4_q67yb")
+offset_left = 435.0
+offset_top = 256.0
+offset_right = 735.0
+offset_bottom = 456.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/WinPanel" unique_id=988847099]
 layout_mode = 1
@@ -170,7 +114,7 @@ theme_override_fonts/font = ExtResource("3_6pegp")
 theme_override_font_sizes/font_size = 32
 text = "🎉 SELESAI!"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="HUD/WinPanel/VBoxContainer" unique_id=264792014]
@@ -195,7 +139,7 @@ horizontal_alignment = 1
 modulate = Color(1, 1, 1, 0.7058824)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_g83et")
-text = "Gerakan"
+text = "Moves"
 horizontal_alignment = 1
 
 [node name="TimeBox" type="VBoxContainer" parent="HUD/WinPanel/VBoxContainer/StatsContainer" unique_id=871147578]
@@ -227,30 +171,20 @@ alignment = 1
 custom_minimum_size = Vector2(130, 45)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_g83et")
-theme_override_styles/normal = SubResource("StyleBoxFlat_3o025")
 text = "Main Menu"
 
 [node name="ReplayButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=1812131650]
 custom_minimum_size = Vector2(130, 45)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_g83et")
-theme_override_styles/normal = SubResource("StyleBoxFlat_q8uih")
 text = "Ulangi"
 
 [node name="NextButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=1658057387]
 custom_minimum_size = Vector2(130, 45)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6pegp")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gaajq")
 text = "Lanjut ▶"
-
-[node name="HoverSound" type="AudioStreamPlayer" parent="HUD/WinPanel" unique_id=1075025347]
-stream = ExtResource("9_csd0h")
-volume_db = -15.0
-
-[node name="ClickSound" type="AudioStreamPlayer" parent="HUD/WinPanel" unique_id=883081868]
-stream = ExtResource("10_jc5e0")
-volume_db = -15.0
+alignment = 2
 
 [node name="DragManager" type="Node" parent="HUD" unique_id=1942982732]
 script = ExtResource("3_2mstl")
@@ -261,10 +195,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -210.0
-offset_right = 250.0
-offset_bottom = 210.0
+offset_left = -276.5
+offset_top = -154.5
+offset_right = 223.5
+offset_bottom = 265.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_wgkep")
@@ -287,36 +221,36 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_shfql")
 
 [node name="EasyButton" type="Button" parent="HUD/DifficultyPanel" unique_id=1650705527]
 layout_mode = 0
-offset_left = 46.0
+offset_left = 55.565735
 offset_top = 226.6719
 offset_right = 160.5
-offset_bottom = 272.0
+offset_bottom = 268.6719
 theme_override_fonts/font = ExtResource("6_g83et")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_q67yb")
-text = "MUDAH"
+text = "EASY"
 
 [node name="MediumButton" type="Button" parent="HUD/DifficultyPanel" unique_id=461413732]
 layout_mode = 0
-offset_left = 181.0
-offset_top = 227.04156
-offset_right = 343.0
-offset_bottom = 272.62964
+offset_left = 203.5
+offset_top = 224.91193
+offset_right = 321.5
+offset_bottom = 270.5
 theme_override_fonts/font = ExtResource("6_g83et")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_hjfks")
-text = "MENENGAH"
+text = "MEDIUM"
 
 [node name="HardButton" type="Button" parent="HUD/DifficultyPanel" unique_id=1401189943]
 layout_mode = 0
 offset_left = 362.16846
 offset_top = 224.46106
-offset_right = 476.0
-offset_bottom = 274.0
+offset_right = 465.9027
+offset_bottom = 269.40915
 theme_override_fonts/font = ExtResource("6_g83et")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_14d57")
-text = "SULIT"
+text = "HARD"
 
 [node name="Title" type="Label" parent="HUD/DifficultyPanel" unique_id=37737264]
 layout_mode = 0
@@ -331,15 +265,13 @@ horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="HUD/DifficultyPanel" unique_id=347642464]
 layout_mode = 0
-offset_left = 147.03162
-offset_top = 151.22101
-offset_right = 360.03162
-offset_bottom = 176.22101
+offset_left = 157.85797
+offset_top = 128.17664
+offset_right = 326.85797
+offset_bottom = 151.17664
 theme_override_fonts/font = ExtResource("8_jc5e0")
-theme_override_font_sizes/font_size = 20
-text = "Pilih Tingkat Kesulitan"
+text = "Choose your difficulty"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="HUD/DifficultyPanel" unique_id=1394015639]
 stream = ExtResource("9_csd0h")

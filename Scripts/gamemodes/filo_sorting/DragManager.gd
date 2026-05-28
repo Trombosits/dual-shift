@@ -24,6 +24,8 @@ var all_racks = []       # Referensi ke semua rack
 # Node untuk potion yang "melayang" mengikuti cursor
 var _floating_potion_display: Sprite2D     # Placeholder visual saat drag
 var _drag_layer: CanvasLayer
+var sfx_pick: AudioStreamPlayer
+var sfx_drop: AudioStreamPlayer
 
 # ─── SETUP ───────────────────────────────────────────────────────────────────
 
@@ -70,7 +72,6 @@ func _on_rack_clicked(clicked_rack) -> void:
 
 func _try_select_rack(rack: PotionRack) -> void:
 	if rack.is_empty():
-		print("[DragManager] Rack %d kosong, tidak bisa dipilih" % rack.rack_id)
 		return
 
 	selected_rack = rack
@@ -78,6 +79,9 @@ func _try_select_rack(rack: PotionRack) -> void:
 
 	# Visual feedback: rack terpilih
 	rack.set_selected(true)
+	
+	if sfx_pick:
+		sfx_pick.play()
 
 	# Highlight rack lain sebagai target potensial
 	for other_rack in all_racks:
@@ -108,6 +112,8 @@ func _try_move_to(target_rack: PotionRack) -> void:
 
 	if success:
 		potion.play_place_animation()
+		if sfx_drop:
+			sfx_drop.play()
 		move_made.emit(from_rack, target_rack, potion)
 		print("[DragManager] MOVE: Rack %d → Rack %d [%s]" % [
 			from_rack.rack_id,
@@ -153,3 +159,7 @@ func _show_floating_potion(potion: Potion) -> void:
 func _hide_floating_potion() -> void:
 	if _floating_potion_display:
 		_floating_potion_display.visible = false
+		
+func set_sfx(pick: AudioStreamPlayer, drop: AudioStreamPlayer) -> void:
+	sfx_pick = pick
+	sfx_drop = drop
