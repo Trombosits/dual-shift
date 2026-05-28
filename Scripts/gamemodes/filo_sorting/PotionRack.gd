@@ -18,14 +18,15 @@ signal stack_changed(rack)
 
 var _stack: Array[Potion] = []
 var _is_selected: bool = false
-var _rack_body: ColorRect
+var _rack_body: Sprite2D
+var current_difficulty = 0
 
 func _ready() -> void:
 	print("RACK READY:", rack_id)
 	_build_rack_visual()
 	var collision = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
-	shape.size = Vector2(rack_width, max_capacity * potion_spacing_y)
+	shape.size = Vector2(160, 450)
 	collision.shape = shape
 	collision.position = Vector2(0, -(max_capacity * potion_spacing_y) / 2)
 	add_child(collision)
@@ -33,23 +34,12 @@ func _ready() -> void:
 	input_event.connect(_on_input_event)
 
 func _build_rack_visual() -> void:
-	_rack_body = ColorRect.new()
-	_rack_body.size = Vector2(rack_width, max_capacity * potion_spacing_y + 20)
-	_rack_body.position = Vector2(-rack_width / 2, -(max_capacity * potion_spacing_y + 60))
-	_rack_body.color = Color(0.3, 0.25, 0.15)
-	
-	_rack_body.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	add_child(_rack_body)
 
-	var id_label = Label.new()
-	id_label.text = "Rack %d" % rack_id
-	id_label.position = Vector2(-30, 10)
-	id_label.add_theme_font_override('font', font)
-	
-	id_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	add_child(id_label)
+	_rack_body = Sprite2D.new()
+	_rack_body.texture = get_rack_texture()
+	_rack_body.position = Vector2(0, -170)
+	_rack_body.scale = Vector2(0.45, 0.50)
+	add_child(_rack_body)
 
 # ─── STACK OPERATIONS ────────────────────────────────────────────────────────
 
@@ -114,28 +104,63 @@ func get_stack_types() -> Array:
 	return _stack.map(func(p): return p.potion_type)
 
 func _reposition_potions() -> void:
+
 	for i in _stack.size():
+
 		var potion = _stack[i]
-		var target_y = -((i + 1) * potion_spacing_y)
+
+		var start_y
+		var spacing
+
+		match current_difficulty:
+
+			# EASY (4 slot)
+			0:
+				start_y = -68
+				spacing = 65
+
+			# MEDIUM (5 slot)
+			1:
+				start_y = -66
+				spacing = 46
+
+			# HARD (6 slot)
+			2:
+				start_y = -75
+				spacing = 41
+
+			_:
+				start_y = -70
+				spacing = 52
+
+		var target_y = start_y - (i * spacing)
+
 		var tween = create_tween()
-		tween.tween_property(potion, "position", Vector2(0, target_y), 0.15)\
-			 .set_ease(Tween.EASE_OUT)
+
+		tween.tween_property(
+			potion,
+			"position",
+			Vector2(0, target_y),
+			0.15
+		).set_ease(Tween.EASE_OUT)
 
 func set_selected(value: bool) -> void:
 	_is_selected = value
-	print("SET SELECTED:", rack_id, value)
-	if _rack_body:
-		if value:
-			_rack_body.color = Color.YELLOW
-		else:
-			_rack_body.color = Color(0.3, 0.25, 0.15)
+	if not _rack_body:
+		return
+
+	if value:
+		_rack_body.modulate = Color(1.3, 1.3, 0.7)
+	else:
+		_rack_body.modulate = Color.WHITE
 
 func set_highlighted_as_target(value: bool) -> void:
-	if _rack_body:
-		if value:
-			_rack_body.color = Color(0.2, 0.5, 0.2)
-		else:
-			_rack_body.color = Color(0.3, 0.25, 0.15)
+	if not _rack_body:
+		return
+	if value:
+		_rack_body.modulate = Color(0.7, 1.3, 0.7)
+	else:
+		_rack_body.modulate = Color.WHITE
 
 func initialize_with_potions(types: Array) -> void:
 	for type in types:
@@ -152,3 +177,13 @@ func _on_input_event(_viewport, event, _shape_idx) -> void:
 				drag_manager._on_rack_clicked(self)
 			else:
 				push_warning("[PotionRack] DragManager tidak ditemukan di group 'drag_manager'!")
+	
+func get_rack_texture():
+	match current_difficulty:
+		0:
+			return preload("res://assets/rack_easy.png")
+		1:
+			return preload("res://assets/rack_medium.png")
+		2:
+			return preload("res://assets/rack_hard.png")
+	return preload("res://assets/rack_easy.png")

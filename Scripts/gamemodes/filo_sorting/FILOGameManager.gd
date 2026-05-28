@@ -169,6 +169,7 @@ func _create_racks() -> void:
 
 		rack.rack_id = i
 		rack.max_capacity = rack_capacity
+		rack.current_difficulty = current_difficulty
 		
 		rack.position = Vector2(
 			start_x + (i * spacing) + 600,
@@ -207,22 +208,37 @@ func _generate_and_fill_potions() -> void:
 
 func _distribute_potions(potions: Array) -> void:
 
-	var playable_racks = rack_count - empty_racks
+	# =========================
+	# PILIH RACK KOSONG RANDOM
+	# =========================
 
-	var rack_idx := 0
+	var empty_indices = []
+	while empty_indices.size() < empty_racks:
+		var random_idx = randi() % rack_count
+		if not empty_indices.has(random_idx):
+			empty_indices.append(random_idx)
 
+	# Rack yang boleh diisi
+	var playable_racks = []
+	for i in range(rack_count):
+		if not empty_indices.has(i):
+			playable_racks.append(i)
+
+	# =========================
+	# DISTRIBUTE POTIONS
+	# =========================
+
+	var rack_pointer := 0
 	for potion_type in potions:
-
 		var potion := Potion.new()
-
 		potion.potion_type = potion_type as Potion.PotionType
-
-		while racks[rack_idx].is_full():
-			rack_idx = (rack_idx + 1) % playable_racks
-
-		racks[rack_idx].push(potion)
-
-		rack_idx = (rack_idx + 1) % playable_racks
+		var current_rack = racks[playable_racks[rack_pointer]]
+		while current_rack.is_full():
+			rack_pointer = (rack_pointer + 1) % playable_racks.size()
+			current_rack = racks[playable_racks[rack_pointer]]
+		current_rack.push(potion)
+		rack_pointer = (rack_pointer + 1) % playable_racks.size()
+	print("EMPTY RACK INDEX:", empty_indices)
 
 # =========================================================
 # SIGNALS
