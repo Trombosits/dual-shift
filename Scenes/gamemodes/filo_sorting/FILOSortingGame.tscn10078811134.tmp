@@ -134,7 +134,7 @@ initial_velocity_min = 200.0
 initial_velocity_max = 300.0
 angular_velocity_min = -15.000016
 angular_velocity_max = 14.999984
-gravity = Vector3(98, 98, 0)
+gravity = Vector3(200, 200, 0)
 damping_min = 3.0000002
 damping_max = 3.0000002
 scale_min = 0.19999999
@@ -429,9 +429,8 @@ stream = ExtResource("14_q67yb")
 volume_db = -10.0
 
 [node name="ConfettiParticles" type="GPUParticles2D" parent="." unique_id=45575086]
-position = Vector2(550, -50)
 emitting = false
-amount = 30
+amount = 100
 texture = ExtResource("18_3o025")
 lifetime = 4.0
 one_shot = true

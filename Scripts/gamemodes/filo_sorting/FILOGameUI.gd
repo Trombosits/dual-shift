@@ -3,7 +3,6 @@
 extends CanvasLayer
 
 @onready var game_manager: FILOGameManager = get_parent()
-
 # Win Panel nodes
 @onready var win_panel: Panel = $WinPanel
 @onready var moves_value: Label = $WinPanel/VBoxContainer/StatsContainer/MovesBox/MovesValue
