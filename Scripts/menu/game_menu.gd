@@ -40,7 +40,7 @@ func _on_main_menu_pressed():
 
 func _on_timer_timeout() -> void:
 	if button_type == "game1":
-		get_tree().change_scene_to_file("res://Scenes/gamemodes/fifo/FIFOGame.tscn")
+		get_tree().change_scene_to_file("res://Scenes/gamemodes/fifo_sorting/fifo_sorting_game.tscn")
 
 	elif button_type == "game2":
 		get_tree().change_scene_to_file("res://Scenes/gamemodes/filo_sorting/FILOSortingGame.tscn")

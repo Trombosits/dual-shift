@@ -55,7 +55,6 @@ script = ExtResource("1_655o3")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=962645580]
 stream = ExtResource("2_kwgaw")
 autoplay = true
-bus = &"Music"
 
 [node name="Background" type="Panel" parent="." unique_id=202348787]
 layout_mode = 1

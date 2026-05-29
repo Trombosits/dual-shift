@@ -54,17 +54,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afg8y"]
-size = Vector2(11, 10)
+size = Vector2(13, 10)
 
 [node name="Player" type="CharacterBody2D" unique_id=1382401953]
 z_index = 5
 script = ExtResource("1_outas")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=938523426]
+position = Vector2(0, -1)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_c6s4v")
 animation = &"idle"
 frame_progress = 0.45029843
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=388173886]
-position = Vector2(0.5, 12)
+position = Vector2(0.5, 19)
 shape = SubResource("RectangleShape2D_afg8y")

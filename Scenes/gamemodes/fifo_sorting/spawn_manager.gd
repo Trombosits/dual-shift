@@ -1,33 +1,46 @@
 extends Node2D
 
 @export var npc_scene : PackedScene
+@onready var heart1 = $"../UI/HPContainer/Heart1"
+@onready var heart2 = $"../UI/HPContainer/Heart2"
+@onready var heart3 = $"../UI/HPContainer/Heart3"
+@onready var game_over_panel = $"../UI/GameOverPanel"
 
 var queue = []
 
 var hp = 3
 
-var colors = ["red", "green", "blue"]
+var variants = ["red", "green", "blue"]
 
 var queue_positions = [
-	Vector2(136, 80),
-	Vector2(136, 90),
 	Vector2(136, 100),
+	Vector2(136, 120),
+	Vector2(136, 140),
+	Vector2(136, 160),
+	Vector2(136, 180),
 ]
 
 func _ready():
 
-	for i in range(3):
+	update_hp_ui()
+
+	for i in range(5):
 		spawn_npc()
 
 func spawn_npc():
+
+	if npc_scene == null:
+		return
 
 	var npc = npc_scene.instantiate()
 
 	add_child(npc)
 
-	npc.position = Vector2(138, 160)
+	npc.position = Vector2(136,200)
 
-	npc.color_type = colors.pick_random()
+	npc.variant_type = variants.pick_random()
+
+	npc.setup()
 
 	queue.push_back(npc)
 
@@ -59,7 +72,7 @@ func check_answer(color_name):
 
 	var first_npc = queue[0]
 
-	if first_npc.color_type == color_name:
+	if first_npc.variant_type == color_name:
 
 		print("BENAR")
 
@@ -75,6 +88,8 @@ func damage_player():
 
 	hp -= 1
 
+	update_hp_ui()
+
 	print("HP:", hp)
 
 	if hp <= 0:
@@ -83,7 +98,9 @@ func damage_player():
 
 func game_over():
 
-	print("GAME OVER")
+	game_over_panel.visible = true
+
+	get_tree().paused = true
 
 func _input(event):
 
@@ -102,3 +119,15 @@ func _on_green_button_pressed() -> void:
 
 func _on_blue_button_pressed() -> void:
 	check_answer("blue")
+
+func update_hp_ui():
+
+	heart1.visible = hp >= 1
+	heart2.visible = hp >= 2
+	heart3.visible = hp >= 3
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+
+	get_tree().reload_current_scene()
