@@ -1,182 +1,69 @@
 [gd_scene format=3 uid="uid://c6ujbbfiyhlkb"]
 
-[ext_resource type="PackedScene" uid="uid://d4dn7sec8h42x" path="res://Scenes/gamemodes/fifo_sorting/player.tscn" id="1_pact5"]
-[ext_resource type="Texture2D" uid="uid://dqqsxrqxtlnou" path="res://assets/Sprites/tilesets/floors/carpet.png" id="2_w7cpf"]
-[ext_resource type="Texture2D" uid="uid://l30stbr8i31" path="res://assets/Sprites/tilesets/floors/flooring.png" id="3_pen87"]
-[ext_resource type="Texture2D" uid="uid://cgs8kiyrlxmf5" path="res://assets/Sprites/tilesets/floors/wooden.png" id="4_mvh4u"]
-[ext_resource type="Texture2D" uid="uid://cyr0d7xdphxax" path="res://assets/Sprites/tilesets/walls/walls.png" id="5_s4nku"]
-[ext_resource type="Texture2D" uid="uid://bppwml6bymwr0" path="res://assets/Sprites/tilesets/walls/wooden_door.png" id="6_og5b3"]
-[ext_resource type="Texture2D" uid="uid://b2rj6hxu058qg" path="res://assets/Sprites/tilesets/walls/wooden_door_b.png" id="7_hspg6"]
-[ext_resource type="Script" uid="uid://dguioxcmp32na" path="res://Scenes/gamemodes/fifo_sorting/spawn_manager.gd" id="8_s5r1d"]
+[ext_resource type="Script" uid="uid://bvirrxc0mvt2e" path="res://Scenes/gamemodes/fifo_sorting/npc_1.gd" id="1_rn85n"]
+[ext_resource type="Texture2D" uid="uid://bcl1ksi6m0u5k" path="res://assets/Sprites/characters/player.png" id="1_ujl37"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wlqry"]
-texture = ExtResource("2_w7cpf")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn85n"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(0, 96, 48, 48)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t4q23"]
-texture = ExtResource("3_pen87")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj8xq"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(48, 96, 48, 48)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nf6s4"]
-texture = ExtResource("4_mvh4u")
-0:0/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnpk4"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(96, 96, 48, 48)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxkec"]
-texture = ExtResource("5_s4nku")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fw2l"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(144, 96, 48, 48)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqkja"]
-texture = ExtResource("6_og5b3")
-0:0/0 = 0
-1:0/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ae5l"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(192, 96, 48, 48)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h70kj"]
-texture = ExtResource("7_hspg6")
-0:0/0 = 0
-1:0/0 = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_06m7a"]
+atlas = ExtResource("1_ujl37")
+region = Rect2(240, 96, 48, 48)
 
-[sub_resource type="TileSet" id="TileSet_7blb2"]
-sources/0 = SubResource("TileSetAtlasSource_wlqry")
-sources/1 = SubResource("TileSetAtlasSource_t4q23")
-sources/2 = SubResource("TileSetAtlasSource_nf6s4")
-sources/3 = SubResource("TileSetAtlasSource_nxkec")
-sources/4 = SubResource("TileSetAtlasSource_jqkja")
-sources/5 = SubResource("TileSetAtlasSource_h70kj")
+[sub_resource type="SpriteFrames" id="SpriteFrames_pact5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn85n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj8xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnpk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fw2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ae5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06m7a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
-[node name="FIFOSortingGame" type="Node2D" unique_id=1597380158]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujl37"]
+size = Vector2(12, 11)
 
-[node name="Player" parent="." unique_id=1382401953 instance=ExtResource("1_pact5")]
-position = Vector2(136, 27)
+[node name="npc1" type="CharacterBody2D" unique_id=1527637340]
+script = ExtResource("1_rn85n")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1856844033]
-position = Vector2(144, 81)
-zoom = Vector2(4, 4)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1229045058]
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_pact5")
+animation = &"idle"
 
-[node name="TileMap" type="TileMap" parent="." unique_id=870780362]
-tile_set = SubResource("TileSet_7blb2")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 3, 1, 1, 3, 4, 2, 3, 4, 3, 3, 4, 4, 3, 4, 5, 3, 4, 6, 3, 4, 7, 3, 4, 8, 3, 4, 9, 3, 4, 10, 3, 4, 11, 3, 4, 12, 4, 0, 13, 3, 4, 14, 3, 4, 15, 3, 4, 16, 3, 4, 17, 3, 1, 131089, 3, 1, 196625, 3, 1, 262161, 3, 1, 393233, 3, 1, 458769, 3, 1, 524305, 3, 1, 589841, 3, 4, 589840, 3, 4, 589839, 3, 4, 589838, 3, 4, 589837, 3, 4, 589836, 3, 4, 589835, 3, 4, 589834, 3, 4, 589833, 2, 0, 589832, 2, 0, 589831, 3, 4, 589830, 3, 4, 589829, 3, 4, 589828, 3, 4, 589827, 3, 4, 589826, 3, 4, 589825, 3, 4, 589824, 3, 4, 524288, 3, 1, 458752, 3, 1, 393216, 3, 1, 262144, 3, 1, 196608, 3, 1, 131072, 3, 1, 65536, 3, 1, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 131088, 2, 0, 196624, 131072, 7, 262160, 2, 0, 393232, 2, 0, 458768, 2, 0, 524304, 2, 0, 524303, 2, 0, 524302, 2, 0, 524301, 2, 0, 524300, 2, 0, 524299, 2, 0, 524298, 2, 0, 524297, 2, 0, 524296, 2, 0, 524295, 2, 0, 524294, 2, 0, 524293, 2, 0, 524292, 2, 0, 524291, 2, 0, 524290, 2, 0, 524289, 2, 0, 458753, 2, 0, 393217, 2, 0, 262145, 2, 0, 196609, 131072, 7, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131079, 2, 0, 131080, 2, 0, 131081, 2, 0, 131082, 2, 0, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 196623, 131072, 7, 262159, 2, 0, 393231, 131073, 1, 393230, 65537, 1, 458767, 131073, 2, 458766, 65537, 2, 458765, 65537, 2, 458764, 65537, 2, 458763, 65537, 2, 458762, 65537, 2, 458761, 65537, 2, 458760, 65537, 2, 458759, 65537, 2, 458758, 65537, 2, 458757, 65537, 2, 458756, 65537, 2, 458755, 65537, 2, 458754, 1, 2, 393218, 1, 1, 262146, 2, 0, 196610, 131072, 7, 196611, 131072, 7, 196612, 131072, 7, 196613, 131072, 7, 196614, 131072, 7, 196615, 131072, 7, 196616, 131072, 7, 196617, 131072, 7, 196618, 131072, 7, 196619, 131072, 7, 196620, 131072, 7, 196621, 131072, 7, 196622, 131072, 7, 262158, 2, 0, 262157, 2, 0, 262156, 2, 0, 262155, 2, 0, 262154, 2, 0, 262153, 2, 0, 262152, 2, 0, 262151, 2, 0, 262150, 2, 0, 262149, 2, 0, 262148, 2, 0, 262147, 2, 0, 393229, 65537, 1, 393228, 65537, 1, 393227, 65537, 1, 393226, 65537, 1, 393225, 65537, 1, 393224, 65537, 1, 393223, 65537, 1, 393222, 65537, 1, 393221, 65537, 1, 393220, 65537, 1, 393219, 65537, 1, 327697, 3, 1, 327696, 2, 0, 327695, 131073, 0, 327694, 65537, 0, 327693, 65537, 0, 327692, 65537, 0, 327691, 65537, 0, 327690, 65537, 0, 327689, 65537, 0, 327688, 65537, 0, 327687, 65537, 0, 327686, 65537, 0, 327685, 65537, 0, 327684, 65537, 0, 327683, 65537, 0, 327682, 1, 0, 327681, 2, 0, 327680, 3, 1, -65526, 3, 3, -65525, 3, 3, -65527, 3, 3, -65528, 3, 3, -65529, 3, 3, -65530, 3, 3, -65531, 3, 3, -65532, 3, 3, -65533, 3, 3, -65534, 3, 3, -65535, 3, 3, -65536, 3, 3, -65523, 3, 3, -65522, 3, 3, -65521, 3, 3, -65520, 3, 3, -65519, 3, 3, 65553, 3, 1)
-
-[node name="SpawnManager" type="Node2D" parent="." unique_id=1185450990]
-script = ExtResource("8_s5r1d")
-npc_scene = null
-
-[node name="UI" type="CanvasLayer" parent="." unique_id=2104039207]
-
-[node name="Sidebar" type="VBoxContainer" parent="UI" unique_id=313208496]
-anchors_preset = -1
-anchor_left = 0.24900001
-anchor_right = 0.24900001
-offset_left = -60.848022
-offset_right = 0.15197754
-offset_bottom = 101.0
-
-[node name="RedButton" type="Button" parent="UI/Sidebar" unique_id=383897644]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "RED"
-
-[node name="GreenButton" type="Button" parent="UI/Sidebar" unique_id=2020307209]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-text = "GREEN"
-
-[node name="BlueButton" type="Button" parent="UI/Sidebar" unique_id=228758540]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-text = "BLUE"
-
-[connection signal="pressed" from="UI/Sidebar/RedButton" to="SpawnManager" method="_on_red_button_pressed"]
-[connection signal="pressed" from="UI/Sidebar/GreenButton" to="SpawnManager" method="_on_green_button_pressed"]
-[connection signal="pressed" from="UI/Sidebar/BlueButton" to="SpawnManager" method="_on_blue_button_pressed"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=789588397]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_ujl37")
