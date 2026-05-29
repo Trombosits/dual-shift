@@ -206,6 +206,5 @@ autoplay = "idle"
 frame_progress = 0.49916828
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=393487591]
-visible = false
 position = Vector2(349, -135)
 shape = SubResource("CapsuleShape2D_3v2ag")
