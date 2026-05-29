@@ -59,6 +59,13 @@ var difficulty_settings = {
 @onready var sparkle_burst = $DragLayer/SparkleBurst
 @onready var confetti_particles = $ConfettiParticles
 @onready var stars_label = $HUD/WinPanel/StarsLabel
+@onready var score_label = $HUD/WinPanel/VBoxContainer/StatsContainer/ScoreBox/ScoreValue
+@onready var ingame_score_label = $HUD/ScoreLabel
+@onready var pause_panel = $HUD/PausePanel
+@onready var continue_button = $HUD/PausePanel/BContainer1/Continue
+@onready var restart_button = $HUD/PausePanel/BContainer2/Menu
+@onready var back_button = $HUD/PausePanel/BContainer3/Restart
+@onready var pause_button = $HUD/Panel/PauseButton
 
 # GAME STATE
 var racks: Array[PotionRack] = []
@@ -66,6 +73,8 @@ var rack_y: float = 300.0
 var total_moves: int = 0
 var elapsed_time: float = 0.0
 var game_active: bool = false
+var final_score: int = 0
+var is_paused := false
 
 # Active config
 var rack_count: int
@@ -79,6 +88,7 @@ func _ready() -> void:
 	difficulty_panel.visible = true
 	_load_difficulty_settings()
 	_connect_signals()
+	pause_panel.visible = false
 	game_active = false
 
 # PROCESS
@@ -111,6 +121,7 @@ func _setup_game() -> void:
 
 	_update_moves_display()
 	_update_timer_display()
+	_update_score_display()
 
 # CLEAR RACKS
 func _clear_existing_racks() -> void:
@@ -189,6 +200,7 @@ func _on_move_made(_from_rack: PotionRack, _to_rack: PotionRack, _potion: Potion
 	total_moves += 1
 	_play_sparkle(_potion.global_position)
 	move_count_changed.emit(total_moves)
+	_update_score_display()
 	_update_moves_display()
 	if _check_win_condition():
 		_trigger_win()
@@ -205,7 +217,6 @@ func _check_win_condition() -> bool:
 			non_empty_racks += 1
 			if rack.is_sorted():
 				sorted_racks += 1
-
 	var win := (sorted_racks == non_empty_racks and non_empty_racks == color_count)
 	return win
 
@@ -213,7 +224,9 @@ func _check_win_condition() -> bool:
 func _trigger_win() -> void:
 	game_active = false
 	drag_manager.input_enabled = false
+	final_score = _calculate_score()
 	win_sound.play()
+	pause_button.visible = false
 	confetti_particles.restart()
 	confetti_particles.emitting = true
 	var tween = create_tween()
@@ -225,6 +238,7 @@ func _show_win_screen() -> void:
 	hud_layer.show_win_screen(total_moves, elapsed_time)
 	var stars = _calculate_star_rating()
 	stars_label.text = "⭐".repeat(stars)
+	score_label.text = "%d" % final_score
 
 # UI
 func _update_moves_display() -> void:
@@ -235,6 +249,10 @@ func _update_timer_display() -> void:
 	var seconds = int(elapsed_time) % 60
 	var milliseconds = float((elapsed_time - int(elapsed_time)) * 100)
 	timer_label.text = "Waktu: %02d:%02d:%02d" % [minutes,seconds,milliseconds]
+	
+func _update_score_display() -> void:
+	var current_score = _calculate_score()
+	ingame_score_label.text = "Skor: %d" % current_score
 
 # RESET
 func reset_game() -> void:
@@ -243,9 +261,11 @@ func reset_game() -> void:
 	total_moves = 0
 	elapsed_time = 0.0
 	game_active = false
+	ingame_score_label.text = "Skor: 0"
 	hud_layer.hide_win_screen()
 	_load_difficulty_settings()
 	_setup_game()
+	pause_button.visible = true
 	game_active = true
 	game_reset.emit()
 	if not background_music.playing:
@@ -288,8 +308,75 @@ func _play_sparkle(pos: Vector2):
 	sparkle_burst.emitting = true
 	
 func _calculate_star_rating() -> int:
-	if total_moves <= color_count * rack_capacity + 5:
-		return 3
-	elif total_moves <= color_count * rack_capacity + 12:
-		return 2
-	return 1
+	if current_difficulty == Difficulty.EASY:
+		if total_moves <= 17 and elapsed_time <= 60:
+			return 3
+		elif total_moves <= 25 and elapsed_time <= 120:
+			return 2
+		return 1
+	elif current_difficulty == Difficulty.MEDIUM:
+		if total_moves <= 25 and elapsed_time <= 90:
+			return 3
+		elif total_moves <= 35 and elapsed_time <= 180:
+			return 2
+		return 1
+	else:
+		if total_moves <= 35 and elapsed_time <= 150:
+			return 3
+		elif total_moves <= 50 and elapsed_time <= 300:
+			return 2
+		return 1
+		
+func _calculate_score() -> int:
+	var base_score = 3000
+	var move_penalty = total_moves * 25
+	var time_penalty = int(elapsed_time) * 3
+	var difficulty_bonus = 0
+	match current_difficulty:
+		Difficulty.EASY:
+			difficulty_bonus = 0
+		Difficulty.MEDIUM:
+			difficulty_bonus = 500
+		Difficulty.HARD:
+			difficulty_bonus = 1000
+	var star_bonus = _calculate_star_rating() * 500
+	var score = (base_score - move_penalty - time_penalty + difficulty_bonus + star_bonus)
+	return max(score, 0)
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if is_paused:
+			_resume_game()
+		else:
+			_pause_game()
+
+func _pause_game():
+	is_paused = true
+	get_tree().paused = true
+	pause_panel.visible = true
+
+func _resume_game():
+	is_paused = false
+	get_tree().paused = false
+	pause_panel.visible = false
+
+func _on_continue_pressed() -> void:
+	_resume_game()
+
+func _on_menu_pressed() -> void:
+	get_tree().paused = false
+	is_paused = false
+	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	is_paused = false
+	pause_panel.visible = false
+	drag_manager.input_enabled = true
+	reset_game()
+
+func _on_pause_button_pressed() -> void:
+	if is_paused:
+		_resume_game()
+	else:
+		_pause_game()

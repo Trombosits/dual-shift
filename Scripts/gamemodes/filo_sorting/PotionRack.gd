@@ -4,7 +4,7 @@ class_name PotionRack
 
 #FONT
 var font = load("res://assets/Fonts/static/PixelifySans-Regular.ttf")
-
+@warning_ignore("unused_signal")
 signal rack_clicked(rack)
 signal stack_changed(rack)
 
