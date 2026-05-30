@@ -6,6 +6,7 @@ extends Node2D
 @onready var heart3 = $"../UI/HPContainer/Heart3"
 @onready var game_over_panel = $"../UI/GameOverPanel"
 
+
 var queue = []
 
 var hp = 3
@@ -131,3 +132,4 @@ func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 
 	get_tree().reload_current_scene()
+	
