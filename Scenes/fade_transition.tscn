@@ -15,6 +15,10 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_h8oqj"]
+resource_name = "Fade_In2"
+length = 5.0
+
 [sub_resource type="Animation" id="Animation_jpvig"]
 resource_name = "Fade_Out"
 tracks/0/type = "value"
@@ -48,6 +52,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ad60"]
 _data = {
 &"Fade_In": SubResource("Animation_7wufn"),
+&"Fade_In2": SubResource("Animation_h8oqj"),
 &"Fade_Out": SubResource("Animation_jpvig"),
 &"RESET": SubResource("Animation_5fldl")
 }

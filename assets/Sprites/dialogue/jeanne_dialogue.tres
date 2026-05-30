@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d34ugk846ehic"]
+
+[ext_resource type="Texture2D" uid="uid://pjhjtfbw8vjm" path="res://assets/Sprites/characters/J.png" id="1_lytt6"]
+[ext_resource type="Texture2D" uid="uid://5m5t0ree6eec" path="res://assets/Sprites/characters/J1.png" id="2_127jq"]
+[ext_resource type="Texture2D" uid="uid://cunsm1o7p1kvq" path="res://assets/Sprites/characters/J2.png" id="3_lhona"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lytt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_127jq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_lytt6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lytt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lhona")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_lytt6")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 4.0
+}]

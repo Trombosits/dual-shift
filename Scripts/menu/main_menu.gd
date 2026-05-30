@@ -32,7 +32,7 @@ func _on_exit_pressed():
 
 func _on_timer_timeout():
 	if button_type == "newGame":
-		get_tree().change_scene_to_file("res://Scenes/gamemodes/filo_sorting/FILOSortingGame.tscn")
+		get_tree().change_scene_to_file("res://Scenes/tutorial/first_scene.tscn")
 	
 	elif button_type == "continue":
 		get_tree().change_scene_to_file("res://Scenes/menu/game_menu.tscn")

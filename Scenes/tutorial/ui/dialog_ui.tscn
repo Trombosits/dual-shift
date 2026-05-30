@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bumolgw3ve6q"]
+
+[ext_resource type="Theme" uid="uid://bik8prbg753q1" path="res://assets/new_theme.tres" id="1_dfp2n"]
+[ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="2_3fy1v"]
+[ext_resource type="Script" uid="uid://eehmbykcjdr1" path="res://Scripts/tutorial/dialog_ui.gd" id="2_jlc3d"]
+[ext_resource type="Script" uid="uid://g3uvogfxt4ly" path="res://Scripts/tutorial/text_blip.gd" id="3_52473"]
+[ext_resource type="FontFile" uid="uid://cfs4waeqh62qc" path="res://assets/Fonts/PixelifySans-VariableFont_wght.ttf" id="3_ql1bp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jlc3d"]
+font = ExtResource("2_3fy1v")
+font_size = 25
+
+[node name="Dialog_UI" type="Control" unique_id=563199733]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dfp2n")
+script = ExtResource("2_jlc3d")
+
+[node name="Sentence_Timer" type="Timer" parent="." unique_id=1932936528]
+wait_time = 0.35
+one_shot = true
+
+[node name="Text_Timer" type="Timer" parent="." unique_id=736202299]
+wait_time = 0.09
+
+[node name="Text_Blip" type="AudioStreamPlayer" parent="." unique_id=26769215]
+unique_name_in_owner = true
+autoplay = true
+script = ExtResource("3_52473")
+
+[node name="Dialog_Box" type="PanelContainer" parent="." unique_id=706627189]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Dialog_Line" type="RichTextLabel" parent="Dialog_Box" unique_id=1723540259]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ql1bp")
+bbcode_enabled = true
+text = "This is line of dialog."
+scroll_active = false
+
+[node name="Speaker_Box" type="Control" parent="." unique_id=1731481541]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = -150.0
+grow_vertical = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="Speaker_Box" unique_id=218265589]
+position = Vector2(0, 1)
+color = Color(1, 1, 1, 0.27450982)
+polygon = PackedVector2Array(0, 0, 180, 0, 200, 50, 0, 50)
+
+[node name="Speaker_Name" type="Label" parent="Speaker_Box" unique_id=1928277079]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "NAME"
+label_settings = SubResource("LabelSettings_jlc3d")
+
+[node name="Control" type="Control" parent="." unique_id=2038420436]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control" unique_id=998427040]
+position = Vector2(-20, -20)
+polygon = PackedVector2Array(0, 0, 40, 20, 0, 40)
