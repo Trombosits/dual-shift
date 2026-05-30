@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cykchrlvxroge"]
+
+[ext_resource type="Script" uid="uid://dfyjqlolkqh6n" path="res://Scripts/tutorial/night_city.gd" id="1_84mqj"]
+[ext_resource type="Texture2D" uid="uid://ybkn4e32f0d5" path="res://assets/background/bg_nightcity.jpg" id="2_84mqj"]
+[ext_resource type="PackedScene" uid="uid://dy5l28w01i673" path="res://Scenes/tutorial/ui/character_sprite.tscn" id="3_udjg7"]
+[ext_resource type="PackedScene" uid="uid://bumolgw3ve6q" path="res://Scenes/tutorial/ui/dialog_ui.tscn" id="4_4bxbo"]
+
+[node name="Night City" type="Node2D" unique_id=921029430]
+script = ExtResource("1_84mqj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1902550686]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1073783409]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_84mqj")
+expand_mode = 3
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=606064423]
+
+[node name="Control" type="Control" parent="CanvasLayer2" unique_id=1337456250]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Character_Sprite" parent="CanvasLayer2/Control" unique_id=44426156 instance=ExtResource("3_udjg7")]
+unique_name_in_owner = true
+position = Vector2(0, -236)
+
+[node name="Dialog_UI" parent="CanvasLayer2" unique_id=563199733 instance=ExtResource("4_4bxbo")]
+unique_name_in_owner = true
