@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bfqpmobb4a7g2"]
+
+[ext_resource type="Texture2D" uid="uid://cmxn2chn8x775" path="res://assets/Sprites/characters/Char_001_Idle.png" id="1_xgtu8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbvkk"]
+atlas = ExtResource("1_xgtu8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rddvs"]
+atlas = ExtResource("1_xgtu8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wbi7"]
+atlas = ExtResource("1_xgtu8")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc0lh"]
+atlas = ExtResource("1_xgtu8")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3exe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbvkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rddvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wbi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc0lh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50r8x"]
+size = Vector2(10.666667, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=775159699]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=275635836]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_q3exe")
+animation = &"idle"
+frame_progress = 0.83251894
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1049452481]
+position = Vector2(1.1920929e-07, 13)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_50r8x")
