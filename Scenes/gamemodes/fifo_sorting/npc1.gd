@@ -6,8 +6,8 @@ enum NPCState {
 	PRIORITY
 }
 
-signal priority_failed
-signal priority_clicked
+signal priority_failed(npc)
+signal priority_clicked(npc)
 
 @onready var anim = $AnimatedSprite2D
 
@@ -16,18 +16,26 @@ var variant_type = ""
 
 var move_path = []
 var current_path_index = 0
+
 var move_speed = 80.0
+
 var wait_timer = 0.0
 var is_waiting = false
 
 var current_state = NPCState.QUEUE
+
 var priority_timer = 5.0
 
 var is_priority = false
+var npc_ahead = null
 
 func _ready():
 
 	print(anim.sprite_frames.get_animation_names())
+
+# =====================================
+# MAIN PROCESS
+# =====================================
 
 func _process(delta):
 
@@ -45,13 +53,13 @@ func _process(delta):
 
 			follow_path(delta)
 
-# =========================
+# =====================================
 # SETUP
-# =========================
+# =====================================
 
 func setup():
 
-	if current_state == NPCState.PRIORITY:
+	if is_priority:
 
 		anim.play("priority_idle")
 
@@ -59,31 +67,72 @@ func setup():
 
 		update_variant()
 
-# =========================
+# =====================================
 # NORMAL QUEUE
-# =========================
+# =====================================
 
 func process_queue(delta):
 
-	global_position = global_position.lerp(target_position, 4.0 * delta)
+	# CEK JARAK DENGAN NPC DEPAN
+	if npc_ahead != null:
 
-	if global_position.distance_to(target_position) < 5:
+		if is_instance_valid(npc_ahead):
+
+			var distance_to_ahead = global_position.distance_to(npc_ahead.global_position)
+
+			# TERLALU DEKAT -> STOP
+			if distance_to_ahead < 18:
+
+				var idle_anim = variant_type + "_idle"
+
+				if anim.animation != idle_anim:
+
+					anim.play(idle_anim)
+
+				return
+
+	var direction = target_position - global_position
+
+	# GERAK
+	if direction.length() > 5:
+
+		direction = direction.normalized()
+
+		global_position += direction * move_speed * delta
+
+		update_walk_animation(direction)
+
+	# SUDAH SAMPAI
+	else:
+
+		global_position = target_position
 
 		var idle_anim = variant_type + "_idle"
 
 		if anim.animation != idle_anim:
 
 			anim.play(idle_anim)
-
-# =========================
+# =====================================
 # PRIORITY QUEUE
-# =========================
+# =====================================
 
 func process_priority(delta):
 
-	global_position = global_position.lerp(target_position, 4.0 * delta)
+	var direction = (target_position - global_position)
 
-	if global_position.distance_to(target_position) < 5:
+	# MASIH BERJALAN
+	if direction.length() > 5:
+
+		direction = direction.normalized()
+
+		global_position += direction * move_speed * delta
+
+		update_walk_animation(direction)
+
+	# SUDAH SAMPAI
+	else:
+
+		global_position = target_position
 
 		if anim.animation != "priority_idle":
 
@@ -95,9 +144,9 @@ func process_priority(delta):
 
 		fail_priority()
 
-# =========================
+# =====================================
 # VARIANT
-# =========================
+# =====================================
 
 func update_variant():
 
@@ -113,9 +162,9 @@ func update_variant():
 
 		anim.play("blue_idle")
 
-# =========================
-# EXIT MOVEMENT
-# =========================
+# =====================================
+# EXIT PATH
+# =====================================
 
 func follow_path(delta):
 
@@ -132,7 +181,7 @@ func follow_path(delta):
 
 		return
 
-	# SELESAI PATH
+	# PATH SELESAI
 	if current_path_index >= move_path.size():
 
 		queue_free()
@@ -151,7 +200,7 @@ func follow_path(delta):
 
 		direction.x = sign(dx)
 
-	# BARU GERAK Y
+	# LALU GERAK Y
 	elif abs(dy) > 5:
 
 		direction.y = sign(dy)
@@ -160,12 +209,19 @@ func follow_path(delta):
 
 	update_walk_animation(direction)
 
-	# SAMPAI TITIK
+	# SAMPAI
 	if abs(dx) < 5 and abs(dy) < 5:
 
 		global_position = target
 
-		# PRIORITY NPC BERHENTI DI CLERK
+		# LAST PATH -> LANGSUNG HILANG
+		if current_path_index >= move_path.size() - 1:
+
+			queue_free()
+
+			return
+
+		# PRIORITY WAIT DI CLERK
 		if is_priority and current_path_index == 2:
 
 			is_waiting = true
@@ -176,9 +232,9 @@ func follow_path(delta):
 
 			current_path_index += 1
 
-# =========================
+# =====================================
 # WALK ANIMATION
-# =========================
+# =====================================
 
 func update_walk_animation(direction):
 
@@ -190,15 +246,21 @@ func update_walk_animation(direction):
 		if abs(direction.x) > abs(direction.y):
 
 			if direction.x > 0:
+
 				anim_name = "priority_walk_right"
+
 			else:
+
 				anim_name = "priority_walk_left"
 
 		else:
 
 			if direction.y > 0:
+
 				anim_name = "priority_walk_down"
+
 			else:
+
 				anim_name = "priority_walk_up"
 
 	# NPC NORMAL
@@ -207,24 +269,30 @@ func update_walk_animation(direction):
 		if abs(direction.x) > abs(direction.y):
 
 			if direction.x > 0:
+
 				anim_name = variant_type + "_walk_right"
+
 			else:
+
 				anim_name = variant_type + "_walk_left"
 
 		else:
 
 			if direction.y > 0:
+
 				anim_name = variant_type + "_walk_down"
+
 			else:
+
 				anim_name = variant_type + "_walk_up"
 
 	if anim.animation != anim_name:
 
 		anim.play(anim_name)
 
-# =========================
+# =====================================
 # EXIT QUEUE
-# =========================
+# =====================================
 
 func exit_queue():
 
@@ -232,12 +300,14 @@ func exit_queue():
 
 	current_path_index = 0
 
+	is_waiting = false
+
 	# PRIORITY NPC
 	if is_priority:
 
 		move_path = [
-			Vector2(350, global_position.y),
-			Vector2(350, 100),
+			Vector2(300, global_position.y),
+			Vector2(300, 100),
 			Vector2(440, 100),
 			Vector2(440, 330)
 		]
@@ -246,34 +316,50 @@ func exit_queue():
 	else:
 
 		move_path = [
-			Vector2(350, global_position.y),
+			Vector2(144, 100),
 			Vector2(350, 250),
 			Vector2(435, 250),
 			Vector2(435, 330)
 		]
 
-# =========================
+func exit_failed_priority():
+
+	current_state = NPCState.EXITING
+
+	current_path_index = 0
+
+	is_waiting = false
+
+	move_path = [
+		Vector2(300, global_position.y),
+		Vector2(300, 250),
+		Vector2(435, 250),
+		Vector2(435, 330)
+	]
+# =====================================
 # CLICK PRIORITY NPC
-# =========================
+# =====================================
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 
 	if event is InputEventMouseButton:
 
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
 
-			if current_state == NPCState.PRIORITY:
+			if event.button_index == MOUSE_BUTTON_LEFT:
 
-				priority_clicked.emit(self)
+				if current_state == NPCState.PRIORITY:
 
-# =========================
-# PRIORITY FAIL
-# =========================
+					priority_clicked.emit(self)
+
+# =====================================
+# PRIORITY FAILED
+# =====================================
 
 func fail_priority():
 
 	print("PRIORITY FAILED")
 
-	priority_failed.emit()
+	priority_failed.emit(self)
 
-	queue_free()
+	exit_failed_priority()
