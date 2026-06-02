@@ -41,7 +41,7 @@ func hide_win_screen() -> void:
 	tween.tween_callback(func(): win_panel.visible = false)
 
 func _on_next_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/gamemodes/fifopo_typing/Typing.tscn")
+	get_tree().change_scene_to_file("res://Scenes/tutorial/night_city.tscn")
 
 func _on_replay_pressed() -> void:
 	hide_win_screen()
