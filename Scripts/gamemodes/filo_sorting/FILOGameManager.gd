@@ -85,11 +85,13 @@ var empty_racks: int
 # READY
 func _ready() -> void:
 	win_panel.visible = false
-	difficulty_panel.visible = true
+	difficulty_panel.visible = false
+	current_difficulty = Difficulty.EASY
 	_load_difficulty_settings()
+	_setup_game()
 	_connect_signals()
 	pause_panel.visible = false
-	game_active = false
+	game_active = true
 
 # PROCESS
 func _process(delta: float) -> void:
@@ -272,30 +274,30 @@ func reset_game() -> void:
 		background_music.play()
 
 # CHANGE DIFFICULTY
-func set_difficulty(new_difficulty: Difficulty) -> void:
-	current_difficulty = new_difficulty
-	reset_game()
+#func set_difficulty(new_difficulty: Difficulty) -> void:
+	#current_difficulty = new_difficulty
+	#reset_game()
 
-func _on_easy_button_pressed() -> void:
-	current_difficulty = Difficulty.EASY
-	_load_difficulty_settings()
-	_setup_game()
-	difficulty_panel.visible = false
-	game_active = true
-
-func _on_medium_button_pressed() -> void:
-	current_difficulty = Difficulty.MEDIUM
-	_load_difficulty_settings()
-	_setup_game()
-	difficulty_panel.visible = false
-	game_active = true
-
-func _on_hard_button_pressed() -> void:
-	current_difficulty = Difficulty.HARD
-	_load_difficulty_settings()
-	_setup_game()
-	difficulty_panel.visible = false
-	game_active = true
+#func _on_easy_button_pressed() -> void:
+	#current_difficulty = Difficulty.EASY
+	#_load_difficulty_settings()
+	#_setup_game()
+	#difficulty_panel.visible = false
+	#game_active = true
+#
+#func _on_medium_button_pressed() -> void:
+	#current_difficulty = Difficulty.MEDIUM
+	#_load_difficulty_settings()
+	#_setup_game()
+	#difficulty_panel.visible = false
+	#game_active = true
+#
+#func _on_hard_button_pressed() -> void:
+	#current_difficulty = Difficulty.HARD
+	#_load_difficulty_settings()
+	#_setup_game()
+	#difficulty_panel.visible = false
+	#game_active = true
 
 func _update_difficulty_ui():
 	easy_button.disabled = current_difficulty == Difficulty.EASY
