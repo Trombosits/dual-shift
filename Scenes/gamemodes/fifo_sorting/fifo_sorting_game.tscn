@@ -2976,18 +2976,46 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
 
 [node name="GameOver" type="Label" parent="UI/GameOverPanel/VBoxContainer/PanelContainer" unique_id=1820254459]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_wlqry")
+theme_override_font_sizes/font_size = 45
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 171
 uppercase = true
 
-[node name="RestartButton" type="Button" parent="UI/GameOverPanel/VBoxContainer" unique_id=1275815135]
+[node name="PanelContainer2" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=1999993681]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+
+[node name="FinalScoreText" type="Label" parent="UI/GameOverPanel/VBoxContainer/PanelContainer2" unique_id=1392763270]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_font_sizes/font_size = 31
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 171
+uppercase = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=754478056]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel/VBoxContainer/PanelContainer3" unique_id=1275815135]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_font_sizes/font_size = 20
 text = "RESTART"
 
-[node name="MainMenuButton" type="Button" parent="UI/GameOverPanel/VBoxContainer" unique_id=750529810]
+[node name="PanelContainer4" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=848775940]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+
+[node name="MainMenuButton" type="Button" parent="UI/GameOverPanel/VBoxContainer/PanelContainer4" unique_id=750529810]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_font_sizes/font_size = 20
 text = "MENU"
 
 [node name="PausePanel" type="Panel" parent="UI" unique_id=433715676]
@@ -3092,10 +3120,63 @@ theme_override_fonts/font = ExtResource("12_uggic")
 text = "Score : 0"
 horizontal_alignment = 1
 
+[node name="TimerPanel" type="PanelContainer" parent="UI" unique_id=1453564840]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 8.5
+offset_right = 105.5
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+
+[node name="TimerText" type="Label" parent="UI/TimerPanel" unique_id=1396069380]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_uggic")
+text = "Time: 30"
+horizontal_alignment = 1
+
+[node name="WavePanel" type="PanelContainer" parent="UI" unique_id=1570641257]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_right = -8.5
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+
+[node name="WaveText" type="Label" parent="UI/WavePanel" unique_id=498584364]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_uggic")
+text = "Wave: 1"
+horizontal_alignment = 1
+
+[node name="StartWavePanel" type="PanelContainer" parent="UI" unique_id=1193838916]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -24.0
+offset_right = 48.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+
+[node name="StartWaveText" type="Label" parent="UI/StartWavePanel" unique_id=1800426462]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_uggic")
+text = "Wave: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="UI/Sidebar/RedPanel/RedButton" to="SpawnManager" method="_on_red_button_pressed"]
 [connection signal="pressed" from="UI/Sidebar/GreenPanel/GreenButton" to="SpawnManager" method="_on_green_button_pressed"]
 [connection signal="pressed" from="UI/Sidebar/BluePanel/BlueButton" to="SpawnManager" method="_on_blue_button_pressed"]
-[connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/RestartButton" to="SpawnManager" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/MainMenuButton" to="SpawnManager" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/PanelContainer3/RestartButton" to="SpawnManager" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/PanelContainer4/MainMenuButton" to="SpawnManager" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="UI/PausePanel/BContainer1/Continue" to="SpawnManager" method="_on_continue_pressed"]
 [connection signal="pressed" from="UI/PausePanel/BContainer2/Menu" to="SpawnManager" method="_on_menu_pressed"]

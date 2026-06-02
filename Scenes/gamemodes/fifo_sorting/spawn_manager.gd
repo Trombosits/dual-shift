@@ -11,6 +11,21 @@ extends Node2D
 @onready var pause_panel = $"../UI/PausePanel"
 
 @onready var score_text = $"../UI/ScorePanel/ScoreText"
+@onready var wave_text = $"../UI/WavePanel/WaveText"
+@onready var timer_text = $"../UI/TimerPanel/TimerText"
+@onready var start_wave_panel = $"../UI/StartWavePanel"
+@onready var start_wave_text = $"../UI/StartWavePanel/StartWaveText"
+@onready var final_score_text = $"../UI/GameOverPanel/VBoxContainer/PanelContainer2/FinalScoreText"
+
+var current_wave = 1
+
+var wave_timer = 30.0
+var current_time = 30.0
+
+var score_requirement = 250
+
+var game_started = false
+var between_wave = false
 
 var queue = []
 
@@ -21,7 +36,7 @@ var is_paused = false
 
 var variants = ["red", "green", "blue"]
 
-var priority_chance = 10
+var priority_chance = 5
 
 var queue_positions = [
 	Vector2(144, 100),
@@ -43,8 +58,10 @@ func _ready():
 	update_hp_ui()
 	update_score_ui()
 
-	for i in range(10):
-		spawn_npc()
+	update_wave_ui()
+	update_timer_ui()
+
+	start_wave()
 
 func spawn_npc():
 
@@ -70,7 +87,7 @@ func spawn_npc():
 
 	add_child(npc)
 
-	npc.global_position = Vector2(136, 330)
+	npc.global_position = Vector2(144, 330)
 
 	npc.variant_type = variants.pick_random()
 
@@ -91,6 +108,15 @@ func update_queue():
 		if is_instance_valid(queue[i]):
 
 			queue[i].target_position = queue_positions[i]
+
+			# NPC depan
+			if i > 0:
+
+				queue[i].npc_ahead = queue[i - 1]
+
+			else:
+
+				queue[i].npc_ahead = null
 
 func remove_first_npc():
 
@@ -154,11 +180,21 @@ func _on_priority_clicked(npc):
 
 		add_score(20)
 
+		spawn_npc()
+
 		update_queue()
 
-func _on_priority_failed():
+func _on_priority_failed(npc):
 
 	damage_player()
+
+	if queue.has(npc):
+
+		queue.erase(npc)
+
+		spawn_npc()
+
+		update_queue()
 
 func damage_player():
 
@@ -180,7 +216,12 @@ func update_hp_ui():
 
 func game_over():
 
+	game_started = false
+
 	game_over_panel.visible = true
+
+	final_score_text.visible = true
+	final_score_text.text = "FINAL SCORE : " + str(score)
 
 	get_tree().paused = true
 
@@ -189,6 +230,8 @@ func add_score(amount):
 	score += amount
 
 	update_score_ui()
+
+	check_wave_progress()
 
 func update_score_ui():
 
@@ -251,3 +294,123 @@ func _on_menu_pressed():
 	get_tree().paused = false
 
 	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
+
+# ===========================
+# TIMER & WAVE
+# ===========================
+
+func _process(delta):
+
+	if !game_started:
+		return
+
+	if between_wave:
+		return
+
+	current_time -= delta
+
+	update_timer_ui()
+
+	if current_time <= 0:
+
+		damage_player()
+
+		current_time = wave_timer
+
+func update_timer_ui():
+
+	timer_text.text = "Time : " + str(int(current_time))
+
+func update_wave_ui():
+
+	wave_text.text = "Wave : " + str(current_wave)
+
+func start_wave():
+
+	game_started = false
+
+	get_tree().paused = true
+
+	start_wave_panel.visible = true
+
+	start_wave_text.text = "WAVE " + str(current_wave)
+
+	await get_tree().create_timer(3.0, true, false, true).timeout
+
+	start_wave_panel.visible = false
+
+	current_time = wave_timer
+
+	game_started = true
+
+	get_tree().paused = false
+
+	while queue.size() < queue_positions.size():
+
+		spawn_npc()
+
+	update_wave_ui()
+	update_timer_ui()
+
+func check_wave_progress():
+
+	if score >= current_wave * score_requirement:
+
+		next_wave()
+
+func next_wave():
+
+	if between_wave:
+		return
+
+	between_wave = true
+
+	game_started = false
+
+	get_tree().paused = true
+
+	current_wave += 1
+
+	# TIMER MAKIN CEPAT
+	wave_timer -= 2
+
+	if wave_timer < 10:
+		wave_timer = 10
+
+	# HAPUS SEMUA NPC LAMA
+	clear_all_npc()
+
+	# PANEL WAVE
+	start_wave_panel.visible = true
+
+	start_wave_text.text = "WAVE " + str(current_wave)
+
+	await get_tree().create_timer(3.0, true, false, true).timeout
+
+	start_wave_panel.visible = false
+
+	current_time = wave_timer
+
+	# SPAWN ULANG DARI AWAL
+	for i in range(queue_positions.size()):
+
+		spawn_npc()
+
+	update_wave_ui()
+	update_timer_ui()
+
+	game_started = true
+
+	get_tree().paused = false
+
+	between_wave = false
+
+func clear_all_npc():
+
+	for npc in queue:
+
+		if is_instance_valid(npc):
+
+			npc.queue_free()
+
+	queue.clear()
