@@ -5,16 +5,19 @@ extends Node2D
 @onready var _damage_line = $damageLine
 @onready var _player = $player
 
-# ---   UI GAME   ---
+# ---  UI GAME   ---
 @onready var _life_label = $HUD/HeartPanel/Life
 @onready var _score_label = $HUD/ScorePanel/Score
 @onready var _wave_label = $HUD/WavePanel/Wave
 
-# Mengikuti struktur baru: LosePanel
-@onready var _lose_panel = $HUD/WinPanel
-@onready var _next_button = $"HUD/WinPanel/Next-Button" 
+# Memisahkan WinPanel dan LosePanel sesuai struktur Scene Tree
+@onready var _lose_panel = $HUD/LosePanel
+@onready var _retry_button = $"HUD/LosePanel/Retry" 
 
-# Referensi Menu Pause Baru
+@onready var _win_panel = $HUD/WinPanel
+@onready var _next_button = $"HUD/WinPanel/Next" 
+
+# Referensi Menu Pause
 @onready var _pause_panel = $HUD/PausePanel
 @onready var _continue_button = $HUD/PausePanel/BContainer1/Continue
 @onready var _menu_button = $HUD/PausePanel/BContainer2/Menu
@@ -46,9 +49,14 @@ var wave_3_enemy_spawned: bool = false
 func _ready():
 	# Sembunyikan semua panel UI di awal game
 	if is_instance_valid(_lose_panel): _lose_panel.hide()
+	if is_instance_valid(_win_panel): _win_panel.hide()
 	if is_instance_valid(_pause_panel): _pause_panel.hide()
 	
-	# Hubungkan sinyal tombol Lose Panel
+	# Hubungkan sinyal tombol Lose Panel (Retry)
+	if is_instance_valid(_retry_button):
+		_retry_button.pressed.connect(_on_retry_button_pressed)
+		
+	# Hubungkan sinyal tombol Win Panel (Next)
 	if is_instance_valid(_next_button):
 		_next_button.pressed.connect(_on_next_button_pressed)
 	
@@ -77,16 +85,14 @@ func _ready():
 
 
 func _input(event):
-	# Fitur global tombol ESCAPE untuk Pause / Unpause
 	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE):
 		if not game_over_displayed and not win_displayed:
 			if get_tree().paused:
-				_on_continue_button_pressed() # Lanjut jika sedang pause
+				_on_continue_button_pressed()
 			else:
-				trigger_pause() # Jeda jika sedang main
+				trigger_pause()
 			return
 
-	# Jangan proses ketikan huruf jika game selesai atau sedang dipause
 	if game_over_displayed or win_displayed or get_tree().paused: return
 	
 	if event is InputEventKey and event.pressed:
@@ -110,7 +116,6 @@ func _input(event):
 			
 			# 2. MODE SEARCH IN RANDOM OUTPUT: Cari musuh biasa
 			if current_enemy == null:
-				# A. Cek yang SEDANG diketik
 				for i in range(_spawner.enemies.size()):
 					var enemy = _spawner.enemies[i]
 					if is_instance_valid(enemy) and enemy.get("char_index") != null and enemy.char_index > 0:
@@ -119,7 +124,6 @@ func _input(event):
 							current_enemy = enemy
 							break
 				
-				# B. Cek huruf pertama cocok
 				if current_enemy == null:
 					var matching_indices = []
 					for i in range(_spawner.enemies.size()):
@@ -189,7 +193,7 @@ func _physics_process(_delta):
 				if _spawner.enemy_index >= len(_spawner.enemies):
 					_spawner.enemy_index = 0
 
-	# === LOGIKA DETEKSI MENANG (SELESAI WAVE 3) ===
+	# === LOGIKA DETEKSI MENANG ===
 	if current_wave == 3 and is_instance_valid(_spawner):
 		if _spawner.enemies.size() > 0:
 			wave_3_enemy_spawned = true
@@ -225,7 +229,7 @@ func _on_continue_button_pressed():
 	get_tree().paused = false
 
 func _on_menu_button_pressed():
-	get_tree().paused = false # Lepaskan status freeze sebelum pindah scene
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu/game_menu.tscn")
 
 
@@ -255,7 +259,32 @@ func trigger_win():
 	show_end_panel(true)
 
 
-# --- FUNGSI BANTUAN OPTIMASI (HELPERS) ---
+# --- FUNGSI TAMPILAN PANEL AKHIR ---
+func show_end_panel(is_victory: bool):
+	if is_victory:
+		if is_instance_valid(_win_panel):
+			var label_target = _win_panel.get_node_or_null("PanelContainer/Win")
+			if is_instance_valid(label_target):
+				label_target.text = "VICTORY!\nScore: " + str(score)
+			_win_panel.show()
+	else:
+		if is_instance_valid(_lose_panel):
+			var label_target = _lose_panel.get_node_or_null("PanelContainer/Lose")
+			if is_instance_valid(label_target):
+				label_target.text = "GAME OVER\nScore: " + str(score)
+			_lose_panel.show()
+
+
+# --- LOGIKA TOMBOL PANEL ---
+func _on_retry_button_pressed():
+	get_tree().paused = false 
+	get_tree().reload_current_scene() # Mengulang level saat ini
+
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/tutorial/player_room.tscn")
+
+
+# --- HELPER OPTIMASI ---
 func freeze_all_entities():
 	if is_instance_valid(_spawner):
 		_spawner.process_mode = PROCESS_MODE_DISABLED
@@ -263,20 +292,6 @@ func freeze_all_entities():
 			if is_instance_valid(enemy):
 				enemy.process_mode = PROCESS_MODE_DISABLED
 
-func show_end_panel(is_victory: bool):
-	if is_instance_valid(_lose_panel):
-		var label_target = _lose_panel.get_node_or_null("Lose")
-		if is_instance_valid(label_target):
-			if is_victory:
-				label_target.text = "VICTORY!\nScore: " + str(score)
-			else:
-				label_target.text = "GAME OVER\n"
-		_lose_panel.show()
-
-func _on_next_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/menu/game_menu.tscn")
-
-# Fungsi pengaman agar game tidak crash saat memanggil fungsi animasi player
 func safe_play_player_animation(method_name: String):
 	if is_instance_valid(_player) and _player.has_method(method_name):
 		_player.call(method_name)

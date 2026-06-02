@@ -40,7 +40,7 @@ func _input(event):
 				process_current_line()
 
 			else:
-				get_tree().change_scene_to_file("res://Scenes/tutorial/player_room.tscn")
+				get_tree().change_scene_to_file("res://Scenes/gamemodes/tutorial_typing/tutorial_Typing.tscn")
 
 func parse_line(line: String):
 	var line_info = line.split(":")
