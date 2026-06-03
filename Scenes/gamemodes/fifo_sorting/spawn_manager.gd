@@ -17,12 +17,18 @@ extends Node2D
 @onready var start_wave_text = $"../UI/StartWavePanel/StartWaveText"
 @onready var final_score_text = $"../UI/GameOverPanel/VBoxContainer/PanelContainer2/FinalScoreText"
 
+@onready var bgm = $"../BGMPlayer"
+@onready var click_sfx = $"../ClickSfx"
+@onready var wrong_sfx = $"../WrongSfx"
+@onready var game_over_sfx = $"../GameOverSfx"
+@onready var priority_wrong_sfx = $"../PriorityWrongSfx"
+
 var current_wave = 1
 
 var wave_timer = 30.0
 var current_time = 30.0
 
-var score_requirement = 250
+var next_wave_score = 250
 
 var game_started = false
 var between_wave = false
@@ -161,11 +167,15 @@ func check_answer(color_name):
 
 	else:
 
+		wrong_sfx.play()
+
 		print("SALAH")
 
 		damage_player()
 
 func _on_priority_clicked(npc):
+
+	click_sfx.play()
 
 	if !is_instance_valid(npc):
 		return
@@ -185,6 +195,8 @@ func _on_priority_clicked(npc):
 		update_queue()
 
 func _on_priority_failed(npc):
+
+	priority_wrong_sfx.play()
 
 	damage_player()
 
@@ -218,6 +230,13 @@ func game_over():
 
 	game_started = false
 
+	# STOP BGM
+	if bgm.playing:
+		bgm.stop()
+
+	# PLAY GAME OVER SFX
+	game_over_sfx.play()
+
 	game_over_panel.visible = true
 
 	final_score_text.visible = true
@@ -243,13 +262,19 @@ func update_score_ui():
 
 func _on_red_button_pressed():
 
+	click_sfx.play()
+
 	check_answer("red")
 
 func _on_green_button_pressed():
 
+	click_sfx.play()
+
 	check_answer("green")
 
 func _on_blue_button_pressed():
+
+	click_sfx.play()
 
 	check_answer("blue")
 
@@ -258,12 +283,14 @@ func _on_blue_button_pressed():
 # =========================================
 
 func _on_restart_button_pressed():
-
+	
+	click_sfx.play()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_main_menu_button_pressed():
-
+	
+	click_sfx.play()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
 
@@ -287,10 +314,12 @@ func toggle_pause():
 
 func _on_continue_pressed():
 
+	click_sfx.play()
 	toggle_pause()
 
 func _on_menu_pressed():
-
+	
+	click_sfx.play()
 	get_tree().paused = false
 
 	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
@@ -332,10 +361,9 @@ func start_wave():
 	get_tree().paused = true
 
 	start_wave_panel.visible = true
-
 	start_wave_text.text = "WAVE " + str(current_wave)
 
-	await get_tree().create_timer(3.0, true, false, true).timeout
+	await get_tree().create_timer(3.0, true).timeout
 
 	start_wave_panel.visible = false
 
@@ -354,7 +382,7 @@ func start_wave():
 
 func check_wave_progress():
 
-	if score >= current_wave * score_requirement:
+	if score >= next_wave_score:
 
 		next_wave()
 
@@ -367,41 +395,38 @@ func next_wave():
 
 	game_started = false
 
-	get_tree().paused = true
-
 	current_wave += 1
 
-	# TIMER MAKIN CEPAT
+	next_wave_score += 250
+
 	wave_timer -= 2
 
 	if wave_timer < 10:
 		wave_timer = 10
 
-	# HAPUS SEMUA NPC LAMA
 	clear_all_npc()
 
-	# PANEL WAVE
-	start_wave_panel.visible = true
+	get_tree().paused = true
 
+	start_wave_panel.visible = true
 	start_wave_text.text = "WAVE " + str(current_wave)
 
-	await get_tree().create_timer(3.0, true, false, true).timeout
+	await get_tree().create_timer(3.0, true).timeout
 
 	start_wave_panel.visible = false
 
 	current_time = wave_timer
 
-	# SPAWN ULANG DARI AWAL
-	for i in range(queue_positions.size()):
+	while queue.size() < queue_positions.size():
 
 		spawn_npc()
 
 	update_wave_ui()
 	update_timer_ui()
 
-	game_started = true
-
 	get_tree().paused = false
+
+	game_started = true
 
 	between_wave = false
 
