@@ -15,7 +15,12 @@
 [ext_resource type="Script" uid="uid://c4b35sgvriwj6" path="res://Scenes/gamemodes/fifo_sorting/npc_2.gd" id="12_nf6s4"]
 [ext_resource type="PackedScene" uid="uid://dhakr2kxrdamc" path="res://Scenes/gamemodes/fifo_sorting/priority_npc.tscn" id="12_nxkec"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="12_uggic"]
+[ext_resource type="AudioStream" uid="uid://clp1fknkre764" path="res://assets/sfx/Katyusha (Medieval Cover)-[AudioTrimmer.com].mp3" id="14_jqkja"]
 [ext_resource type="PackedScene" uid="uid://bfqpmobb4a7g2" path="res://Scenes/gamemodes/fifo_sorting/npc2.tscn" id="14_t4q23"]
+[ext_resource type="AudioStream" uid="uid://obsn1c8g8i2x" path="res://assets/sfx/game-over-284367.mp3" id="18_7blb2"]
+[ext_resource type="AudioStream" uid="uid://buwyq2v26k7nw" path="res://assets/sfx/click.wav" id="18_h70kj"]
+[ext_resource type="AudioStream" uid="uid://b16q0hnaky18r" path="res://assets/sfx/lolo_s-shoot-3-474090.mp3" id="18_t1k2u"]
+[ext_resource type="AudioStream" uid="uid://b6mo8vpxlx1ob" path="res://assets/sfx/lolo_s-error-474088.mp3" id="21_tpi6g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wlqry"]
 texture = ExtResource("2_06jgp")
@@ -2877,6 +2882,13 @@ script = ExtResource("8_hidrc")
 priority_npc_scene = ExtResource("12_nxkec")
 npc_scene = ExtResource("9_uebml")
 
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1889358598]
+process_mode = 3
+stream = ExtResource("14_jqkja")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=2104039207]
 
 [node name="Sidebar" type="VBoxContainer" parent="UI" unique_id=313208496]
@@ -3172,6 +3184,19 @@ theme_override_fonts/font = ExtResource("12_uggic")
 text = "Wave: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WrongSfx" type="AudioStreamPlayer2D" parent="." unique_id=1891234160]
+stream = ExtResource("18_t1k2u")
+
+[node name="GameOverSfx" type="AudioStreamPlayer2D" parent="." unique_id=1642566434]
+process_mode = 2
+stream = ExtResource("18_7blb2")
+
+[node name="ClickSfx" type="AudioStreamPlayer2D" parent="." unique_id=11253072]
+stream = ExtResource("18_h70kj")
+
+[node name="PriorityWrongSfx" type="AudioStreamPlayer2D" parent="." unique_id=565081678]
+stream = ExtResource("21_tpi6g")
 
 [connection signal="pressed" from="UI/Sidebar/RedPanel/RedButton" to="SpawnManager" method="_on_red_button_pressed"]
 [connection signal="pressed" from="UI/Sidebar/GreenPanel/GreenButton" to="SpawnManager" method="_on_green_button_pressed"]
