@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cg5ka20v8kucb"]
 
-[ext_resource type="Script" uid="uid://bfjgu2c05ksfw" path="res://Scripts/gamemodes/filo_sorting/FILOGameManager.gd" id="1_15f4q"]
+[ext_resource type="Script" uid="uid://cv1bom4dowce8" path="res://Scripts/gamemodes/tutorial_sorting/TutorialSortingGameManager.gd" id="1_15f4q"]
 [ext_resource type="Texture2D" uid="uid://cwmvv01dl6268" path="res://assets/Sprites/particles/dust_particles_01.png" id="2_ryepe"]
 [ext_resource type="Script" uid="uid://bbny280up2g18" path="res://Scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="3_c1ckd"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="4_yf4rn"]
@@ -243,7 +243,7 @@ damping_max = 3.0000002
 scale_min = 0.19999999
 scale_max = 0.45
 
-[node name="FiloSortingGame" type="Node2D" unique_id=1426430115]
+[node name="TutorSortingGame" type="Node2D" unique_id=1426430115]
 script = ExtResource("1_15f4q")
 
 [node name="DragLayer" type="CanvasLayer" parent="." unique_id=805189327]
