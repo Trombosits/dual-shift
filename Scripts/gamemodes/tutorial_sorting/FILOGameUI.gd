@@ -2,7 +2,7 @@
 # Mengelola interaksi UI; tombol"an
 extends CanvasLayer
 
-@onready var FILOGameManager = get_parent()
+@onready var TutorialSortingGameManager = get_parent()
 # Win Panel nodes
 @onready var win_panel: Panel = $WinPanel
 @onready var moves_value: Label = $WinPanel/VBoxContainer/StatsContainer/MovesBox/MovesValue

@@ -245,7 +245,6 @@ scale_max = 0.45
 
 [node name="FiloSortingGame" type="Node2D" unique_id=1426430115]
 script = ExtResource("1_swagj")
-current_difficulty = null
 
 [node name="DragLayer" type="CanvasLayer" parent="." unique_id=805189327]
 
