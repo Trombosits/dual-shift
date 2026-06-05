@@ -1,29 +1,30 @@
-[gd_scene format=3 uid="uid://oghntoxojh5u"]
+[gd_scene format=3 uid="uid://tcaoerbmyd88"]
 
-[ext_resource type="PackedScene" uid="uid://d4dn7sec8h42x" path="res://Scenes/gamemodes/fifo_sorting/player.tscn" id="1_ab5im"]
-[ext_resource type="Texture2D" uid="uid://dqqsxrqxtlnou" path="res://assets/Sprites/tilesets/floors/carpet.png" id="2_06jgp"]
-[ext_resource type="Texture2D" uid="uid://l30stbr8i31" path="res://assets/Sprites/tilesets/floors/flooring.png" id="3_hidrc"]
-[ext_resource type="Texture2D" uid="uid://cgs8kiyrlxmf5" path="res://assets/Sprites/tilesets/floors/wooden.png" id="4_uebml"]
-[ext_resource type="Texture2D" uid="uid://cyr0d7xdphxax" path="res://assets/Sprites/tilesets/walls/walls.png" id="5_k7xsf"]
-[ext_resource type="Texture2D" uid="uid://bppwml6bymwr0" path="res://assets/Sprites/tilesets/walls/wooden_door.png" id="6_jtcfx"]
-[ext_resource type="Texture2D" uid="uid://b2rj6hxu058qg" path="res://assets/Sprites/tilesets/walls/wooden_door_b.png" id="7_uggic"]
-[ext_resource type="Script" uid="uid://dguioxcmp32na" path="res://Scenes/gamemodes/fifo_sorting/spawn_manager.gd" id="8_hidrc"]
-[ext_resource type="Texture2D" uid="uid://bpxdtkvrdllhr" path="res://assets/Sprites/tilesets/floors/atlas_32x.png" id="8_jtcfx"]
-[ext_resource type="PackedScene" uid="uid://c6ujbbfiyhlkb" path="res://Scenes/gamemodes/fifo_sorting/npc1.tscn" id="9_uebml"]
-[ext_resource type="Texture2D" uid="uid://c7fyq70wk6y26" path="res://assets/GUI/heart_32x32.png" id="10_k7xsf"]
-[ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="11_wlqry"]
-[ext_resource type="Script" uid="uid://c4b35sgvriwj6" path="res://Scenes/gamemodes/fifo_sorting/npc_2.gd" id="12_nf6s4"]
-[ext_resource type="PackedScene" uid="uid://dhakr2kxrdamc" path="res://Scenes/gamemodes/fifo_sorting/priority_npc.tscn" id="12_nxkec"]
-[ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="12_uggic"]
-[ext_resource type="AudioStream" uid="uid://clp1fknkre764" path="res://assets/sfx/Katyusha (Medieval Cover)-[AudioTrimmer.com].mp3" id="14_jqkja"]
-[ext_resource type="PackedScene" uid="uid://bfqpmobb4a7g2" path="res://Scenes/gamemodes/fifo_sorting/npc2.tscn" id="14_t4q23"]
-[ext_resource type="AudioStream" uid="uid://obsn1c8g8i2x" path="res://assets/sfx/game-over-284367.mp3" id="18_7blb2"]
-[ext_resource type="AudioStream" uid="uid://buwyq2v26k7nw" path="res://assets/sfx/click.wav" id="18_h70kj"]
-[ext_resource type="AudioStream" uid="uid://b16q0hnaky18r" path="res://assets/sfx/lolo_s-shoot-3-474090.mp3" id="18_t1k2u"]
-[ext_resource type="AudioStream" uid="uid://b6mo8vpxlx1ob" path="res://assets/sfx/lolo_s-error-474088.mp3" id="21_tpi6g"]
+[ext_resource type="PackedScene" uid="uid://d4dn7sec8h42x" path="res://Scenes/gamemodes/fifo_sorting/player.tscn" id="1_r7q1w"]
+[ext_resource type="PackedScene" uid="uid://bfqpmobb4a7g2" path="res://Scenes/gamemodes/fifo_sorting/npc2.tscn" id="2_bkejg"]
+[ext_resource type="Script" uid="uid://c4b35sgvriwj6" path="res://Scenes/gamemodes/fifo_sorting/npc_2.gd" id="3_jhrrt"]
+[ext_resource type="Texture2D" uid="uid://dqqsxrqxtlnou" path="res://assets/Sprites/tilesets/floors/carpet.png" id="4_pjuhn"]
+[ext_resource type="Texture2D" uid="uid://l30stbr8i31" path="res://assets/Sprites/tilesets/floors/flooring.png" id="5_1bbvf"]
+[ext_resource type="Texture2D" uid="uid://cgs8kiyrlxmf5" path="res://assets/Sprites/tilesets/floors/wooden.png" id="6_x0rmq"]
+[ext_resource type="Texture2D" uid="uid://cyr0d7xdphxax" path="res://assets/Sprites/tilesets/walls/walls.png" id="7_vctvb"]
+[ext_resource type="Texture2D" uid="uid://bppwml6bymwr0" path="res://assets/Sprites/tilesets/walls/wooden_door.png" id="8_yihhe"]
+[ext_resource type="Texture2D" uid="uid://b2rj6hxu058qg" path="res://assets/Sprites/tilesets/walls/wooden_door_b.png" id="9_yy65j"]
+[ext_resource type="Texture2D" uid="uid://bpxdtkvrdllhr" path="res://assets/Sprites/tilesets/floors/atlas_32x.png" id="10_qiput"]
+[ext_resource type="Script" uid="uid://bec7vhqm6plbt" path="res://Scenes/gamemodes/tutorial_fifo/spawn_manager_tutorial.gd" id="11_saw1g"]
+[ext_resource type="PackedScene" uid="uid://c6ujbbfiyhlkb" path="res://Scenes/gamemodes/fifo_sorting/npc1.tscn" id="12_jhrrt"]
+[ext_resource type="AudioStream" uid="uid://clp1fknkre764" path="res://assets/sfx/Katyusha (Medieval Cover)-[AudioTrimmer.com].mp3" id="12_vqgyd"]
+[ext_resource type="PackedScene" uid="uid://dhakr2kxrdamc" path="res://Scenes/gamemodes/fifo_sorting/priority_npc.tscn" id="13_pjuhn"]
+[ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="13_rbf6w"]
+[ext_resource type="Texture2D" uid="uid://c7fyq70wk6y26" path="res://assets/GUI/heart_32x32.png" id="14_78vir"]
+[ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="15_cshye"]
+[ext_resource type="AudioStream" uid="uid://b16q0hnaky18r" path="res://assets/sfx/lolo_s-shoot-3-474090.mp3" id="16_ia6kg"]
+[ext_resource type="AudioStream" uid="uid://obsn1c8g8i2x" path="res://assets/sfx/game-over-284367.mp3" id="17_e1x55"]
+[ext_resource type="AudioStream" uid="uid://buwyq2v26k7nw" path="res://assets/sfx/click.wav" id="18_kjn7f"]
+[ext_resource type="AudioStream" uid="uid://b6mo8vpxlx1ob" path="res://assets/sfx/lolo_s-error-474088.mp3" id="19_gfbap"]
+[ext_resource type="AudioStream" uid="uid://b4beihnww2woe" path="res://assets/sfx/filo_win.mp3" id="22_pjuhn"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wlqry"]
-texture = ExtResource("2_06jgp")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eg3jw"]
+texture = ExtResource("4_pjuhn")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -73,8 +74,8 @@ texture = ExtResource("2_06jgp")
 4:7/0 = 0
 5:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t4q23"]
-texture = ExtResource("3_hidrc")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c7xw2"]
+texture = ExtResource("5_1bbvf")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -91,12 +92,12 @@ texture = ExtResource("3_hidrc")
 3:2/0 = 0
 4:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nf6s4"]
-texture = ExtResource("4_uebml")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blqsi"]
+texture = ExtResource("6_x0rmq")
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxkec"]
-texture = ExtResource("5_k7xsf")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tkwm"]
+texture = ExtResource("7_vctvb")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -129,18 +130,18 @@ texture = ExtResource("5_k7xsf")
 4:5/0 = 0
 5:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqkja"]
-texture = ExtResource("6_jtcfx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1f0gp"]
+texture = ExtResource("8_yihhe")
 0:0/0 = 0
 1:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h70kj"]
-texture = ExtResource("7_uggic")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7s47"]
+texture = ExtResource("9_yy65j")
 0:0/0 = 0
 1:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uggic"]
-texture = ExtResource("8_jtcfx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hk77a"]
+texture = ExtResource("10_qiput")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -2767,16 +2768,16 @@ texture = ExtResource("8_jtcfx")
 94:31/0 = 0
 95:31/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_7blb2"]
-sources/0 = SubResource("TileSetAtlasSource_wlqry")
-sources/1 = SubResource("TileSetAtlasSource_t4q23")
-sources/2 = SubResource("TileSetAtlasSource_nf6s4")
-sources/3 = SubResource("TileSetAtlasSource_nxkec")
-sources/4 = SubResource("TileSetAtlasSource_jqkja")
-sources/5 = SubResource("TileSetAtlasSource_h70kj")
-sources/6 = SubResource("TileSetAtlasSource_uggic")
+[sub_resource type="TileSet" id="TileSet_1px1f"]
+sources/0 = SubResource("TileSetAtlasSource_eg3jw")
+sources/1 = SubResource("TileSetAtlasSource_c7xw2")
+sources/2 = SubResource("TileSetAtlasSource_blqsi")
+sources/3 = SubResource("TileSetAtlasSource_6tkwm")
+sources/4 = SubResource("TileSetAtlasSource_1f0gp")
+sources/5 = SubResource("TileSetAtlasSource_y7s47")
+sources/6 = SubResource("TileSetAtlasSource_hk77a")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r7uu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iktf"]
 bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
 border_width_left = 4
 border_width_top = 4
@@ -2788,7 +2789,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlqry"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su2dy"]
 bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
 border_width_left = 4
 border_width_top = 4
@@ -2800,7 +2801,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4q23"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1oeb"]
 bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
 border_width_left = 4
 border_width_top = 4
@@ -2812,22 +2813,22 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf6s4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcqlx"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxkec"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01om1"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqkja"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh3ev"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h70kj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1bgm"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7blb2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p5hg"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1k2u"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpj6b"]
 bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
 border_width_left = 4
 border_width_top = 4
@@ -2839,34 +2840,34 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpi6g"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clvhv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlork"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eke00"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyu3r"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yg70w"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkova"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppsl6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="FIFOSortingGame" type="Node2D" unique_id=1597380158]
+[node name="Tutorialfifo" type="Node2D" unique_id=1191134324]
 
-[node name="Player" parent="." unique_id=1382401953 instance=ExtResource("1_ab5im")]
+[node name="Player" parent="." unique_id=1382401953 instance=ExtResource("1_r7q1w")]
 position = Vector2(143, 55)
 
-[node name="CharacterBody2D" parent="." unique_id=775159699 instance=ExtResource("14_t4q23")]
+[node name="CharacterBody2D" parent="." unique_id=775159699 instance=ExtResource("2_bkejg")]
 z_index = 5
 position = Vector2(439, 61)
-script = ExtResource("12_nf6s4")
+script = ExtResource("3_jhrrt")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1856844033]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=673364632]
 position = Vector2(288, 158)
 zoom = Vector2(2, 2)
 
-[node name="TileMap" type="TileMap" parent="." unique_id=870780362]
-tile_set = SubResource("TileSet_7blb2")
+[node name="TileMap" type="TileMap" parent="." unique_id=590341787]
+tile_set = SubResource("TileSet_1px1f")
 format = 2
 layer_0/name = "Layer3"
 layer_0/tile_data = PackedInt32Array(589827, 2, 0, 1048579, 2, 0, 1048608, 2, 0, 589856, 2, 0)
@@ -2877,21 +2878,21 @@ layer_2/tile_data = PackedInt32Array(393217, 3407878, 31, 393218, 3473414, 31, 3
 layer_3/name = "Layer1"
 layer_3/tile_data = PackedInt32Array(-65511, 3211270, 7, -65510, 3276806, 7, -65509, 3342342, 7, -65508, 3407878, 7, -65501, 327686, 8, 35, 327686, 9, 65571, 327686, 9, 131107, 327686, 10, 196643, 327686, 10, 262179, 327686, 10, 327715, 327686, 10, 393251, 327686, 10, 458787, 327686, 10, 524323, 327686, 10, 589859, 327686, 10, 655395, 327686, 10, 720931, 327686, 10, 786467, 327686, 10, 852003, 327686, 10, 917539, 327686, 10, 983075, 327686, 10, 1048611, 327686, 10, 1114147, 327686, 10, 1179683, 327686, 10, 1179648, 131078, 9, 1114112, 131078, 9, 1048576, 131078, 9, 983040, 131078, 9, 917504, 131078, 9, 851968, 131078, 9, 786432, 131078, 9, 720896, 131078, 9, 655360, 131078, 9, 589824, 131078, 9, 524288, 131078, 9, 458752, 131078, 9, 393216, 131078, 9, 327680, 131078, 9, 262144, 131078, 9, -65536, 131078, 8, 0, 131078, 9, 65536, 131078, 9, 131072, 131078, 9, 196608, 131078, 9, 1245184, 131078, 11, 1245185, 196614, 11, 1245186, 196614, 11, 1245187, 196614, 11, 1245188, 196614, 11, 1245189, 196614, 11, 1245190, 196614, 11, 1245191, 196614, 11, 1245194, 196614, 11, 1245195, 196614, 11, 1245196, 196614, 11, 1245197, 196614, 11, 1245198, 196614, 11, 1245199, 196614, 11, 1245200, 196614, 11, 1245201, 196614, 11, 1245202, 196614, 11, 1245203, 196614, 11, 1245204, 196614, 11, 1245205, 196614, 11, 1245206, 196614, 11, 1245207, 196614, 11, 1245208, 196614, 11, 1245209, 196614, 11, 1245218, 196614, 11, 1245217, 196614, 11, 1245216, 196614, 11, 1245214, 196614, 11, 1245215, 196614, 11, 1245213, 196614, 11, 1245212, 196614, 11, 1245219, 327686, 11, 65562, 3276806, 9, 65563, 3342342, 9, 27, 3342342, 8, 28, 3407878, 8, 26, 3276806, 8, 25, 3211270, 8, 65561, 3211270, 9, 131098, 3276806, 10, 131099, 3342342, 10, 131100, 3407878, 10, 65564, 3407878, 9, 131097, 3211270, 10)
 
-[node name="SpawnManager" type="Node2D" parent="." unique_id=1185450990]
-script = ExtResource("8_hidrc")
-priority_npc_scene = ExtResource("12_nxkec")
-npc_scene = ExtResource("9_uebml")
+[node name="SpawnManager" type="Node2D" parent="." unique_id=1305915031]
+script = ExtResource("11_saw1g")
+priority_npc_scene = ExtResource("13_pjuhn")
+npc_scene = ExtResource("12_jhrrt")
 
-[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1889358598]
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1612252743]
 process_mode = 3
-stream = ExtResource("14_jqkja")
+stream = ExtResource("12_vqgyd")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=2104039207]
+[node name="UI" type="CanvasLayer" parent="." unique_id=769574860]
 
-[node name="Sidebar" type="VBoxContainer" parent="UI" unique_id=313208496]
+[node name="Sidebar" type="VBoxContainer" parent="UI" unique_id=1594214269]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -2903,63 +2904,63 @@ offset_bottom = 50.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="RedPanel" type="PanelContainer" parent="UI/Sidebar" unique_id=1031037344]
+[node name="RedPanel" type="PanelContainer" parent="UI/Sidebar" unique_id=967512791]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
 
-[node name="RedButton" type="Button" parent="UI/Sidebar/RedPanel" unique_id=383897644]
+[node name="RedButton" type="Button" parent="UI/Sidebar/RedPanel" unique_id=2079075828]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("11_wlqry")
+theme_override_fonts/font = ExtResource("13_rbf6w")
 text = "RED"
 
-[node name="GreenPanel" type="PanelContainer" parent="UI/Sidebar" unique_id=1621631168]
+[node name="GreenPanel" type="PanelContainer" parent="UI/Sidebar" unique_id=46217401]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
 
-[node name="GreenButton" type="Button" parent="UI/Sidebar/GreenPanel" unique_id=2020307209]
+[node name="GreenButton" type="Button" parent="UI/Sidebar/GreenPanel" unique_id=1766591995]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("11_wlqry")
+theme_override_fonts/font = ExtResource("13_rbf6w")
 text = "GREEN"
 
-[node name="BluePanel" type="PanelContainer" parent="UI/Sidebar" unique_id=1092429432]
+[node name="BluePanel" type="PanelContainer" parent="UI/Sidebar" unique_id=670672184]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
 
-[node name="BlueButton" type="Button" parent="UI/Sidebar/BluePanel" unique_id=228758540]
+[node name="BlueButton" type="Button" parent="UI/Sidebar/BluePanel" unique_id=1367580854]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_fonts/font = ExtResource("11_wlqry")
+theme_override_fonts/font = ExtResource("13_rbf6w")
 text = "BLUE"
 
-[node name="HPContainer" type="HBoxContainer" parent="UI" unique_id=2082466264]
+[node name="HPContainer" type="HBoxContainer" parent="UI" unique_id=536219029]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 124.0
 offset_bottom = 60.0
 
-[node name="Heart1" type="TextureRect" parent="UI/HPContainer" unique_id=539135552]
+[node name="Heart1" type="TextureRect" parent="UI/HPContainer" unique_id=649275314]
 layout_mode = 2
-texture = ExtResource("10_k7xsf")
+texture = ExtResource("14_78vir")
 stretch_mode = 3
 
-[node name="Heart2" type="TextureRect" parent="UI/HPContainer" unique_id=1797149184]
+[node name="Heart2" type="TextureRect" parent="UI/HPContainer" unique_id=1821534252]
 layout_mode = 2
-texture = ExtResource("10_k7xsf")
+texture = ExtResource("14_78vir")
 stretch_mode = 3
 
-[node name="Heart3" type="TextureRect" parent="UI/HPContainer" unique_id=1334811269]
+[node name="Heart3" type="TextureRect" parent="UI/HPContainer" unique_id=1995215158]
 layout_mode = 2
-texture = ExtResource("10_k7xsf")
+texture = ExtResource("14_78vir")
 stretch_mode = 3
 
-[node name="GameOverPanel" type="Panel" parent="UI" unique_id=1125777795]
+[node name="GameOverPanel" type="Panel" parent="UI" unique_id=260130924]
 process_mode = 2
 visible = false
 anchors_preset = 15
@@ -2968,7 +2969,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPanel" unique_id=214747519]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverPanel" unique_id=905101433]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2982,13 +2983,13 @@ offset_bottom = 94.25
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=663574218]
+[node name="PanelContainer" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=952270484]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
-[node name="GameOver" type="Label" parent="UI/GameOverPanel/VBoxContainer/PanelContainer" unique_id=1820254459]
+[node name="GameOver" type="Label" parent="UI/GameOverPanel/VBoxContainer/PanelContainer" unique_id=1023221723]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_wlqry")
+theme_override_fonts/font = ExtResource("13_rbf6w")
 theme_override_font_sizes/font_size = 45
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -2996,13 +2997,13 @@ vertical_alignment = 1
 justification_flags = 171
 uppercase = true
 
-[node name="PanelContainer2" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=1999993681]
+[node name="PanelContainer2" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=243510232]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
-[node name="FinalScoreText" type="Label" parent="UI/GameOverPanel/VBoxContainer/PanelContainer2" unique_id=1392763270]
+[node name="FinalScoreText" type="Label" parent="UI/GameOverPanel/VBoxContainer/PanelContainer2" unique_id=968522779]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 31
 text = "Score: 0"
 horizontal_alignment = 1
@@ -3010,74 +3011,111 @@ vertical_alignment = 1
 justification_flags = 171
 uppercase = true
 
-[node name="PanelContainer3" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=754478056]
+[node name="PanelContainer3" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=1265730189]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
-[node name="RestartButton" type="Button" parent="UI/GameOverPanel/VBoxContainer/PanelContainer3" unique_id=1275815135]
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel/VBoxContainer/PanelContainer3" unique_id=1122241362]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 20
 text = "RESTART"
 
-[node name="PanelContainer4" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=848775940]
+[node name="PanelContainer4" type="PanelContainer" parent="UI/GameOverPanel/VBoxContainer" unique_id=1420457686]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
-[node name="MainMenuButton" type="Button" parent="UI/GameOverPanel/VBoxContainer/PanelContainer4" unique_id=750529810]
+[node name="MainMenuButton" type="Button" parent="UI/GameOverPanel/VBoxContainer/PanelContainer4" unique_id=1386720248]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 20
 text = "MENU"
 
-[node name="TimerPanel" type="PanelContainer" parent="UI" unique_id=1453564840]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 8.5
-offset_right = 105.5
-offset_bottom = 48.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
-
-[node name="TimerText" type="Label" parent="UI/TimerPanel" unique_id=1396069380]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
-text = "Time: 30"
-horizontal_alignment = 1
-
-[node name="ScorePanel" type="PanelContainer" parent="UI" unique_id=1526623358]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="NextPanel" type="Panel" parent="UI" unique_id=8200797]
+process_mode = 2
+visible = false
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -97.0
-offset_bottom = 48.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
-
-[node name="ScoreText" type="Label" parent="UI/ScorePanel" unique_id=81981421]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
-text = "Score : 0"
-horizontal_alignment = 1
-
-[node name="WavePanel" type="PanelContainer" parent="UI" unique_id=1570641257]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -105.5
-offset_right = -8.5
-offset_bottom = 48.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+grow_vertical = 2
 
-[node name="WaveText" type="Label" parent="UI/WavePanel" unique_id=498584364]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/NextPanel" unique_id=472712929]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -94.25
+offset_right = 145.0
+offset_bottom = 94.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=1999919533]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
-text = "Wave: 1"
-horizontal_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
-[node name="PausePanel" type="Panel" parent="UI" unique_id=433715676]
+[node name="MissionCompleted" type="Label" parent="UI/NextPanel/VBoxContainer/PanelContainer" unique_id=1367475213]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_rbf6w")
+theme_override_font_sizes/font_size = 45
+text = "MISSION COMPLETED"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 171
+uppercase = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=1136893009]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
+
+[node name="FinalScoreText" type="Label" parent="UI/NextPanel/VBoxContainer/PanelContainer2" unique_id=1177158093]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+theme_override_font_sizes/font_size = 31
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 171
+uppercase = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=1044730286]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
+
+[node name="NextButton" type="Button" parent="UI/NextPanel/VBoxContainer/PanelContainer3" unique_id=1934029322]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+theme_override_font_sizes/font_size = 20
+text = "NEXT"
+
+[node name="PanelContainer5" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=1972346905]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
+
+[node name="RestartButton" type="Button" parent="UI/NextPanel/VBoxContainer/PanelContainer5" unique_id=2131358179]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+theme_override_font_sizes/font_size = 20
+text = "RESTART"
+
+[node name="PanelContainer4" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=531210350]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
+
+[node name="MainMenuButton" type="Button" parent="UI/NextPanel/VBoxContainer/PanelContainer4" unique_id=1163504039]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+theme_override_font_sizes/font_size = 20
+text = "MENU"
+
+[node name="PausePanel" type="Panel" parent="UI" unique_id=241594708]
 process_mode = 2
 visible = false
 anchors_preset = 8
@@ -3092,7 +3130,7 @@ offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PausePanel" unique_id=2026743949]
+[node name="PanelContainer" type="PanelContainer" parent="UI/PausePanel" unique_id=745992633]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -3102,17 +3140,17 @@ offset_top = 25.5
 offset_right = 31.0
 offset_bottom = 62.5
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wlqry")
+theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
-[node name="Title" type="Label" parent="UI/PausePanel/PanelContainer" unique_id=1118605017]
+[node name="Title" type="Label" parent="UI/PausePanel/PanelContainer" unique_id=1044264617]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.8235294, 0.47843137, 1)
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 108
 text = "PAUSED"
 
-[node name="BContainer1" type="PanelContainer" parent="UI/PausePanel" unique_id=1130494630]
+[node name="BContainer1" type="PanelContainer" parent="UI/PausePanel" unique_id=686573272]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -3125,20 +3163,20 @@ offset_right = -250.0
 offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t4q23")
+theme_override_styles/panel = SubResource("StyleBoxFlat_m1oeb")
 
-[node name="Continue" type="Button" parent="UI/PausePanel/BContainer1" unique_id=1572435561]
+[node name="Continue" type="Button" parent="UI/PausePanel/BContainer1" unique_id=435527535]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_nf6s4")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_nxkec")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jqkja")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h70kj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7blb2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kcqlx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_01om1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qh3ev")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u1bgm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_0p5hg")
 text = "Continue"
 
-[node name="BContainer2" type="PanelContainer" parent="UI/PausePanel" unique_id=1093647456]
+[node name="BContainer2" type="PanelContainer" parent="UI/PausePanel" unique_id=1741699434]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -3151,20 +3189,68 @@ offset_right = -730.0
 offset_bottom = 49.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t1k2u")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gpj6b")
 
-[node name="Menu" type="Button" parent="UI/PausePanel/BContainer2" unique_id=13167174]
+[node name="MainMenuButton" type="Button" parent="UI/PausePanel/BContainer2" unique_id=1964902914]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_tpi6g")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tlork")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fyu3r")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_qkova")
+theme_override_styles/normal = SubResource("StyleBoxFlat_clvhv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eke00")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yg70w")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ppsl6")
 text = "Back To Menu"
 
-[node name="StartWavePanel" type="PanelContainer" parent="UI" unique_id=1193838916]
+[node name="ScorePanel" type="PanelContainer" parent="UI" unique_id=1253556471]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
+
+[node name="ScoreText" type="Label" parent="UI/ScorePanel" unique_id=2062964321]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+text = "Score : 0"
+horizontal_alignment = 1
+
+[node name="TimerPanel" type="PanelContainer" parent="UI" unique_id=525245097]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 8.5
+offset_right = 105.5
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
+
+[node name="TimerText" type="Label" parent="UI/TimerPanel" unique_id=1243100684]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+text = "Time: 30"
+horizontal_alignment = 1
+
+[node name="WavePanel" type="PanelContainer" parent="UI" unique_id=759587112]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_right = -8.5
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
+
+[node name="WaveText" type="Label" parent="UI/WavePanel" unique_id=1166138364]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_cshye")
+text = "Wave: 1"
+horizontal_alignment = 1
+
+[node name="StartWavePanel" type="PanelContainer" parent="UI" unique_id=1196647816]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -3176,32 +3262,39 @@ offset_right = 48.5
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6r7uu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iktf")
 
-[node name="StartWaveText" type="Label" parent="UI/StartWavePanel" unique_id=1800426462]
+[node name="StartWaveText" type="Label" parent="UI/StartWavePanel" unique_id=109388644]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_uggic")
+theme_override_fonts/font = ExtResource("15_cshye")
 text = "Wave: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WrongSfx" type="AudioStreamPlayer2D" parent="." unique_id=1891234160]
-stream = ExtResource("18_t1k2u")
+[node name="WrongSfx" type="AudioStreamPlayer2D" parent="." unique_id=2138452912]
+stream = ExtResource("16_ia6kg")
 
-[node name="GameOverSfx" type="AudioStreamPlayer2D" parent="." unique_id=1642566434]
+[node name="GameOverSfx" type="AudioStreamPlayer2D" parent="." unique_id=1755502946]
 process_mode = 2
-stream = ExtResource("18_7blb2")
+stream = ExtResource("17_e1x55")
 
-[node name="ClickSfx" type="AudioStreamPlayer2D" parent="." unique_id=11253072]
-stream = ExtResource("18_h70kj")
+[node name="ClickSfx" type="AudioStreamPlayer2D" parent="." unique_id=118660134]
+stream = ExtResource("18_kjn7f")
 
-[node name="PriorityWrongSfx" type="AudioStreamPlayer2D" parent="." unique_id=565081678]
-stream = ExtResource("21_tpi6g")
+[node name="PriorityWrongSfx" type="AudioStreamPlayer2D" parent="." unique_id=1014252922]
+stream = ExtResource("19_gfbap")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="." unique_id=1765133783]
+stream = ExtResource("22_pjuhn")
+volume_db = -8.0
 
 [connection signal="pressed" from="UI/Sidebar/RedPanel/RedButton" to="SpawnManager" method="_on_red_button_pressed"]
 [connection signal="pressed" from="UI/Sidebar/GreenPanel/GreenButton" to="SpawnManager" method="_on_green_button_pressed"]
 [connection signal="pressed" from="UI/Sidebar/BluePanel/BlueButton" to="SpawnManager" method="_on_blue_button_pressed"]
 [connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/PanelContainer3/RestartButton" to="SpawnManager" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/GameOverPanel/VBoxContainer/PanelContainer4/MainMenuButton" to="SpawnManager" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="UI/NextPanel/VBoxContainer/PanelContainer3/NextButton" to="SpawnManager" method="_on_next_button_pressed"]
+[connection signal="pressed" from="UI/NextPanel/VBoxContainer/PanelContainer5/RestartButton" to="SpawnManager" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI/NextPanel/VBoxContainer/PanelContainer4/MainMenuButton" to="SpawnManager" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="UI/PausePanel/BContainer1/Continue" to="SpawnManager" method="_on_continue_pressed"]
-[connection signal="pressed" from="UI/PausePanel/BContainer2/Menu" to="SpawnManager" method="_on_menu_pressed"]
+[connection signal="pressed" from="UI/PausePanel/BContainer2/MainMenuButton" to="SpawnManager" method="_on_main_menu_button_pressed"]
