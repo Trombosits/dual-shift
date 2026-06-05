@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://c6y6q52oug0ij"]
 
 [ext_resource type="Script" uid="uid://bljd8d3g0s7mx" path="res://Scripts/menu/main_menu.gd" id="1_655o3"]
-[ext_resource type="Texture2D" uid="uid://bgjpoiouxl7vw" path="res://assets/Sprites/tilesets/water1.png" id="1_uffod"]
 [ext_resource type="PackedScene" uid="uid://c76hu5ayfcgvo" path="res://Scenes/fade_transition.tscn" id="2_evx1p"]
 [ext_resource type="AudioStream" uid="uid://m0vc58usrtft" path="res://assets/sfx/Medieval Music  Cobblestone Village-[AudioTrimmer.com].mp3" id="2_kwgaw"]
 [ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="2_ygw4n"]
 [ext_resource type="FontFile" uid="uid://cdl714xx6oidd" path="res://assets/Fonts/static/PixelifySans-Medium.ttf" id="3_655o3"]
+[ext_resource type="Texture2D" uid="uid://csql5rs47cm8u" path="res://assets/background/bg_mainmenu.jpg" id="3_u7oun"]
 [ext_resource type="Script" uid="uid://6eh27qod0wi1" path="res://Scripts/menu/music_control.gd" id="6_u7oun"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byejo"]
-texture = ExtResource("1_uffod")
+texture = ExtResource("3_u7oun")
 modulate_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcc7k"]
@@ -108,7 +108,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gcc7k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rbak8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tt54a")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gcc7k")
-text = "CONTINUE"
+text = "GAME MODE"
 
 [node name="Setting" type="Button" parent="Main_Button" unique_id=1252558548]
 layout_mode = 2

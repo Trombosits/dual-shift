@@ -2,8 +2,7 @@
 # Mengelola interaksi UI; tombol"an
 extends CanvasLayer
 
-@onready var game_manager: FILOGameManager = get_parent()
-
+@onready var game_manager = get_parent()
 # Win Panel nodes
 @onready var win_panel: Panel = $WinPanel
 @onready var moves_value: Label = $WinPanel/VBoxContainer/StatsContainer/MovesBox/MovesValue
@@ -21,9 +20,10 @@ func _ready() -> void:
 func show_win_screen(total_moves: int, elapsed_time: float) -> void:
 	# Isi stats
 	moves_value.text = str(total_moves)
-	var minutes = int(elapsed_time) / 60
+	var minutes = (elapsed_time) / 60
 	var seconds = int(elapsed_time) % 60
-	time_value.text = "%02d:%02d" % [minutes, seconds]
+	var milliseconds = int((elapsed_time - int(elapsed_time)) * 100)
+	time_value.text = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 
 	# Tampilkan panel dengan animasi scale-in
 	win_panel.visible = true
@@ -41,17 +41,12 @@ func hide_win_screen() -> void:
 	tween.tween_callback(func(): win_panel.visible = false)
 
 func _on_next_pressed() -> void:
-	# TODO: ganti path sesuai scene gamemode berikutnya
-	# get_tree().change_scene_to_file("res://Scenes/gamemodes/typing/TypingGame.tscn")
-	print("[UI] Lanjut ke gamemode berikutnya")
+	get_tree().change_scene_to_file("res://Scenes/tutorial/night_city.tscn")
 
 func _on_replay_pressed() -> void:
 	hide_win_screen()
-	await get_tree().create_timer(0.25).timeout
-	if game_manager:
-		game_manager.reset_game()
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://Scenes/gamemodes/filo_sorting/FILOSortingGame.tscn")
 
 func _on_menu_pressed() -> void:
-	# TODO: ganti path sesuai scene main menu
-	# get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-	print("[UI] Kembali ke main menu")
+	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bcespjf1xvi0h"]
+
+[ext_resource type="Script" uid="uid://2ffxsvv02te0" path="res://Scripts/gamemodes/filo_sorting/Potion.gd" id="1_7d4ho"]
+
+[node name="Potion" type="Node2D" unique_id=1048755833]
+script = ExtResource("1_7d4ho")

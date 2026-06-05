@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dy5l28w01i673"]
+
+[ext_resource type="Script" uid="uid://dfdcgm18faf6o" path="res://Scripts/tutorial/character_sprite.gd" id="1_c2xvj"]
+[ext_resource type="SpriteFrames" uid="uid://d34ugk846ehic" path="res://assets/Sprites/dialogue/jeanne_dialogue.tres" id="2_fyket"]
+
+[node name="Character Sprite" type="Node2D" unique_id=44426156]
+script = ExtResource("1_c2xvj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1607813571]
+scale = Vector2(0.36, 0.36)
+sprite_frames = ExtResource("2_fyket")
+animation = &"talking"
+frame_progress = 0.9260239

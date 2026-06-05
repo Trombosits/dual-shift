@@ -1,11 +1,10 @@
-
 # PotionRack.gd
 extends Area2D
 class_name PotionRack
 
 #FONT
 var font = load("res://assets/Fonts/static/PixelifySans-Regular.ttf")
-
+@warning_ignore("unused_signal")
 signal rack_clicked(rack)
 signal stack_changed(rack)
 
@@ -20,7 +19,6 @@ var _rack_body: Sprite2D
 var current_difficulty = 0
 
 func _ready() -> void:
-	print("RACK READY:", rack_id)
 	_build_rack_visual()
 	var collision = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
@@ -32,17 +30,15 @@ func _ready() -> void:
 	input_event.connect(_on_input_event)
 
 func _build_rack_visual() -> void:
-
 	_rack_body = Sprite2D.new()
 	_rack_body.texture = get_rack_texture()
 	_rack_body.position = Vector2(0, -170)
 	_rack_body.scale = Vector2(0.45, 0.50)
 	add_child(_rack_body)
 
-# TACK OPERATIONS
+# STACK OPERATIONS
 func push(potion: Potion) -> bool:
 	if is_full():
-		print("[Rack %d] PUSH gagal: penuh" % rack_id)
 		return false
 
 	if potion.get_parent() and potion.get_parent() != self:
@@ -54,18 +50,15 @@ func push(potion: Potion) -> bool:
 	_stack.append(potion)
 	_reposition_potions()
 	stack_changed.emit(self)
-	print("[Rack %d] PUSH: %s → size=%d" % [rack_id, Potion.POTION_NAMES[potion.potion_type], _stack.size()])
 	return true
 
 func pop() -> Potion:
 	if is_empty():
-		print("[Rack %d] POP gagal: kosong" % rack_id)
 		return null
 
 	var top_potion = _stack.pop_back()
 	top_potion.rack_owner = null
 	stack_changed.emit(self)
-	print("[Rack %d] POP: %s → size=%d" % [rack_id, Potion.POTION_NAMES[top_potion.potion_type], _stack.size()])
 	return top_potion
 
 func peek() -> Potion:
@@ -98,16 +91,12 @@ func get_stack_types() -> Array:
 	return _stack.map(func(p): return p.potion_type)
 
 func _reposition_potions() -> void:
-
 	for i in _stack.size():
-
 		var potion = _stack[i]
-
 		var start_y
 		var spacing
 
 		match current_difficulty:
-
 			# EASY (4 slot)
 			0:
 				start_y = -68
@@ -141,7 +130,6 @@ func set_selected(value: bool) -> void:
 	_is_selected = value
 	if not _rack_body:
 		return
-
 	if value:
 		_rack_body.modulate = Color(1.3, 1.3, 0.7)
 	else:
@@ -164,7 +152,6 @@ func initialize_with_potions(types: Array) -> void:
 func _on_input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			print("RACK DIKLIK:", rack_id)
 			var drag_manager = get_tree().get_first_node_in_group("drag_manager")
 			if drag_manager:
 				drag_manager._on_rack_clicked(self)

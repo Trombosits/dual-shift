@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://wb7fk2edmwe3"]
+
+[ext_resource type="Script" uid="uid://c78p0mofkskk7" path="res://Scripts/tutorial/first_scene.gd" id="1_yp752"]
+[ext_resource type="PackedScene" uid="uid://dq43jjp5tajca" path="res://Scenes/tutorial/ui/story_1.tscn" id="4_hyh4e"]
+
+[sub_resource type="GDScript" id="GDScript_ldf0n"]
+script/source = "extends ColorRect
+
+
+func _ready() -> void:
+	pass 
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldf0n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="First_Scene" type="Node2D" unique_id=1441388089]
+script = ExtResource("1_yp752")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=343701185]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=428732925]
+light_mask = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = SubResource("GDScript_ldf0n")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1598336513]
+layer = 0
+
+[node name="Story1" parent="CanvasLayer2" unique_id=1126766688 instance=ExtResource("4_hyh4e")]
+
+[node name="Timer" type="Timer" parent="CanvasLayer2/Story1" unique_id=759167758]
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=678854682]
+
+[node name="Button" type="Button" parent="CanvasLayer3" unique_id=885684395]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ldf0n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ldf0n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ldf0n")
+
+[connection signal="timeout" from="CanvasLayer2/Story1/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer3/Button" to="." method="_on_button_pressed"]

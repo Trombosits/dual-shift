@@ -1,0 +1,442 @@
+[gd_scene format=3 uid="uid://btgv84opxv5wg"]
+
+[ext_resource type="Script" uid="uid://bfjgu2c05ksfw" path="res://Scripts/gamemodes/filo_sorting/FILOGameManager.gd" id="1_swagj"]
+[ext_resource type="Texture2D" uid="uid://ja60mt2gtw5p" path="res://assets/background.png" id="2_pq2ia"]
+[ext_resource type="Script" uid="uid://bbny280up2g18" path="res://Scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="2_rfg6a"]
+[ext_resource type="Texture2D" uid="uid://cwmvv01dl6268" path="res://assets/Sprites/particles/dust_particles_01.png" id="2_rneqf"]
+[ext_resource type="Script" uid="uid://bb3kxpm1qatfw" path="res://Scripts/gamemodes/filo_sorting/DragManager.gd" id="3_2mstl"]
+[ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="3_6pegp"]
+[ext_resource type="Script" uid="uid://d4d3rvs2sh7au" path="res://Scenes/gamemodes/filo_sorting/win_panel.gd" id="4_q67yb"]
+[ext_resource type="Script" uid="uid://buhlvdu3wrgcr" path="res://Scenes/gamemodes/filo_sorting/difficulty_panel.gd" id="5_wgkep"]
+[ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="6_g83et"]
+[ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="7_csd0h"]
+[ext_resource type="FontFile" uid="uid://cdl714xx6oidd" path="res://assets/Fonts/static/PixelifySans-Medium.ttf" id="8_jc5e0"]
+[ext_resource type="AudioStream" uid="uid://cxbwlyrlbhpjk" path="res://assets/sfx/hover.wav" id="9_csd0h"]
+[ext_resource type="AudioStream" uid="uid://buwyq2v26k7nw" path="res://assets/sfx/click.wav" id="10_jc5e0"]
+[ext_resource type="AudioStream" uid="uid://d26ien7ws4fhi" path="res://assets/sfx/backsound_filo.mp3" id="11_jc5e0"]
+[ext_resource type="AudioStream" uid="uid://b4beihnww2woe" path="res://assets/sfx/filo_win.mp3" id="12_14d57"]
+[ext_resource type="AudioStream" uid="uid://c762x2hp83jn" path="res://assets/sfx/pick_potion.mp3" id="13_hjfks"]
+[ext_resource type="AudioStream" uid="uid://di4sk5wscyfsi" path="res://assets/sfx/drop_potion.mp3" id="14_q67yb"]
+[ext_resource type="Texture2D" uid="uid://c58nn20ph184q" path="res://assets/Sprites/particles/confetti_PNG87026.png" id="18_3o025"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3o025"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rneqf"]
+bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o025"]
+bg_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8uih"]
+bg_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaajq"]
+bg_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shfql"]
+bg_color = Color(0.16470589, 0.11372549, 0.078431375, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q67yb"]
+bg_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjfks"]
+bg_color = Color(0.9529412, 0.6117647, 0.07058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14d57"]
+bg_color = Color(0.7529412, 0.22352941, 0.16862746, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.83137256, 0.6431373, 0.37254903, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 5
+shadow_size = 8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rneqf"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 50.263
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = -15.000016
+angular_velocity_max = 14.999984
+gravity = Vector3(200, 200, 0)
+damping_min = 3.0000002
+damping_max = 3.0000002
+scale_min = 0.19999999
+scale_max = 0.45
+
+[node name="FiloSortingGame" type="Node2D" unique_id=1426430115]
+script = ExtResource("1_swagj")
+
+[node name="DragLayer" type="CanvasLayer" parent="." unique_id=805189327]
+
+[node name="DragPotion" type="Node2D" parent="DragLayer" unique_id=421253336]
+
+[node name="SparkleBurst" type="GPUParticles2D" parent="DragLayer" unique_id=429702338]
+emitting = false
+amount = 25
+texture = ExtResource("2_rneqf")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3o025")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=801322442]
+script = ExtResource("2_rfg6a")
+
+[node name="MovesLabel" type="Label" parent="HUD" unique_id=1634063985]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 88.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("3_6pegp")
+text = "Gerakan: 0"
+
+[node name="TimerLabel" type="Label" parent="HUD" unique_id=1005045089]
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 108.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("3_6pegp")
+text = "Waktu: 00:00"
+
+[node name="WinPanel" type="Panel" parent="HUD" unique_id=149490064]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.50003
+offset_top = -136.5
+offset_right = 294.50003
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rneqf")
+script = ExtResource("4_q67yb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/WinPanel" unique_id=988847099]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="HUD/WinPanel/VBoxContainer" unique_id=354822542]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6pegp")
+theme_override_font_sizes/font_size = 32
+text = "🎉 SELESAI, 
+KAMU HEBAT!"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="HUD/WinPanel/VBoxContainer" unique_id=264792014]
+layout_mode = 2
+
+[node name="StatsContainer" type="HBoxContainer" parent="HUD/WinPanel/VBoxContainer" unique_id=1997683641]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="MovesBox" type="VBoxContainer" parent="HUD/WinPanel/VBoxContainer/StatsContainer" unique_id=2040308815]
+layout_mode = 2
+
+[node name="MovesValue" type="Label" parent="HUD/WinPanel/VBoxContainer/StatsContainer/MovesBox" unique_id=382159842]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+
+[node name="MovesDesc" type="Label" parent="HUD/WinPanel/VBoxContainer/StatsContainer/MovesBox" unique_id=1007564748]
+modulate = Color(1, 1, 1, 0.7058824)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g83et")
+text = "Gerakan"
+horizontal_alignment = 1
+
+[node name="TimeBox" type="VBoxContainer" parent="HUD/WinPanel/VBoxContainer/StatsContainer" unique_id=871147578]
+layout_mode = 2
+
+[node name="TimeValue" type="Label" parent="HUD/WinPanel/VBoxContainer/StatsContainer/TimeBox" unique_id=811939649]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_font_sizes/font_size = 28
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="TimeDesc" type="Label" parent="HUD/WinPanel/VBoxContainer/StatsContainer/TimeBox" unique_id=616719859]
+modulate = Color(1, 1, 1, 0.7058824)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g83et")
+text = "Waktu"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="HUD/WinPanel/VBoxContainer" unique_id=1970323559]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="HUD/WinPanel/VBoxContainer" unique_id=479900263]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=153838292]
+custom_minimum_size = Vector2(130, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3o025")
+text = "Main Menu"
+
+[node name="ReplayButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=1812131650]
+custom_minimum_size = Vector2(130, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q8uih")
+text = "Ulangi"
+
+[node name="NextButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=1658057387]
+custom_minimum_size = Vector2(130, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6pegp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gaajq")
+text = "Lanjut ▶"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="HUD/WinPanel" unique_id=1075025347]
+stream = ExtResource("9_csd0h")
+volume_db = -15.0
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="HUD/WinPanel" unique_id=883081868]
+stream = ExtResource("10_jc5e0")
+volume_db = -15.0
+
+[node name="StarsLabel" type="Label" parent="HUD/WinPanel" unique_id=858299382]
+layout_mode = 0
+offset_left = 20.52768
+offset_top = 16.835312
+offset_right = 168.52768
+offset_bottom = 66.83531
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "⭐⭐⭐"
+
+[node name="DragManager" type="Node" parent="HUD" unique_id=1942982732]
+script = ExtResource("3_2mstl")
+
+[node name="DifficultyPanel" type="Panel" parent="HUD" unique_id=1074574381]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -210.0
+offset_right = 250.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_wgkep")
+
+[node name="PanelBG" type="PanelContainer" parent="HUD/DifficultyPanel" unique_id=474163056]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -210.0
+offset_right = 250.0
+offset_bottom = 210.00003
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_shfql")
+
+[node name="EasyButton" type="Button" parent="HUD/DifficultyPanel" unique_id=1650705527]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 226.6719
+offset_right = 160.5
+offset_bottom = 272.0
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_q67yb")
+text = "MUDAH"
+
+[node name="MediumButton" type="Button" parent="HUD/DifficultyPanel" unique_id=461413732]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 227.04156
+offset_right = 343.0
+offset_bottom = 272.62964
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjfks")
+text = "MENENGAH"
+
+[node name="HardButton" type="Button" parent="HUD/DifficultyPanel" unique_id=1401189943]
+layout_mode = 0
+offset_left = 362.16846
+offset_top = 224.46106
+offset_right = 476.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("6_g83et")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_14d57")
+text = "SULIT"
+
+[node name="Title" type="Label" parent="HUD/DifficultyPanel" unique_id=37737264]
+layout_mode = 0
+offset_top = 43.0
+offset_right = 499.5
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(1, 0.8235294, 0.47843137, 1)
+theme_override_fonts/font = ExtResource("7_csd0h")
+theme_override_font_sizes/font_size = 42
+text = "Alchemy Sorting"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="HUD/DifficultyPanel" unique_id=347642464]
+layout_mode = 0
+offset_left = 147.03162
+offset_top = 151.22101
+offset_right = 360.03162
+offset_bottom = 176.22101
+theme_override_fonts/font = ExtResource("8_jc5e0")
+theme_override_font_sizes/font_size = 20
+text = "Pilih Tingkat Kesulitan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="HUD/DifficultyPanel" unique_id=1394015639]
+stream = ExtResource("9_csd0h")
+volume_db = -15.0
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="HUD/DifficultyPanel" unique_id=1282810734]
+stream = ExtResource("10_jc5e0")
+volume_db = -8.0
+
+[node name="DarkOverlay" type="ColorRect" parent="HUD" unique_id=2113828937]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="WinSound" type="AudioStreamPlayer" parent="HUD" unique_id=65362466]
+stream = ExtResource("12_14d57")
+volume_db = -8.0
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=169221272]
+stream = ExtResource("11_jc5e0")
+volume_db = 10.0
+autoplay = true
+
+[node name="RackContainer" type="Area2D" parent="." unique_id=963968918]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=990749689]
+position = Vector2(575.99994, 319)
+scale = Vector2(0.8357557, 0.8229167)
+texture = ExtResource("2_pq2ia")
+
+[node name="SFX_Pick" type="AudioStreamPlayer" parent="." unique_id=1392020545]
+stream = ExtResource("13_hjfks")
+volume_db = -10.0
+
+[node name="SFX_Drop" type="AudioStreamPlayer" parent="." unique_id=2104515343]
+stream = ExtResource("14_q67yb")
+volume_db = -10.0
+
+[node name="ConfettiParticles" type="GPUParticles2D" parent="." unique_id=45575086]
+emitting = false
+amount = 100
+texture = ExtResource("18_3o025")
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_rneqf")
+
+[connection signal="pressed" from="HUD/DifficultyPanel/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="HUD/DifficultyPanel/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="HUD/DifficultyPanel/HardButton" to="." method="_on_hard_button_pressed"]

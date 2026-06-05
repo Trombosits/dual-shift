@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ls84o161cghp"]
 
-[ext_resource type="Texture2D" uid="uid://bgjpoiouxl7vw" path="res://assets/Sprites/tilesets/water1.png" id="1_1casq"]
 [ext_resource type="Script" uid="uid://cqxk5r576iyv8" path="res://Scripts/menu/game_menu.gd" id="1_3lbad"]
 [ext_resource type="PackedScene" uid="uid://c76hu5ayfcgvo" path="res://Scenes/fade_transition.tscn" id="2_fowyo"]
 [ext_resource type="AudioStream" uid="uid://m0vc58usrtft" path="res://assets/sfx/Medieval Music  Cobblestone Village-[AudioTrimmer.com].mp3" id="2_i2wdd"]
 [ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="2_sokd1"]
 [ext_resource type="FontFile" uid="uid://cdl714xx6oidd" path="res://assets/Fonts/static/PixelifySans-Medium.ttf" id="3_3lbad"]
+[ext_resource type="Texture2D" uid="uid://dwefr6qc6wbmo" path="res://assets/background/bg_gamemenu.jpg" id="3_i2wdd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byejo"]
-texture = ExtResource("1_1casq")
+texture = ExtResource("3_i2wdd")
 modulate_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcc7k"]
