@@ -531,15 +531,6 @@ volume_db = -15.0
 stream = ExtResource("10_jc5e0")
 volume_db = -8.0
 
-[node name="DarkOverlay" type="ColorRect" parent="HUD" unique_id=2113828937]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.47058824)
-
 [node name="WinSound" type="AudioStreamPlayer" parent="HUD" unique_id=65362466]
 stream = ExtResource("12_14d57")
 volume_db = -8.0
