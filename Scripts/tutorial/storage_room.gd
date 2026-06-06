@@ -62,7 +62,7 @@ func _input(event):
 				process_current_line()
 
 			else:
-				get_tree().change_scene_to_file("res://Scenes/gamemodes/filo_sorting/FILOSortingGame.tscn")
+				get_tree().change_scene_to_file("res://Scenes/gamemodes/tutorial_sorting/TutorSortingGame.tscn")
 
 func parse_line(line: String):
 	var line_info = line.split(":")
