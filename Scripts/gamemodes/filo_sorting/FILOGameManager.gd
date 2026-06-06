@@ -85,11 +85,16 @@ var empty_racks: int
 # READY
 func _ready() -> void:
 	win_panel.visible = false
-	difficulty_panel.visible = true
-	_connect_signals()
-	game_active = true
 	pause_panel.visible = false
-
+	difficulty_panel.visible = true
+	game_active = false
+	drag_manager.input_enabled = false
+	total_moves = 0
+	elapsed_time = 0.0
+	_update_moves_display()
+	_update_timer_display()
+	_update_score_display()
+	_connect_signals()
 
 # PROCESS
 func _process(delta: float) -> void:
@@ -380,3 +385,16 @@ func _on_pause_button_pressed() -> void:
 		_resume_game()
 	else:
 		_pause_game()
+
+func _start_with_difficulty(new_difficulty: Difficulty) -> void:
+	current_difficulty = new_difficulty
+	difficulty_panel.visible = false
+	total_moves = 0
+	elapsed_time = 0.0
+	game_active = false
+	_load_difficulty_settings()
+	_setup_game()
+	drag_manager.input_enabled = true
+	game_active = true
+	if not background_music.playing:
+		background_music.play()
