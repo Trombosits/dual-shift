@@ -66,6 +66,7 @@ var difficulty_settings = {
 @onready var restart_button = $HUD/PausePanel/BContainer2/Menu
 @onready var back_button = $HUD/PausePanel/BContainer3/Restart
 @onready var pause_button = $HUD/Panel/PauseButton
+@onready var pause_button_panel = $HUD/Panel
 
 # GAME STATE
 var racks: Array[PotionRack] = []
@@ -224,11 +225,15 @@ func _check_win_condition() -> bool:
 
 # WIN
 func _trigger_win() -> void:
+	get_tree().paused = false
+	is_paused = false
 	game_active = false
 	drag_manager.input_enabled = false
 	final_score = _calculate_score()
 	win_sound.play()
 	pause_button.visible = false
+	pause_button_panel.visible = false
+	pause_panel.visible = false
 	confetti_particles.restart()
 	confetti_particles.emitting = true
 	var tween = create_tween()
@@ -265,9 +270,12 @@ func reset_game() -> void:
 	game_active = false
 	ingame_score_label.text = "Skor: 0"
 	hud_layer.hide_win_screen()
+	current_difficulty = Difficulty.EASY
 	_load_difficulty_settings()
 	_setup_game()
 	pause_button.visible = true
+	pause_button_panel.visible = true
+	pause_panel.visible = false
 	game_active = true
 	game_reset.emit()
 	if not background_music.playing:

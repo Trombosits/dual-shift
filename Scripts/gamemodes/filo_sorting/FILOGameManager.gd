@@ -66,6 +66,7 @@ var difficulty_settings = {
 @onready var restart_button = $HUD/PausePanel/BContainer2/Menu
 @onready var back_button = $HUD/PausePanel/BContainer3/Restart
 @onready var pause_button = $HUD/Panel/PauseButton
+@onready var pause_button_panel = $HUD/Panel
 
 # GAME STATE
 var racks: Array[PotionRack] = []
@@ -232,6 +233,8 @@ func _trigger_win() -> void:
 	final_score = _calculate_score()
 	win_sound.play()
 	pause_button.visible = false
+	pause_button_panel.visible = false
+	pause_panel.visible = false
 	confetti_particles.restart()
 	confetti_particles.emitting = true
 	var tween = create_tween()
@@ -271,6 +274,8 @@ func reset_game() -> void:
 	_load_difficulty_settings()
 	_setup_game()
 	pause_button.visible = true
+	pause_button_panel.visible = true
+	pause_panel.visible = false
 	game_active = true
 	game_reset.emit()
 	if not background_music.playing:
@@ -282,25 +287,13 @@ func set_difficulty(new_difficulty: Difficulty) -> void:
 	reset_game()
 
 func _on_easy_button_pressed() -> void:
-	current_difficulty = Difficulty.EASY
-	_load_difficulty_settings()
-	_setup_game()
-	difficulty_panel.visible = false
-	game_active = true
+	_start_with_difficulty(Difficulty.EASY)
 
 func _on_medium_button_pressed() -> void:
-	current_difficulty = Difficulty.MEDIUM
-	_load_difficulty_settings()
-	_setup_game()
-	difficulty_panel.visible = false
-	game_active = true
+	_start_with_difficulty(Difficulty.MEDIUM)
 
 func _on_hard_button_pressed() -> void:
-	current_difficulty = Difficulty.HARD
-	_load_difficulty_settings()
-	_setup_game()
-	difficulty_panel.visible = false
-	game_active = true
+	_start_with_difficulty(Difficulty.HARD)
 
 func _update_difficulty_ui():
 	easy_button.disabled = current_difficulty == Difficulty.EASY
@@ -387,8 +380,13 @@ func _on_pause_button_pressed() -> void:
 		_pause_game()
 
 func _start_with_difficulty(new_difficulty: Difficulty) -> void:
+	get_tree().paused = false
+	is_paused = false
 	current_difficulty = new_difficulty
 	difficulty_panel.visible = false
+	pause_panel.visible = false
+	pause_button.visible = true
+	pause_button_panel.visible = true
 	total_moves = 0
 	elapsed_time = 0.0
 	game_active = false
