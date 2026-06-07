@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d4dn7sec8h42x" path="res://Scenes/gamemodes/fifo_sorting/player.tscn" id="1_r7q1w"]
 [ext_resource type="PackedScene" uid="uid://bfqpmobb4a7g2" path="res://Scenes/gamemodes/fifo_sorting/npc2.tscn" id="2_bkejg"]
-[ext_resource type="Script" uid="uid://c4b35sgvriwj6" path="res://Scenes/gamemodes/fifo_sorting/npc_2.gd" id="3_jhrrt"]
+[ext_resource type="Script" path="res://Scenes/gamemodes/fifo_sorting/npc_2.gd" id="3_jhrrt"]
 [ext_resource type="Texture2D" uid="uid://dqqsxrqxtlnou" path="res://assets/Sprites/tilesets/floors/carpet.png" id="4_pjuhn"]
 [ext_resource type="Texture2D" uid="uid://l30stbr8i31" path="res://assets/Sprites/tilesets/floors/flooring.png" id="5_1bbvf"]
 [ext_resource type="Texture2D" uid="uid://cgs8kiyrlxmf5" path="res://assets/Sprites/tilesets/floors/wooden.png" id="6_x0rmq"]
@@ -3094,22 +3094,26 @@ theme_override_font_sizes/font_size = 20
 text = "NEXT"
 
 [node name="PanelContainer5" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=1972346905]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
 [node name="RestartButton" type="Button" parent="UI/NextPanel/VBoxContainer/PanelContainer5" unique_id=2131358179]
 process_mode = 3
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 20
 text = "RESTART"
 
 [node name="PanelContainer4" type="PanelContainer" parent="UI/NextPanel/VBoxContainer" unique_id=531210350]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_su2dy")
 
 [node name="MainMenuButton" type="Button" parent="UI/NextPanel/VBoxContainer/PanelContainer4" unique_id=1163504039]
 process_mode = 3
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_cshye")
 theme_override_font_sizes/font_size = 20

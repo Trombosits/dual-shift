@@ -1,11 +1,62 @@
 [gd_scene format=3 uid="uid://xeqv0od6g181"]
 
 [ext_resource type="PackedScene" uid="uid://cavywxscmo1tp" path="res://Scenes/skill_tree/skill_button.tscn" id="1_4fkpp"]
-[ext_resource type="Script" uid="uid://bb3fd6clur3c" path="res://Scripts/skill_tree/skill_tree.gd" id="1_bi0f4"]
-[ext_resource type="Texture2D" uid="uid://bqj3i67llpa43" path="res://assets/background/bg_storageroom.jpg" id="1_ddxup"]
+[ext_resource type="Texture2D" uid="uid://dhqqremp78axo" path="res://assets/background/bg_skilltree.jpg" id="1_ddxup"]
+[ext_resource type="Script" path="res://Scripts/skill_tree/skill_tree.gd" id="1_jtcur"]
+[ext_resource type="AudioStream" uid="uid://b6rxchqsdu064" path="res://assets/music/bg_skilltree.mp3" id="2_8o1e4"]
+[ext_resource type="Texture2D" uid="uid://dwveu7blm0pg1" path="res://assets/skill_tree/1 Icons/1/Skillicon1_02.png" id="3_jwq8r"]
+[ext_resource type="Texture2D" uid="uid://ddeeea7pncyym" path="res://assets/skill_tree/1 Icons/1/Skillicon1_14.png" id="4_dxiao"]
+[ext_resource type="Texture2D" uid="uid://cw8gpodph2ml" path="res://assets/skill_tree/1 Icons/1/Skillicon1_21.png" id="5_dxiao"]
+[ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="6_fmnm2"]
+[ext_resource type="Texture2D" uid="uid://dk4sw1lejqgpg" path="res://assets/background/bg_skill.jpg" id="8_5mp2s"]
+[ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="8_jtcur"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bi0f4"]
 texture = ExtResource("1_ddxup")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8o1e4"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mp2s"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsg1l"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kwtmv"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yl4h7"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2g1t"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4m3s"]
+texture = ExtResource("8_5mp2s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o1e4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsg1l"]
+bg_color = Color(0.58775055, 0.5877506, 0.5877504, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwtmv"]
+bg_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl4h7"]
 
 [node name="Skill Tree" type="Control" unique_id=257408144]
 layout_mode = 3
@@ -14,7 +65,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bi0f4")
+script = ExtResource("1_jtcur")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=598877395]
+stream = ExtResource("2_8o1e4")
+autoplay = true
+bus = &"Music"
 
 [node name="Panel2" type="Panel" parent="." unique_id=1144321719]
 z_index = -1
@@ -26,13 +82,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bi0f4")
 
-[node name="PointsLabel" type="Label" parent="Panel2" unique_id=1869253819]
-layout_mode = 0
-offset_right = 194.0
-offset_bottom = 88.0
-text = "Points : 0"
+[node name="Label" type="Label" parent="." unique_id=942732780]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -391.0
+offset_top = 40.0
+offset_right = -67.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.8509804)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 60
+text = "SKILL TREE"
 
-[node name="Button" parent="." unique_id=1019560544 instance=ExtResource("1_4fkpp")]
+[node name="ScoreAll" parent="." unique_id=1019560544 instance=ExtResource("1_4fkpp")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,36 +105,410 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -224.0
+offset_top = -174.0
 offset_right = 50.0
-offset_bottom = -124.0
+offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 2
+texture_normal = ExtResource("3_jwq8r")
 
-[node name="Button" parent="Button" unique_id=314408703 instance=ExtResource("1_4fkpp")]
+[node name="ScoreTyping1" parent="ScoreAll" unique_id=314408703 instance=ExtResource("1_4fkpp")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 100.0
+offset_left = 250.0
 offset_top = 100.0
-offset_right = 200.0
+offset_right = 350.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("4_dxiao")
 
-[node name="Button2" parent="Button" unique_id=404398604 instance=ExtResource("1_4fkpp")]
+[node name="ScoreTyping2" parent="ScoreAll/ScoreTyping1" unique_id=644577029 instance=ExtResource("1_4fkpp")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
+offset_left = -50.0
 offset_top = 100.0
-offset_right = -100.0
+offset_right = 50.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("5_dxiao")
+
+[node name="ScoreFifo1" parent="ScoreAll" unique_id=404398604 instance=ExtResource("1_4fkpp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 100.0
+offset_right = -250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("4_dxiao")
+
+[node name="ScoreFifo2" parent="ScoreAll/ScoreFifo1" unique_id=2096967166 instance=ExtResource("1_4fkpp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 100.0
+offset_right = 50.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("5_dxiao")
+
+[node name="ScoreFilo1" parent="ScoreAll" unique_id=1918295469 instance=ExtResource("1_4fkpp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 100.0
+offset_right = 50.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("4_dxiao")
+
+[node name="ScoreFilo2" parent="ScoreAll/ScoreFilo1" unique_id=1884545878 instance=ExtResource("1_4fkpp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 100.0
+offset_right = 50.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("5_dxiao")
+
+[node name="All" type="Panel" parent="." unique_id=1338987215]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -62.0
+offset_right = 150.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8o1e4")
+
+[node name="Title" type="Label" parent="All" unique_id=993798408]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -15.0
+offset_right = 88.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "MANUSIA HEBAT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fifo1" type="Panel" parent="." unique_id=418870927]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = 86.0
+offset_right = -150.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5mp2s")
+
+[node name="Title" type="Label" parent="Fifo1" unique_id=110362302]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -15.0
+offset_right = 88.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "RESEPSIONIS PEMULA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fifo2" type="Panel" parent="." unique_id=1867989041]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -447.0
+offset_top = 18.0
+offset_right = -147.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wsg1l")
+
+[node name="Title" type="Label" parent="Fifo2" unique_id=1096615680]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -15.0
+offset_right = 88.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "RESEPSIONIS MASTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Filo1" type="Panel" parent="." unique_id=975065790]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 84.0
+offset_right = 150.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kwtmv")
+
+[node name="Title" type="Label" parent="Filo1" unique_id=1158851024]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -15.0
+offset_right = 88.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "LOGISTIK PEMULA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Filo2" type="Panel" parent="." unique_id=641207149]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yl4h7")
+
+[node name="Title" type="Label" parent="Filo2" unique_id=1920041886]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -15.0
+offset_right = 107.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "LOSGISTIK MASTER"
+
+[node name="Typing1" type="Panel" parent="." unique_id=701740179]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 154.0
+offset_top = 84.0
+offset_right = 454.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t2g1t")
+
+[node name="Title" type="Label" parent="Typing1" unique_id=1052865535]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.5
+offset_top = -15.0
+offset_right = 95.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "KSATRIA PEMULA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Typing2" type="Panel" parent="." unique_id=1626024897]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = 18.0
+offset_right = 452.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4m3s")
+
+[node name="Title" type="Label" parent="Typing2" unique_id=1770500835]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -15.0
+offset_right = 94.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 24
+text = "KSATRIA MASTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="." unique_id=1869253819]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 90.0
+offset_top = 40.0
+offset_right = 360.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_fmnm2")
+theme_override_font_sizes/font_size = 50
+text = "Points : 0"
+
+[node name="Back" type="Button" parent="." unique_id=403178058]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -71.0
+offset_right = 211.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_jtcur")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8o1e4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wsg1l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kwtmv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yl4h7")
+text = "BACK"
+
+[connection signal="mouse_entered" from="ScoreAll" to="." method="_on_score_all_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll" to="." method="_on_score_all_mouse_exited"]
+[connection signal="mouse_entered" from="ScoreAll/ScoreTyping1" to="." method="_on_score_typing_1_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll/ScoreTyping1" to="." method="_on_score_typing_1_mouse_exited"]
+[connection signal="mouse_entered" from="ScoreAll/ScoreTyping1/ScoreTyping2" to="." method="_on_score_typing_2_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll/ScoreTyping1/ScoreTyping2" to="." method="_on_score_typing_2_mouse_exited"]
+[connection signal="mouse_entered" from="ScoreAll/ScoreFifo1" to="." method="_on_score_fifo_1_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll/ScoreFifo1" to="." method="_on_score_fifo_1_mouse_exited"]
+[connection signal="mouse_entered" from="ScoreAll/ScoreFifo1/ScoreFifo2" to="." method="_on_score_fifo_2_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll/ScoreFifo1/ScoreFifo2" to="." method="_on_score_fifo_2_mouse_exited"]
+[connection signal="mouse_entered" from="ScoreAll/ScoreFilo1" to="." method="_on_score_filo_1_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll/ScoreFilo1" to="." method="_on_score_filo_1_mouse_exited"]
+[connection signal="mouse_entered" from="ScoreAll/ScoreFilo1/ScoreFilo2" to="." method="_on_score_filo_2_mouse_entered"]
+[connection signal="mouse_exited" from="ScoreAll/ScoreFilo1/ScoreFilo2" to="." method="_on_score_filo_2_mouse_exited"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

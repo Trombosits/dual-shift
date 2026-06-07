@@ -322,7 +322,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_yf4rn")
 theme_override_font_sizes/font_size = 32
 text = "SORTING
-    SELESAI! 🎉"
+ SELESAI! "
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
@@ -395,6 +395,7 @@ theme_override_constants/separation = 12
 alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=153838292]
+visible = false
 custom_minimum_size = Vector2(130, 45)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_f5eqh")
@@ -402,6 +403,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_3o025")
 text = "Main Menu"
 
 [node name="ReplayButton" type="Button" parent="HUD/WinPanel/VBoxContainer/ButtonContainer" unique_id=1812131650]
+visible = false
 custom_minimum_size = Vector2(130, 45)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_f5eqh")
@@ -437,6 +439,7 @@ text = "⭐⭐⭐"
 script = ExtResource("10_e1x3k")
 
 [node name="DifficultyPanel" type="Panel" parent="HUD" unique_id=1074574381]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -536,7 +539,6 @@ volume_db = -8.0
 
 [node name="PausePanel" type="Panel" parent="HUD" unique_id=614810413]
 process_mode = 2
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -598,6 +600,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wa0j7")
 text = "Continue"
 
 [node name="BContainer2" type="PanelContainer" parent="HUD/PausePanel" unique_id=1780972883]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -625,6 +628,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nx8w1")
 text = "Back To Menu"
 
 [node name="BContainer3" type="PanelContainer" parent="HUD/PausePanel" unique_id=2026380126]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

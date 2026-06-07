@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bljd8d3g0s7mx" path="res://Scripts/menu/main_menu.gd" id="1_655o3"]
 [ext_resource type="PackedScene" uid="uid://c76hu5ayfcgvo" path="res://Scenes/fade_transition.tscn" id="2_evx1p"]
-[ext_resource type="AudioStream" uid="uid://m0vc58usrtft" path="res://assets/sfx/Medieval Music  Cobblestone Village-[AudioTrimmer.com].mp3" id="2_kwgaw"]
+[ext_resource type="AudioStream" uid="uid://utc0e8lvl6j5" path="res://assets/music/bg_mainmenu.mp3" id="2_u7oun"]
 [ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="2_ygw4n"]
 [ext_resource type="FontFile" uid="uid://cdl714xx6oidd" path="res://assets/Fonts/static/PixelifySans-Medium.ttf" id="3_655o3"]
 [ext_resource type="Texture2D" uid="uid://csql5rs47cm8u" path="res://assets/background/bg_mainmenu.jpg" id="3_u7oun"]
@@ -53,8 +53,9 @@ grow_vertical = 2
 script = ExtResource("1_655o3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=962645580]
-stream = ExtResource("2_kwgaw")
+stream = ExtResource("2_u7oun")
 autoplay = true
+bus = &"Music"
 
 [node name="Background" type="Panel" parent="." unique_id=202348787]
 layout_mode = 1
