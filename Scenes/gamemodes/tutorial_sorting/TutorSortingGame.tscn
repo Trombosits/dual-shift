@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cv1bom4dowce8" path="res://Scripts/gamemodes/tutorial_sorting/TutorialSortingGameManager.gd" id="1_15f4q"]
 [ext_resource type="Texture2D" uid="uid://cwmvv01dl6268" path="res://assets/Sprites/particles/dust_particles_01.png" id="2_ryepe"]
-[ext_resource type="Script" uid="uid://bbny280up2g18" path="res://Scripts/gamemodes/filo_sorting/FILOGameUI.gd" id="3_c1ckd"]
+[ext_resource type="Script" uid="uid://befm1b0al6bp3" path="res://Scripts/gamemodes/tutorial_sorting/TutorialFILOGameUI.gd" id="3_15f4q"]
 [ext_resource type="FontFile" uid="uid://buue2wkwhkg7s" path="res://assets/Fonts/static/PixelifySans-Regular.ttf" id="4_yf4rn"]
-[ext_resource type="Script" uid="uid://bj36brrbj61l2" path="res://Scenes/gamemodes/tutorial_sorting/win_panel.gd" id="5_0grok"]
+[ext_resource type="Script" uid="uid://bi4ykmpgece84" path="res://Scripts/gamemodes/tutorial_sorting/tutorial_win_panel.gd" id="5_15f4q"]
 [ext_resource type="FontFile" uid="uid://buswovl23eex6" path="res://assets/Fonts/static/PixelifySans-SemiBold.ttf" id="6_bgpwj"]
 [ext_resource type="FontFile" uid="uid://dbyf7yvi1jjju" path="res://assets/Fonts/static/PixelifySans-Bold.ttf" id="7_f5eqh"]
 [ext_resource type="AudioStream" uid="uid://cxbwlyrlbhpjk" path="res://assets/sfx/hover.wav" id="8_1dpvf"]
@@ -260,7 +260,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_3o025")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=801322442]
-script = ExtResource("3_c1ckd")
+script = ExtResource("3_15f4q")
 
 [node name="StatsPanel" type="Panel" parent="HUD" unique_id=682595914]
 offset_left = 7.616081
@@ -306,7 +306,7 @@ offset_bottom = 136.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rneqf")
-script = ExtResource("5_0grok")
+script = ExtResource("5_15f4q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/WinPanel" unique_id=988847099]
 layout_mode = 1

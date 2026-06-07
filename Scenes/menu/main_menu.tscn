@@ -159,7 +159,7 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_655o3")
 theme_override_font_sizes/font_size = 60
-text = "DUAL SHIFT: BEHIND THE QUIL"
+text = "DUAL SHIFT: BEHIND THE QUILL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
