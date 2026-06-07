@@ -6,7 +6,7 @@ class_name SkillNode
 @onready var line_2d = $Line2D
 
 # Tambahkan variabel ini agar kamu bisa mengatur harga tiap skill di Inspector Godot
-@export var skill_cost: int = 1500 
+@export var skill_cost: int = 200 
 
 func _ready():
 	if get_parent() is SkillNode:
