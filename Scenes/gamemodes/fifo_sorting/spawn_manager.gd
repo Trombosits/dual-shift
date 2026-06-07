@@ -237,8 +237,9 @@ func game_over():
 	# PLAY GAME OVER SFX
 	game_over_sfx.play()
 
-	game_over_panel.visible = true
+	GlobalManager.total_skill_points += score
 
+	game_over_panel.visible = true
 	final_score_text.visible = true
 	final_score_text.text = "FINAL SCORE : " + str(score)
 
@@ -292,7 +293,7 @@ func _on_main_menu_button_pressed():
 	
 	click_sfx.play()
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/menu/game_menu.tscn")
 
 # =========================================
 # PAUSE

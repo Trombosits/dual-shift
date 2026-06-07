@@ -10,11 +10,12 @@ extends Node2D
 @onready var _score_label = $HUD/ScorePanel/Score
 @onready var _wave_label = $HUD/WavePanel/Wave
 
-# Mengikuti struktur baru: LosePanel
+
 @onready var _lose_panel = $HUD/LosePanel
+@onready var _highscore_label = $HUD/LosePanel/Highscore
 @onready var _next_button = $"HUD/LosePanel/Next-Button" 
 
-# Referensi Menu Pause Baru
+
 @onready var _pause_panel = $HUD/PausePanel
 @onready var _continue_button = $HUD/PausePanel/BContainer1/Continue
 @onready var _menu_button = $HUD/PausePanel/BContainer2/Menu
@@ -234,6 +235,8 @@ func trigger_game_over():
 	game_over_displayed = true
 	AudioManager.play_gameOver()
 	freeze_all_entities()
+	
+	GlobalManager.total_skill_points += score
 
 	await get_tree().create_timer(1.75).timeout
 	safe_play_player_animation("play_death")
@@ -251,6 +254,8 @@ func trigger_win():
 	freeze_all_entities()
 	if is_instance_valid(_player):
 		_player.process_mode = PROCESS_MODE_DISABLED
+		
+	GlobalManager.total_skill_points += score
 		
 	show_end_panel(true)
 
