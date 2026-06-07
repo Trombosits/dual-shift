@@ -376,7 +376,7 @@ func _on_continue_pressed() -> void:
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
 	is_paused = false
-	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/tutorial/night_city.tscn")
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
