@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 AudioManager="*uid://c3fpbdejwtfql"
+GlobalManager="*uid://bwwai26mtxxho"
 
 [display]
 

@@ -231,6 +231,7 @@ func _trigger_win() -> void:
 	game_active = false
 	drag_manager.input_enabled = false
 	final_score = _calculate_score()
+	GlobalManager.total_skill_points += final_score
 	win_sound.play()
 	pause_button.visible = false
 	pause_button_panel.visible = false
